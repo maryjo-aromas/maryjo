@@ -6,8 +6,18 @@
   <title>MaryJo Aromas</title>
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
-<body>
+  <script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.querySelectorAll('nav a');
 
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.checked = false; // Desactiva el menú
+    });
+  });
+</script>
+  
+<body>
   <!-- MENÚ SUPERIOR -->
   <header class="header">
     <div class="logo-titulo">
