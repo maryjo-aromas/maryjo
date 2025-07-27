@@ -234,10 +234,13 @@ footer {
   .menu-icon {
     display: block;
   }
-
+  .titulo {
+    font-size: 13px;
+  }
+  
   .logo-titulo {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
   }
 
   .logo-titulo h1 {
