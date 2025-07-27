@@ -2,38 +2,64 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catálogo de Velas - MaryJo Aromas</title>
-  <link rel="stylesheet" href="css/estilos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MaryJo Aromas</title>
+  <link rel="stylesheet" href="CSS/estilos.css" />
 </head>
 <body>
+
+  <!-- Banner superior -->
   <header>
-    <h1>MaryJo Aromas</h1>
-    <p>El detalle perfecto para transformar cualquier rincón ✨</p>
+    <div class="logo-nombre">
+      <img src="IMG/logo.png" alt="Logo MaryJo" class="logo" />
+      <h1>MaryJo Aromas</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <!-- Aquí puedes agregar más enlaces en el futuro -->
+        <li class="cart-icon">🛒</li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="catalogo">
+  <!-- Menú lateral simulado de categorías -->
+  <aside>
+    <h3>Categorías</h3>
+    <ul>
+      <li><a href="#decorativas">Velas Decorativas</a></li>
+      <li><a href="#aromaticas">Velas Aromáticas</a></li>
+      <li><a href="#nuevos">Nuevos Lanzamientos</a></li>
+    </ul>
+  </aside>
 
-    <!-- Producto 1: Corazón pequeño decorativo natural -->
+  <!-- Sección de bienvenida -->
+  <section class="bienvenida">
+    <h2>Bienvenid@ a MaryJo Aromas</h2>
+    <p>
+      Aquí podrás personalizar tus velas decorativas y aromáticas, hechas con amor y dedicación. 
+      Escoge el estilo, color, aroma y empaque. Cada pedido es especial. 🌸🕯️
+    </p>
+  </section>
+
+  <!-- Productos -->
+  <main class="productos">
+    <h2>Nuestras velas</h2>
+
     <div class="producto">
-      <img src="img/corazon-pequeno-natural.jpeg" alt="Corazón pequeño natural">
-      <h2>Corazón Pequeño - Natural</h2>
-      <p>Vela decorativa sin aroma. Hecha con cera de abeja natural, ideal para ambientar sin encender.</p>
-      <a href="formulario/corazon-pequeno-natural" class="btn">Personalizar</a>
+      <img src="IMG/producto1.jpg" alt="Corazón natural" />
+      <h3>Corazón pequeño (Natural)</h3>
+      <p>Decorativa sin aroma, hecha con cera de abeja.</p>
+      <a href="formulario/corazon-natural.html" class="boton">Personalizar</a>
     </div>
 
-    <!-- Producto 2: Corazón pequeño aromático -->
     <div class="producto">
-      <img src="img/corazon-pequeno-aromatico.jpeg" alt="Corazón pequeño aromático">
-      <h2>Corazón Pequeño - Aromático</h2>
-      <p>Personaliza tu aroma favorito. Hecha con cera de soja, perfecta para encender y perfumar.</p>
-      <a href="formulario/corazon-pequeno-aromatica.html" class="btn">Personalizar</a>
+      <img src="IMG/producto2.jpg" alt="Corazón aromático" />
+      <h3>Corazón pequeño (Aromático)</h3>
+      <p>Con tu aroma favorito, en cera de soja.</p>
+      <a href="formulario/corazon-aromatico.html" class="boton">Personalizar</a>
     </div>
-
   </main>
 
-  <footer>
-    <p>&copy; 2025 Marijoa Aromas | Hecho con amor en Cuba 🇨🇺</p>
-  </footer>
 </body>
 </html>
