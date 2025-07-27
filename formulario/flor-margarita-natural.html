@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vela natural decorativa - Flor Margarita</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #222;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #444;
+    }
+
+    #precioUnidad, #precioTotal {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Vela natural decorativa<br>Flor Margarita</h2>
+    <form id="velaForm">
+      <label>Producto:</label>
+      <input type="text" id="producto" value="Vela natural de Flor Margarita" readonly />
+
+      <label>¿Deseas empaque especial de regalo?</label>
+      <select id="empaqueRegalo" onchange="actualizarPrecio()">
+        <option value="estandar" selected>No, gracias (bolsita estándar)</option>
+        <option value="Caja plateada">Caja plateada (+280 CUP)</option>
+      </select>
+
+      <label>Cantidad (1–10):</label>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button type="button" onclick="cambiarCantidad(-1)" style="padding: 5px 10px;">−</button>
+        <input type="number" id="cantidad" min="1" max="10" value="1" style="text-align: center; width: 60px;" />
+        <button type="button" onclick="cambiarCantidad(1)" style="padding: 5px 10px;">+</button>
+      </div>
+
+      <label>Tu nombre:</label>
+      <input type="text" id="nombre" />
+
+      <div id="precioUnidad">💰 Precio por unidad: 360 CUP</div>
+      <div id="precioTotal">💵 Precio total: 360 CUP</div>
+
+      <button type="button" class="submit-button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    const precioBase = 60;
+    const precioCajaPlateada = 280;
+
+    function actualizarPrecio() {
+      const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
+      const empaque = document.getElementById('empaqueRegalo').value;
+
+      let extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
+      let total = (precioBase * cantidad) + extraEmpaque;
+
+      document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioBase + " CUP";
+      document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
+    }
+
+    function cambiarCantidad(delta) {
+      const input = document.getElementById('cantidad');
+      let valor = parseInt(input.value || 1, 10);
+      const min = parseInt(input.min, 10);
+      const max = parseInt(input.max, 10);
+      const nuevoValor = valor + delta;
+
+      if (nuevoValor >= min && nuevoValor <= max) {
+        input.value = nuevoValor;
+        actualizarPrecio();
+      }
+    }
+
+    function enviarWhatsapp() {
+      const producto = document.getElementById('producto').value.trim();
+      const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
+      const nombre = document.getElementById('nombre').value.trim();
+      const empaque = document.getElementById('empaqueRegalo').value;
+
+      if (!cantidad || cantidad < 1 || cantidad > 10) {
+        alert("Ingresa una cantidad válida.");
+        return;
+      }
+
+      if (!nombre) {
+        alert("Ingresa tu nombre.");
+        return;
+      }
+
+      const extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
+      const total = (precioBase * cantidad) + extraEmpaque;
+
+      const mensaje = "Hola, quiero hacer un pedido de velas:\n\n"
+        + "🕯️ Producto: " + producto + "\n"
+        + "🎁 Empaque: " + empaque + "\n"
+        + "🔢 Cantidad: " + cantidad + "\n"
+        + "👤 Nombre: " + nombre + "\n"
+        + "💰 Precio por unidad: " + precioBase + " CUP"
+        + "\n💵 Precio total: " + total + " CUP";
+
+      const url = "https://wa.me/5353810462?text=" + encodeURIComponent(mensaje);
+      window.open(url, "_blank");
+    }
+
+    window.onload = actualizarPrecio;
+  </script>
+</body>
+</html>

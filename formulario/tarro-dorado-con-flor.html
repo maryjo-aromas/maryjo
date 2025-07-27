@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vela de tarro dorado</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #222;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #444;
+    }
+
+    #precioUnitario,
+    #precioTotal {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Personaliza tu vela de tarro dorado</h2>
+    <form id="velaForm">
+      <label>Producto:</label>
+      <input type="text" id="producto" value="Vela natural de tarro dorado con flor" readonly />
+
+      <label>¿Deseas empaque especial de regalo?</label>
+      <select id="empaqueRegalo" onchange="actualizarPrecio()">
+        <option value="Ninguno" selected>No, gracias (bolsita estándar)</option>
+        <option value="Caja plateada">Caja plateada (+280 CUP)</option>
+      </select>
+
+      <label>Cantidad (1–10):</label>
+      <input type="number" id="cantidad" min="1" max="10" onchange="actualizarPrecio()" />
+
+      <label>Tu nombre:</label>
+      <input type="text" id="nombre" />
+
+      <div id="precioUnitario">Precio base por unidad: 600 CUP</div>
+      <div id="precioTotal">Total: 600 CUP</div>
+
+      <button type="button" class="submit-button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    const empaqueSelect = document.getElementById('empaqueRegalo');
+    const cantidadInput = document.getElementById('cantidad');
+    const precioUnitarioDiv = document.getElementById('precioUnitario');
+    const precioTotalDiv = document.getElementById('precioTotal');
+
+    const precioBase = 500;
+    const precioPlateada = 280;
+
+    function actualizarPrecio() {
+      const cantidad = parseInt(cantidadInput.value) || 1;
+      const empaque = empaqueSelect.value;
+
+      let total = precioBase * cantidad;
+
+      if (empaque === "Caja plateada") {
+        total += precioPlateada;
+      }
+
+      precioUnitarioDiv.textContent = "Precio base por unidad: " + precioBase + " CUP";
+      precioTotalDiv.textContent = "Total: " + total + " CUP";
+    }
+
+    function enviarWhatsapp() {
+      const producto = document.getElementById('producto').value.trim();
+      const cantidad = parseInt(document.getElementById('cantidad').value.trim());
+      const nombre = document.getElementById('nombre').value.trim();
+      const empaque = empaqueSelect.value.trim();
+
+      if (!cantidad || cantidad < 1 || cantidad > 10) {
+        alert("Ingresa una cantidad válida (1 a 10).");
+        return;
+      }
+
+      if (!nombre) {
+        alert("Ingresa tu nombre.");
+        return;
+      }
+
+      let total = precioBase * cantidad;
+      if (empaque === "Caja plateada") total += precioPlateada;
+
+      const mensaje = "Hola, quiero hacer un pedido de velas:\n\n"
+        + "🕯️ Producto: " + producto + "\n"
+        + "🎁 Empaque: " + empaque + "\n"
+        + "🔢 Cantidad: " + cantidad + "\n"
+        + "👤 Nombre: " + nombre + "\n"
+        + "💰 Precio por unidad: " + precioBase + " CUP\n"
+        + "💵 Total a pagar: " + total + " CUP";
+
+      const url = "https://wa.me/53810462?text=" + encodeURIComponent(mensaje);
+      window.open(url, "_blank");
+    }
+
+    window.onload = actualizarPrecio;
+  </script>
+</body>
+</html>

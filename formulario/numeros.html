@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velas de números</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    .color-options {
+      display: flex;
+      margin-top: 10px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .color-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+
+    .color-circle.selected {
+      border: 2px solid #000;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #222;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #444;
+    }
+
+    #precioUnidad, #precioTotal {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Velas decorativas de números</h2>
+    <form id="velaForm">
+      <label>Selecciona los números que deseas:</label>
+      <div class="numbers-grid">
+        <label><input type="checkbox" name="numeros" value="0" onchange="actualizarPrecio()"> 0</label>
+        <label><input type="checkbox" name="numeros" value="1" onchange="actualizarPrecio()"> 1</label>
+        <label><input type="checkbox" name="numeros" value="2" onchange="actualizarPrecio()"> 2</label>
+        <label><input type="checkbox" name="numeros" value="3" onchange="actualizarPrecio()"> 3</label>
+        <label><input type="checkbox" name="numeros" value="4" onchange="actualizarPrecio()"> 4</label>
+        <label><input type="checkbox" name="numeros" value="5" onchange="actualizarPrecio()"> 5</label>
+        <label><input type="checkbox" name="numeros" value="6" onchange="actualizarPrecio()"> 6</label>
+        <label><input type="checkbox" name="numeros" value="7" onchange="actualizarPrecio()"> 7</label>
+        <label><input type="checkbox" name="numeros" value="8" onchange="actualizarPrecio()"> 8</label>
+        <label><input type="checkbox" name="numeros" value="9" onchange="actualizarPrecio()"> 9</label>
+      </div>
+
+      <label>Color de todas las velas:</label>
+      <div class="color-options" id="colorOptions">
+        <div class="color-circle" style="background-color: #90EE90;" data-color="Verde claro"></div>
+        <div class="color-circle" style="background-color: #f66b92;" data-color="Rosado suave"></div>
+        <div class="color-circle" style="background-color: #ff3855;" data-color="Rojo neón"></div>
+        <div class="color-circle" style="background-color: #3f00ff;" data-color="Azul Ultramarino"></div>
+        <div class="color-circle" style="background-color: #fe59c2;" data-color="Fucsia"></div>
+        <div class="color-circle" style="background-color: #ffa500;" data-color="Naranja"></div>
+        <div class="color-circle" style="background-color: #bf00ff;" data-color="Púrpura"></div>
+        <div class="color-circle" style="background-color: #ffd67b;" data-color="Amarillo pastel"></div>
+        <div class="color-circle" style="background-color: #a3989d;" data-color="Lila grisáceo"></div>
+        <div class="color-circle" style="background-color: red;" data-color="Rojo"></div>
+      </div>
+      <input type="hidden" id="color" />
+
+      <label>¿Deseas empaque especial de regalo?</label>
+      <select id="empaqueRegalo" onchange="actualizarPrecio()">
+        <option value="estandar" selected>No, gracias (bolsita estándar)</option>
+        <option value="Caja plateada">Caja plateada (+280 CUP)</option>
+      </select>
+
+      <label>Tu nombre:</label>
+      <input type="text" id="nombre" />
+
+      <div id="precioUnidad">💰 Precio por vela: 200 CUP</div>
+      <div id="precioTotal">💵 Precio total: 0 CUP</div>
+
+      <button type="button" class="submit-button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    const precioUnidad = 200;
+    const precioCajaPlateada = 280;
+
+    const colorCircles = document.querySelectorAll('.color-circle');
+    const colorInput = document.getElementById('color');
+
+    colorCircles.forEach(circle => {
+      circle.addEventListener('click', () => {
+        colorCircles.forEach(c => c.classList.remove('selected'));
+        circle.classList.add('selected');
+        colorInput.value = circle.getAttribute('data-color');
+      });
+    });
+
+    function actualizarPrecio() {
+      const numerosSeleccionados = document.querySelectorAll('input[name="numeros"]:checked');
+      const cantidad = numerosSeleccionados.length;
+      const empaque = document.getElementById('empaqueRegalo').value;
+
+      const extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
+      const total = (precioUnidad * cantidad) + extraEmpaque;
+
+      document.getElementById("precioUnidad").textContent = "💰 Precio por vela: " + precioUnidad + " CUP";
+      document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
+    }
+
+    function enviarWhatsapp() {
+      const numeros = Array.from(document.querySelectorAll('input[name="numeros"]:checked')).map(n => n.value);
+      const cantidad = numeros.length;
+      const color = document.getElementById('color').value.trim();
+      const nombre = document.getElementById('nombre').value.trim();
+      const empaque = document.getElementById('empaqueRegalo').value;
+
+      if (numeros.length === 0) {
+        alert("Selecciona al menos un número.");
+        return;
+      }
+
+      if (!color) {
+        alert("Selecciona un color.");
+        return;
+      }
+
+      if (!nombre) {
+        alert("Ingresa tu nombre.");
+        return;
+      }
+
+      const extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
+      const total = (precioUnidad * cantidad) + extraEmpaque;
+
+      const mensaje = "Hola, quiero hacer un pedido de velas de números:\n\n"
+        + "🔢 Números seleccionados: " + numeros.join(', ') + "\n"
+        + "🎨 Color: " + color + "\n"
+        + "🎁 Empaque: " + empaque + "\n"
+        + "🕯️ Cantidad total de velas: " + cantidad + "\n"
+        + "👤 Nombre: " + nombre + "\n"
+        + "💰 Precio por unidad: " + precioUnidad + " CUP\n"
+        + "💵 Precio total: " + total + " CUP";
+
+      const url = "https://wa.me/5353810462?text=" + encodeURIComponent(mensaje);
+      window.open(url, "_blank");
+    }
+
+    window.onload = actualizarPrecio;
+  </script>
+</body>
+</html>
