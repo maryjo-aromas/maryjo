@@ -14,7 +14,7 @@ body {
 
 /* HEADER SUPERIOR */
 header {
-  background-color: #f5f0e6; /* Beige medio */
+  background-color: #f5f0e6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,37 +74,43 @@ nav a:hover {
   color: #8b7e6b;
 }
 
+/* TÍTULOS GENERALES */
+h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* PÁRRAFOS GENERALES */
+p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 /* SECCIÓN DE BIENVENIDA */
 .bienvenida {
   margin-top: 20px;
   text-align: center;
   padding: 40px 20px;
-  background-color: #fdfbf7; /* Beige claro */
+  background-color: #fdfbf7;
   border-bottom: 1px solid #eee;
 }
 
-.bienvenida h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-
 .bienvenida p {
-  font-size: 16px;
-  line-height: 1.6;
   max-width: 600px;
   margin: auto;
 }
 
 /* SECCIÓN DE CÓMO FUNCIONA */
 .como-funciona {
-  background-color: #fdfbf7; /* Beige claro */
+  background-color: #fdfbf7;
   padding: 30px 20px;
   text-align: center;
-}
-
-.como-funciona h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
 }
 
 .como-funciona ul {
@@ -115,7 +121,12 @@ nav a:hover {
 
 .como-funciona ul li {
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.como-funciona .gracias {
+  font-style: italic;
+  margin-top: 15px;
 }
 
 /* SECCIÓN DE PRODUCTOS */
@@ -131,7 +142,7 @@ section {
 }
 
 .producto {
-  background-color: #fff; /* Blanco para contraste */
+  background-color: #fff;
   border: 1px solid #eee;
   border-radius: 10px;
   padding: 15px;
@@ -145,11 +156,6 @@ section {
   border-radius: 8px;
 }
 
-.producto h4 {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
 .producto p {
   font-size: 14px;
   color: #777;
@@ -159,7 +165,7 @@ section {
   display: inline-block;
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #d6cfc2; /* Beige oscuro */
+  background-color: #d6cfc2;
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
@@ -172,37 +178,38 @@ section {
 
 /* SECCIÓN DE CONTACTO */
 .contacto {
-  background-color: #f5f0e6; /* Beige medio */
+  background-color: #f5f0e6;
   padding: 40px 20px;
   text-align: center;
 }
 
-.contacto h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.contacto p {
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.contacto p {
-  font-size: 16px;
-  line-height: 1.6;
+/* CARRITO */
+.carrito {
+  padding: 40px 20px;
+  text-align: center;
 }
 
 /* PIE DE PÁGINA */
 footer {
-  background-color: #f5f0e6; /* Beige medio */
+  background-color: #f5f0e6;
   text-align: center;
   padding: 15px;
   font-size: 14px;
   border-top: 1px solid #ddd;
 }
 
-/* ANIMACIONES PEQUEÑAS (opcional) */
+/* ANIMACIONES */
 .producto:hover {
   transform: translateY(-3px);
   transition: transform 0.2s ease-in-out;
 }
 
-/* Oculta el ícono en pantallas grandes */
+/* RESPONSIVE */
 .menu-icon {
   display: none;
   font-size: 28px;
@@ -211,10 +218,10 @@ footer {
   padding: 10px;
 }
 
-/* RESPONSIVE: Para pantallas pequeñas */
 .menu-toggle {
-    display: none;
-  }
+  display: none;
+}
+
 @media (max-width: 768px) {
   nav ul {
     display: none;
@@ -235,16 +242,13 @@ footer {
   .menu-icon {
     display: block;
   }
+
   .titulo {
     font-size: 13px;
   }
-  
+
   .logo-titulo {
     flex-direction: row;
     align-items: center;
-  }
-
-  .logo-titulo h1 {
-    font-size: 18px;
   }
 }
