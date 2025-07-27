@@ -190,3 +190,44 @@ footer {
   transform: translateY(-3px);
   transition: transform 0.2s ease-in-out;
 }
+
+/* Oculta el ícono en pantallas grandes */
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 10px;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #f5e5e5;
+    position: absolute;
+    top: 70px; /* ajusta según el alto de tu header */
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .menu-toggle:checked + .menu-icon + nav ul {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .logo-titulo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-titulo h1 {
+    font-size: 18px; /* más pequeño en móvil */
+  }
+}
