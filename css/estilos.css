@@ -38,10 +38,19 @@ header {
   object-fit: cover;
   border-radius: 50%; /* Para que sea redondito */
 }
-
 nav {
   display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
   gap: 20px;
+}
+
+nav li {
+  display: inline;
 }
 
 nav a {
