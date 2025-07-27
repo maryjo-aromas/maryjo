@@ -1,12 +1,18 @@
-/* Reset básico */
+/* RESET GENERAL */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
 }
 
-/* Banner superior */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 80px; /* Espacio para el header fijo */
+  background-color: #fffafa;
+  color: #333;
+}
+
+/* HEADER SUPERIOR */
 header {
   background-color: #f5e5e5;
   display: flex;
@@ -14,100 +20,160 @@ header {
   align-items: center;
   padding: 15px 30px;
   border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.logo-nombre {
+.logo-titulo {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .logo {
-  width: 40px;
-  height: auto;
-  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%; /* Para que sea redondito */
 }
 
-nav ul {
-  list-style: none;
+nav {
   display: flex;
   gap: 20px;
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #444;
-  font-weight: bold;
-}
-
-.cart-icon {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Menú lateral */
-aside {
-  background-color: #f8f8f8;
-  padding: 20px;
-  width: 200px;
-  float: left;
-}
-
-aside h3 {
-  margin-bottom: 10px;
-}
-
-aside ul {
-  list-style: none;
-}
-
-aside ul li a {
+nav a {
   text-decoration: none;
   color: #333;
-  display: block;
-  margin: 8px 0;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-/* Sección de bienvenida */
+nav a:hover {
+  color: #ff8c94;
+}
+
+/* SECCIÓN DE BIENVENIDA */
 .bienvenida {
-  margin-left: 220px;
-  padding: 30px;
-  background-color: #fff6f6;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fff0f5;
+  border-bottom: 1px solid #eee;
 }
 
 .bienvenida h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.bienvenida p {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* SECCIÓN DE CÓMO FUNCIONA */
+.como-funciona {
+  background-color: #fff9f9;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.como-funciona h3 {
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
-/* Productos */
+.como-funciona ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.como-funciona ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* SECCIÓN DE PRODUCTOS */
 .productos {
-  margin-left: 220px;
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .producto {
   background-color: #fff;
-  border: 1px solid #ddd;
-  width: 250px;
-  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   text-align: center;
-  border-radius: 8px;
 }
 
 .producto img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  margin-bottom: 10px;
+  border-radius: 8px;
 }
 
-.boton {
+.producto h4 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.producto p {
+  font-size: 14px;
+  color: #777;
+}
+
+.producto a {
   display: inline-block;
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #e5989b;
-  color: white;
+  background-color: #ffb6c1;
+  color: #fff;
+  border-radius: 5px;
   text-decoration: none;
-  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.producto a:hover {
+  background-color: #ff8c94;
+}
+
+/* SECCIÓN DE CONTACTO */
+.contacto {
+  background-color: #fce4ec;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.contacto h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contacto p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* PIE DE PÁGINA */
+footer {
+  background-color: #f5e5e5;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+}
+
+/* ANIMACIONES PEQUEÑAS (opcional) */
+.producto:hover {
+  transform: translateY(-3px);
+  transition: transform 0.2s ease-in-out;
 }
