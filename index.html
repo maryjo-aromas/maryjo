@@ -2,81 +2,107 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MaryJo Aromas</title>
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
 
-  <!-- Banner superior -->
-  <header>
-    <div class="logo-nombre">
-      <img src="img/logo-maryjo.jpeg" alt="Logo MaryJo" class="logo" />
+  <!-- MENÚ SUPERIOR -->
+  <header class="header">
+    <div class="logo-titulo">
+      <img src="ruta/del/logo.png" alt="Logo MaryJo" class="logo" />
       <h1>MaryJo Aromas</h1>
     </div>
-    <nav>
+    <nav class="menu">
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <!-- Aquí puedes agregar más enlaces en el futuro -->
-        <li class="cart-icon">🛒</li>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#naturales">Velas Naturales</a></li>
+        <li><a href="#aromaticas">Velas Aromáticas</a></li>
+        <li><a href="#como-funciona">Cómo Funciona</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#carrito">🛒</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Menú lateral simulado de categorías -->
-  <aside>
-    <h3>Categorías</h3>
-    <ul>
-      <li><a href="#decorativas">Velas Decorativas</a></li>
-      <li><a href="#aromaticas">Velas Aromáticas</a></li>
-      <li><a href="#nuevos">Nuevos Lanzamientos</a></li>
-    </ul>
-  </aside>
-
-  <!-- Sección de bienvenida -->
-  <section class="bienvenida">
-    <h2>Bienvenid@ a MaryJo Aromas</h2>
+  <!-- SECCIÓN INICIO -->
+  <section id="inicio" class="inicio">
+    <h2>Bienvenida a MaryJo Aromas</h2>
     <p>
-        Bienvenida a MaryJo Aromas
-        Velas artesanales hechas a mano, pensadas especialmente para ti.
-        
-        Aquí puedes explorar cada una de nuestras velas:
-        creadas con cariño, paciencia y mucha atención al detalle.
-        
-        ✨ ¿Cómo funciona el catálogo?
-        • Puedes comprar directamente cualquiera de nuestras velas decorativas naturales.
-        • También puedes personalizar las velas decorativas-aromáticas: elige el aroma (o sin aroma), color, tipo de empaque y cantidad.
-        • Solo toca el botón de tu vela favorita y te llevamos directo a WhatsApp.
-        ¡Así de fácil!
-        
-        🕯️ Todas nuestras velas se elaboran por encargo, especialmente para ti.
-        📦 Atención personalizada a través de WhatsApp.
-        🕥 Tiempo de elaboración: hasta 7 días.
-        🚙 Envío a domicilio sin costo adicional dentro de la ciudad de Cienfuegos.
-        
-        Gracias por apoyar este emprendimiento hecho con el corazón. ❤️
-        Bienvenida al mundo de MaryJo Aromas.
+      Velas artesanales hechas a mano, pensadas especialmente para ti.<br>
+      Aquí puedes explorar cada una de nuestras velas: creadas con cariño, paciencia y mucha atención al detalle.
     </p>
   </section>
 
-  <!-- Productos -->
-  <main class="productos">
-    <h2>Nuestras velas</h2>
+  <!-- SECCIÓN CÓMO FUNCIONA -->
+  <section id="como-funciona" class="como-funciona">
+    <h2>✨ ¿Cómo funciona el catálogo?</h2>
+    <ul>
+      <li>Puedes comprar directamente cualquiera de nuestras velas decorativas naturales.</li>
+      <li>También puedes personalizar las velas decorativas-aromáticas: elige el aroma (o sin aroma), color, tipo de empaque y cantidad.</li>
+      <li>Solo toca el botón de tu vela favorita y te llevamos directo a WhatsApp. ¡Así de fácil!</li>
+    </ul>
+    <p>
+      🕯️ Todas nuestras velas se elaboran por encargo, especialmente para ti.<br>
+      📦 Atención personalizada a través de WhatsApp.<br>
+      🕥 Tiempo de elaboración: hasta 7 días.<br>
+      🚙 Envío a domicilio sin costo adicional dentro de la ciudad de Cienfuegos.
+    </p>
+    <p class="gracias">
+      Gracias por apoyar este emprendimiento hecho con el corazón. ❤️<br>
+      Bienvenida al mundo de MaryJo Aromas.
+    </p>
+  </section>
 
-    <div class="producto">
-      <img src="img/corazon-pequeno-natural.jpeg" alt="Corazón natural" />
-      <h3>Corazón pequeño decorativo (Natural)</h3>
-      <p>Decorativa, 100 porciento natural, hecha con cera de abeja.</p>
-      <a href="formulario/corazon-pequeno-natural.html" class="boton">Comprar</a>
+  <!-- SECCIÓN VELAS NATURALES -->
+  <section id="naturales" class="productos">
+    <h2>🕯️ Velas Naturales</h2>
+    <!-- Aquí puedes insertar tus productos naturales -->
+    <div class="galeria">
+      <!-- Ejemplo de producto -->
+      <div class="producto">
+        <img src="ruta/vela-natural.jpg" alt="Vela Natural" />
+        <h3>Nombre Vela Natural</h3>
+        <p>Descripción breve</p>
+        <a href="https://wa.me/5355300075" target="_blank" class="btn">Pedir por WhatsApp</a>
+      </div>
     </div>
+  </section>
 
-    <div class="producto">
-      <img src="img/corazon-pequeno-aromatico.jpeg" alt="Corazón aromático" />
-      <h3>Corazón pequeño decorativo y aromático</h3>
-      <p>Totalmente personalizable, solo elije tu color y aroma favorito.</p>
-      <a href="formulario/corazon-pequeno-aromatica.html" class="boton">Personalizar</a>
+  <!-- SECCIÓN VELAS AROMÁTICAS -->
+  <section id="aromaticas" class="productos">
+    <h2>🕯️ Velas Aromáticas</h2>
+    <!-- Aquí puedes insertar tus productos aromáticos -->
+    <div class="galeria">
+      <!-- Ejemplo de producto -->
+      <div class="producto">
+        <img src="ruta/vela-aromatica.jpg" alt="Vela Aromática" />
+        <h3>Nombre Vela Aromática</h3>
+        <p>Descripción breve</p>
+        <a href="https://wa.me/5355300075" target="_blank" class="btn">Personalizar en WhatsApp</a>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contacto" class="contacto">
+    <h2>📞 Contáctanos</h2>
+    <p>¿Tienes dudas o un pedido especial?<br>
+    Escríbenos a través de WhatsApp o Instagram.</p>
+    <a href="https://wa.me/5355300075" target="_blank" class="btn">Enviar mensaje</a>
+  </section>
+
+  <!-- SECCIÓN CARRITO (a desarrollar más adelante) -->
+  <section id="carrito" class="carrito">
+    <h2>🛒 Tu Carrito</h2>
+    <p>En el futuro aquí podrás ver todos los productos que vayas agregando.</p>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <p>&copy; 2025 MaryJo Aromas. Todos los derechos reservados.</p>
+  </footer>
 
 </body>
 </html>
