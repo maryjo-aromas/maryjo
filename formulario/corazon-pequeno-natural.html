@@ -96,21 +96,33 @@
       text-align: center;
       color: #000;
     }
+
+    /* Toast */
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #323232;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px;
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      bottom: 30px;
+      font-size: 16px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
-  <script>
-  function añadirAlCarrito() {
-    // Aquí podrías guardar en localStorage más adelante si quieres
 
-    alert("Producto añadido al carrito");
-
-    // Espera 2 segundo y redirige a la página principal
-    setTimeout(function() {
-      window.location.href = "../index.html"; 
-    }, 2000);
-  }
-</script>
-  
 <body>
   <div class="container">
     <p class="producto-titulo">Producto: Vela natural de corazón pequeño</p>
@@ -139,6 +151,9 @@
       <button type="button" class="submit-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
     </form>
   </div>
+
+  <!-- Toast -->
+  <div id="toast">✅ Producto añadido al carrito</div>
 
   <script>
     const precioBase = 100;
@@ -184,14 +199,23 @@
         total
       };
 
-      // Guardar en localStorage (puede usarse luego en "carrito.html")
       let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       carrito.push(item);
       localStorage.setItem("carrito", JSON.stringify(carrito));
 
-      alert("✅ Producto añadido al carrito");
-      // Aquí podrías redirigir al carrito si quieres:
-      // window.location.href = "carrito.html";
+      mostrarToastYRedirigir();
+    }
+
+    function mostrarToastYRedirigir() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+          window.location.href = "../index.html"; // Cambia esto si tu página principal tiene otro nombre
+        }, 300); // Un pequeño delay extra
+      }, 2000); // Toast visible durante 2 segundos
     }
 
     window.onload = actualizarPrecio;
