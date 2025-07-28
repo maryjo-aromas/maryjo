@@ -293,15 +293,7 @@ footer {
     padding: 10px 0;
     z-index: 1000;
   }
-  .carrito-icono {
-    position: absolute;
-    right: 65px; /* Puedes ajustar este valor para acercarlo al menú hamburguesa */
-    top: 25px;   /* Alineación vertical con el logo/menú */
-    font-size: 20px;
-  }
-  .header {
-    position: relative; /* Necesario para que el .carrito-icono con position absolute funcione */
-  }
+  
   .menu-toggle:checked + .menu-icon + nav ul {
     display: flex;
   }
