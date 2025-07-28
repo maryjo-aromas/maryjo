@@ -127,15 +127,21 @@
         carritoContenido.innerHTML = "<p>Tu carrito está vacío.</p>";
         return;
       }
-
+      
       let html = "<ul class='lista-carrito'>";
-      carrito.forEach(producto => {
+      carrito.forEach((producto, index) => {
         html += `
           <li class="item-carrito">
-            <span class="nombre">${producto.producto}</span> -
-            <span class="opciones">${producto.empaque}</span> -
-            <span class="cantidad">x${producto.cantidad}</span> -
-            <span class="precio">${producto.total} CUP</span>
+            <div class="producto-info">
+              <img src="${producto.imagen}" alt="${producto.producto}" class="miniatura">
+              <div class="detalle">
+                <span class="nombre">${producto.producto}</span>
+                <span class="empaque">${producto.empaque}</span>
+                <span class="cantidad">Cantidad: x${producto.cantidad}</span>
+                <span class="precio">${producto.total} CUP</span>
+              </div>
+            </div>
+            <button class="eliminar-producto" data-index="${index}">🗑️</button>
           </li>
         `;
       });
