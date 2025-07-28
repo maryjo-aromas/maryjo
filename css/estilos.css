@@ -76,9 +76,7 @@ nav a:hover {
   color: #8b7e6b;
 }
 
-.carrito-icono {
-  margin-left: auto;
-}
+
 
 /* TÍTULOS GENERALES */
 h3 {
@@ -299,8 +297,8 @@ footer {
     z-index: 1000;
   }
   .carrito-icono {
-    margin-right: 2px;
-  }
+  margin-left: auto;
+}
   .menu-toggle:checked + .menu-icon + nav ul {
     display: flex;
   }
