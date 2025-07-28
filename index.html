@@ -105,6 +105,7 @@
   <footer class="footer">
     <p>&copy; 2025 MaryJo Aromas. Todos los derechos reservados.</p>
   </footer>
+  
 
    <script>
       const menuToggle = document.getElementById('menu-toggle');
@@ -115,6 +116,36 @@
           menuToggle.checked = false; // Desactiva el menú
         });
       });
+
+      document.addEventListener("DOMContentLoaded", function () {
+    const carritoContenido = document.getElementById("carrito-contenido");
+
+    function cargarCarrito() {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+      if (carrito.length === 0) {
+        carritoContenido.innerHTML = "<p>Tu carrito está vacío.</p>";
+        return;
+      }
+
+      let html = "<ul class='lista-carrito'>";
+      carrito.forEach(producto => {
+        html += `
+          <li class="item-carrito">
+            <span class="nombre">${producto.nombre}</span> -
+            <span class="opciones">${producto.color} / ${producto.aroma}</span> -
+            <span class="cantidad">x${producto.cantidad}</span> -
+            <span class="precio">${producto.precio} CUP</span>
+          </li>
+        `;
+      });
+      html += "</ul>";
+
+      carritoContenido.innerHTML = html;
+    }
+
+    cargarCarrito();
+  });
     </script>
   
 </body>
