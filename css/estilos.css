@@ -294,7 +294,9 @@ footer {
     padding: 10px 0;
     z-index: 1000;
   }
-  
+  .carrito-icono {
+    margin-right: 2px;
+  }
   .menu-toggle:checked + .menu-icon + nav ul {
     display: flex;
   }
