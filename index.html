@@ -132,10 +132,10 @@
       carrito.forEach(producto => {
         html += `
           <li class="item-carrito">
-            <span class="nombre">${producto.nombre}</span> -
-            <span class="opciones">${producto.color} / ${producto.aroma}</span> -
+            <span class="nombre">${producto.producto}</span> -
+            <span class="opciones">${producto.empaque}</span> -
             <span class="cantidad">x${producto.cantidad}</span> -
-            <span class="precio">${producto.precio} CUP</span>
+            <span class="precio">${producto.total} CUP</span>
           </li>
         `;
       });
