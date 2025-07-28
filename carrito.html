@@ -1,1 +1,135 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito de Compras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #fdfdfd;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .acciones {
+      color: red;
+      cursor: pointer;
+    }
+    #total {
+      text-align: right;
+      font-size: 1.2em;
+      margin-top: 15px;
+    }
+    .whatsapp-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Tu Carrito</h1>
+
+  <table id="tablaCarrito">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Empaque</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="total"></div>
+
+  <button class="whatsapp-btn" onclick="enviarPorWhatsApp()">Enviar pedido por WhatsApp</button>
+
+  <script>
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const tabla = document.querySelector("#tablaCarrito tbody");
+    const totalDiv = document.getElementById("total");
+
+    function mostrarCarrito() {
+      tabla.innerHTML = "";
+      let total = 0;
+
+      carrito.forEach((item, index) => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${item.nombre}</td>
+          <td>${item.empaque}</td>
+          <td>${item.cantidad}</td>
+          <td>${item.precio} CUP</td>
+          <td>${subtotal} CUP</td>
+          <td><span class="acciones" onclick="eliminarProducto(${index})">Eliminar</span></td>
+        `;
+        tabla.appendChild(fila);
+      });
+
+      totalDiv.textContent = Total: ${total} CUP;
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      mostrarCarrito();
+    }
+
+    function enviarPorWhatsApp() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío");
+        return;
+      }
+
+      let mensaje = "Hola, quiero hacer el siguiente pedido:%0A";
+      let total = 0;
+
+      carrito.forEach(item => {
+        mensaje += - ${item.cantidad} ${item.nombre} con ${item.empaque}%0A;
+        total += item.precio * item.cantidad;
+      });
+
+      mensaje += %0ATotal: ${total} CUP;
+
+      const numero = "5353810462"; // Aquí tu número de WhatsApp
+      const url = https://wa.me/${numero}?text=${mensaje};
+
+      window.open(url, "_blank");
+    }
+
+    mostrarCarrito();
+  </script>
+
+</body>
+</html>
