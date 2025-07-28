@@ -130,7 +130,8 @@
     <div class="cuadro-imagen">
       <img src="../img/corazon-pequeno-natural.jpeg" alt="Vela Natural" />
     </div>
-
+      <input type="hidden" name="imagen" value="../img/corazon-pequeno-natural.jpeg" class="imagen-oculta" />
+  
     <form id="velaForm">
       <label for="empaque">¿Deseas empaque especial de regalo?</label>
       <select id="empaque" onchange="actualizarPrecio()">
@@ -190,13 +191,15 @@
       const precio = precioBase;
       const extra = empaque === "Caja plateada" ? precioCajaPlateada : 0;
       const total = (precio * cantidad) + extra;
-
+      const imagen = document.querySelector('input[name="imagen"]').value;
+      
       const item = {
         producto,
         cantidad,
         empaque,
         precio,
-        total
+        total,
+        imagen
       };
 
       let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
