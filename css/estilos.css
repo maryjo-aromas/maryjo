@@ -76,6 +76,12 @@ nav a:hover {
   color: #8b7e6b;
 }
 
+.acciones-derecha {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* controla la distancia entre el carrito y el ícono hamburguesa */
+}
+
 /* TÍTULOS GENERALES */
 h3 {
   font-size: 17px;
