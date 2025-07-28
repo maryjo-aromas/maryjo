@@ -5,49 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MaryJo Aromas</title>
   <link rel="stylesheet" href="css/estilos.css" />
-
-  <style>
-    .lista-carrito {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .item-carrito {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-  
-  .producto-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .miniatura {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 10px;
-    border-radius: 6px;
-  }
-  
-  .detalle {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .eliminar-producto {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #b00;
-  }
-  </style>
-    
   
 </head>
   
@@ -150,18 +107,19 @@
     <p>&copy; 2025 MaryJo Aromas. Todos los derechos reservados.</p>
   </footer>
   
+  <script>
+  // FUNCIONALIDAD DEL MENÚ
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.querySelectorAll('nav a');
 
-   <script>
-      const menuToggle = document.getElementById('menu-toggle');
-      const navLinks = document.querySelectorAll('nav a');
-    
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          menuToggle.checked = false; // Desactiva el menú
-        });
-      });
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.checked = false; // Cierra el menú al hacer clic en un enlace
+    });
+  });
 
-      document.addEventListener("DOMContentLoaded", function () {
+  // FUNCIONALIDAD DEL CARRITO
+  document.addEventListener("DOMContentLoaded", function () {
     const carritoContenido = document.getElementById("carrito-contenido");
 
     function cargarCarrito() {
@@ -171,16 +129,16 @@
         carritoContenido.innerHTML = "<p>Tu carrito está vacío.</p>";
         return;
       }
-      
+
       let html = "<ul class='lista-carrito'>";
       carrito.forEach((producto, index) => {
         html += `
           <li class="item-carrito">
             <div class="producto-info">
-              <img src="${producto.imagen}" alt="${producto.producto}" class="miniatura">
+              <img src="${producto.imagen || 'img/placeholder.jpg'}" alt="${producto.producto}" class="miniatura">
               <div class="detalle">
                 <span class="nombre">${producto.producto}</span>
-                <span class="empaque">${producto.empaque}</span>
+                <span class="empaque">${producto.empaque || ''}</span>
                 <span class="cantidad">Cantidad: x${producto.cantidad}</span>
                 <span class="precio">${producto.total} CUP</span>
               </div>
@@ -190,13 +148,28 @@
         `;
       });
       html += "</ul>";
-
       carritoContenido.innerHTML = html;
+
+      // Activar botones de eliminar
+      const botonesEliminar = document.querySelectorAll(".eliminar-producto");
+      botonesEliminar.forEach(boton => {
+        boton.addEventListener("click", function () {
+          const index = this.getAttribute("data-index");
+          eliminarDelCarrito(index);
+        });
+      });
     }
 
-    cargarCarrito();
+    function eliminarDelCarrito(index) {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.splice(index, 1); // Eliminar producto en esa posición
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      cargarCarrito(); // Recargar vista
+    }
+
+    cargarCarrito(); // Al iniciar la página
   });
-    </script>
+</script>
   
 </body>
 </html>
