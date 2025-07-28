@@ -295,9 +295,9 @@ footer {
   }
   .carrito-icono {
     position: absolute;
-    right: 60px; /* Puedes ajustar este valor para acercarlo al menú hamburguesa */
-    top: 20px;   /* Alineación vertical con el logo/menú */
-    font-size: 22px;
+    right: 65px; /* Puedes ajustar este valor para acercarlo al menú hamburguesa */
+    top: 25px;   /* Alineación vertical con el logo/menú */
+    font-size: 20px;
   }
   .header {
     position: relative; /* Necesario para que el .carrito-icono con position absolute funcione */
