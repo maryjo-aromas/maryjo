@@ -140,10 +140,10 @@
             <div class="producto-info">
               <img src="${producto.imagen || 'img/corazon-pequeno-natural.jpeg'}" alt="${producto.producto}" class="miniatura">
               <div class="detalle">
-                <span class="nombre">${producto.producto}</span>
-                <span class="empaque">${producto.empaque || ''}</span>
+                <span class="nombre">Producto: ${producto.producto}</span>
+                <span class="empaque">Empaque: ${producto.empaque || ''}</span>
                 <span class="cantidad">Cantidad: x${producto.cantidad}</span>
-                <span class="precio">${producto.total} CUP</span>
+                <span class="precio">Precio: ${producto.total} CUP</span>
               </div>
             </div>
             <button class="eliminar-producto" data-index="${index}">🗑️</button>
