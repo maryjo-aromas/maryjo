@@ -8,320 +8,130 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 80px; /* Espacio para el header fijo */
-  background-color: #fdfbf7; /* Beige claro */
-  color: #333;
+  background-color: #fdfbf7;
 }
 
-/* HEADER SUPERIOR */
+/* HEADER */
 header {
-  background-color: #f5f0e6;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  border-bottom: 1px solid #ccc;
   position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.logo-titulo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.titulo {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-left: 8px;
-  display: inline-block;
-  vertical-align: middle;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #222;
 }
 
-
-
-nav {
+/* MENU */
+.menu {
   display: flex;
   align-items: center;
+  gap: 15px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-nav li {
-  display: inline;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #8b7e6b;
-}
-
-
-
-/* TÍTULOS GENERALES */
-h3 {
-  font-size: 17px;
-  margin-bottom: 12px;
-}
-
-h4 {
-  font-size: 18px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.cuadro-imagen {
-  width: 280px;       /* Puedes ajustar este tamaño */
-  height: 280px;
-  overflow: hidden;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px; /* Opcional, redondea bordes */
-}
-
-.cuadro-imagen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* PÁRRAFOS GENERALES */
-p {
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* SECCIÓN DE BIENVENIDA */
-.bienvenida {
-  margin-top: 20px;
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #fdfbf7;
-  border-bottom: 1px solid #eee;
-}
-
-.bienvenida p {
-  max-width: 600px;
-  margin: auto;
-}
-
-/* SECCIÓN DE CÓMO FUNCIONA */
-.como-funciona {
-  background-color: #fdfbf7;
-  padding: 30px 20px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-}
-
-.como-funciona ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 15px;
-}
-
-.como-funciona ul li {
-  margin-bottom: 10px;
-  font-size: 15px;
-}
-
-.como-funciona .gracias {
-  font-style: italic;
-  margin-top: 15px;
-}
-
-/* SECCIÓN DE PRODUCTOS */
-section {
-  scroll-margin-top: 80px;
-}
-
-.productos {
-  padding: 30px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.producto {
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-.producto img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.producto p {
-  font-size: 14px;
-  color: #777;
-}
-
-.producto a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 12px;
-  background-color: #d6cfc2;
-  color: #fff;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.producto a:hover {
-  background-color: #bfb6a8;
-}
-
-/* SECCIÓN DE CONTACTO */
-.contacto {
-  background-color: #f5f0e6;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.contacto p {
-  font-size: 15px;
-  line-height: 1.6;
+/* ICONOS (hamburguesa y carrito) */
+.menu-icon {
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #444;
 }
 
 /* CARRITO */
-
- .lista-carrito {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .item-carrito {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-  
-  .producto-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .miniatura {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 10px;
-    border-radius: 6px;
-  }
-  
-  .detalle {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .eliminar-producto {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #b00;
-  }
-
-/* PIE DE PÁGINA */
-footer {
-  background-color: #f5f0e6;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
-}
-
-/* ANIMACIONES */
-.producto:hover {
-  transform: translateY(-3px);
-  transition: transform 0.2s ease-in-out;
-}
-
-/* RESPONSIVE */
-.menu-icon {
-  display: none;
-  font-size: 28px;
+.cart-icon {
+  font-size: 1.5em;
   cursor: pointer;
-  margin-left: auto;
+  color: #444;
+}
+
+/* SECCIÓN DE PRODUCTOS */
+.productos {
+  padding: 30px 20px;
+}
+
+/* GRILLA TIPO SHEIN */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+/* TARJETA DE PRODUCTO */
+.producto {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease;
 }
 
-.menu-toggle {
-  display: none;
+.producto:hover {
+  transform: translateY(-4px);
 }
 
+/* IMAGEN DEL PRODUCTO */
+.cuadro-imagen {
+  width: 100%;
+  height: 200px;
+  background-color: #eee;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* NOMBRE DEL PRODUCTO */
+.producto h4 {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* PRECIO */
+.precio {
+  color: #e67e22;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+/* BOTÓN */
+.boton-comprar {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #e67e22;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s;
+}
+
+.boton-comprar:hover {
+  background-color: #cf711f;
+}
+
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background-color: #f5f0e6;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    z-index: 1000;
-  }
-
-  .carrito-icono {
-    position: static; /* CAMBIO CLAVE */
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: 10px;
-  }
-
-  .header {
-    display: flex;
-    align-items: center;
-  }
-
-  .menu-toggle:checked + .menu-icon + nav ul {
-    display: flex;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-
-  .titulo {
-    font-size: 13px;
-  }
-
-  .logo-titulo {
+  header {
     flex-direction: row;
-    align-items: center;
-    flex: 1;
+    justify-content: space-between;
+  }
+
+  .menu {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
