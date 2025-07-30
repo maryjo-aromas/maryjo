@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vela natural decorativa - de corazones</title>
+  <title>Vela natural de corazones</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -20,10 +20,29 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
-    h2 {
+    .producto-titulo {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
       text-align: center;
-      color: #333;
-      margin-bottom: 20px;
+    }
+
+    .cuadro-imagen {
+      width: 280px;
+      height: 280px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .cuadro-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     label {
@@ -32,13 +51,26 @@
       font-weight: bold;
     }
 
-    input[type="text"], input[type="number"], select {
+    select,
+    input[type="number"] {
       width: 100%;
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
       margin-top: 5px;
       font-size: 1rem;
+    }
+
+    .cantidad-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cantidad-control button {
+      padding: 5px 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
     }
 
     .submit-button {
@@ -64,37 +96,65 @@
       text-align: center;
       color: #000;
     }
+
+    /* Toast */
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #323232;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px;
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      bottom: 30px;
+      font-size: 16px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <h2>Vela natural decorativa<br>de corazones</h2>
-    <form id="velaForm">
-      <label>Producto:</label>
-      <input type="text" id="producto" value="Vela natural de Corazones" readonly />
+    <p class="producto-titulo">Producto: Vela natural de corazones</p>
 
-      <label>¿Deseas empaque especial de regalo?</label>
-      <select id="empaqueRegalo" onchange="actualizarPrecio()">
+    <div class="cuadro-imagen">
+      <img src="../img/corazones-natural.jpeg" alt="Vela Natural" />
+    </div>
+      <input type="hidden" name="imagen" value="img/corazones-natural.jpeg" class="imagen-oculta" />
+  
+    <form id="velaForm">
+      <label for="empaque">¿Deseas empaque especial de regalo?</label>
+      <select id="empaque" onchange="actualizarPrecio()">
         <option value="estandar" selected>No, gracias (bolsita estándar)</option>
         <option value="Caja plateada">Caja plateada (+280 CUP)</option>
       </select>
 
-      <label>Cantidad (1–10):</label>
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <button type="button" onclick="cambiarCantidad(-1)" style="padding: 5px 10px;">−</button>
-        <input type="number" id="cantidad" min="1" max="10" value="1" style="text-align: center; width: 60px;" />
-        <button type="button" onclick="cambiarCantidad(1)" style="padding: 5px 10px;">+</button>
+      <label for="cantidad">Cantidad (1–10):</label>
+      <div class="cantidad-control">
+        <button type="button" onclick="cambiarCantidad(-1)">−</button>
+        <input type="number" id="cantidad" min="1" max="10" value="1" />
+        <button type="button" onclick="cambiarCantidad(1)">+</button>
       </div>
 
-      <label>Tu nombre:</label>
-      <input type="text" id="nombre" />
+      <div id="precioUnidad">💰 Precio por unidad: 100 CUP</div>
+      <div id="precioTotal">💵 Precio total: 100 CUP</div>
 
-      <div id="precioUnidad">💰 Precio por unidad: 360 CUP</div>
-      <div id="precioTotal">💵 Precio total: 360 CUP</div>
-
-      <button type="button" class="submit-button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+      <button type="button" class="submit-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
     </form>
   </div>
+
+  <!-- Toast -->
+  <div id="toast">✅ Producto añadido al carrito</div>
 
   <script>
     const precioBase = 100;
@@ -102,7 +162,7 @@
 
     function actualizarPrecio() {
       const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
-      const empaque = document.getElementById('empaqueRegalo').value;
+      const empaque = document.getElementById('empaque').value;
 
       let extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
       let total = (precioBase * cantidad) + extraEmpaque;
@@ -124,35 +184,41 @@
       }
     }
 
-    function enviarWhatsapp() {
-      const producto = document.getElementById('producto').value.trim();
+    function agregarAlCarrito() {
+      const producto = "Vela natural de corazones";
       const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-      const nombre = document.getElementById('nombre').value.trim();
-      const empaque = document.getElementById('empaqueRegalo').value;
+      const empaque = document.getElementById('empaque').value;
+      const precio = precioBase;
+      const extra = empaque === "Caja plateada" ? precioCajaPlateada : 0;
+      const total = (precio * cantidad) + extra;
+      const imagen = document.querySelector('input[name="imagen"]').value;
+      
+      const item = {
+        producto,
+        cantidad,
+        empaque,
+        precio,
+        total,
+        imagen
+      };
 
-      if (!cantidad || cantidad < 1 || cantidad > 10) {
-        alert("Ingresa una cantidad válida.");
-        return;
-      }
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.push(item);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
 
-      if (!nombre) {
-        alert("Ingresa tu nombre.");
-        return;
-      }
+      mostrarToastYRedirigir();
+    }
 
-      const extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
-      const total = (precioBase * cantidad) + extraEmpaque;
+    function mostrarToastYRedirigir() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
 
-      const mensaje = "Hola, quiero hacer un pedido de velas:\n\n"
-        + "🕯️ Producto: " + producto + "\n"
-        + "🎁 Empaque: " + empaque + "\n"
-        + "🔢 Cantidad: " + cantidad + "\n"
-        + "👤 Nombre: " + nombre + "\n"
-        + "💰 Precio por unidad: " + precioBase + " CUP"
-        + "\n💵 Precio total: " + total + " CUP";
-
-      const url = "https://wa.me/5353810462?text=" + encodeURIComponent(mensaje);
-      window.open(url, "_blank");
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+          window.location.href = "../index.html"; // Cambia esto si tu página principal tiene otro nombre
+        }, 100); // Un pequeño delay extra
+      }, 2000); // Toast visible durante 2 segundos
     }
 
     window.onload = actualizarPrecio;
