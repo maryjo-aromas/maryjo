@@ -298,40 +298,47 @@
     }
 
     function agregarAlCarrito() {
-      const producto = "Vela decorativa aromática de corazón pequeño";
-      const aroma = document.getElementById('aroma').value;
-      const color = document.querySelector('input[name="color"]:checked')?.value;
-      const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-      const empaque = document.getElementById('empaque').value;
-      const imagen = document.querySelector('input[name="imagen"]').value;
+  const producto = "Vela decorativa aromática de corazón pequeño";
 
-      if (!color) {
-        alert("Selecciona un color.");
-        return;
-      }
+  // Obtener el texto visible del aroma, no solo el value
+  const aromaSelect = document.getElementById('aroma');
+  const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
 
-      let precio = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
-      let extra = empaque === "Caja plateada" ? precioCaja : 0;
-      let total = (precio * cantidad) + extra;
+  // Obtener el input de color seleccionado
+  const colorInput = document.querySelector('input[name="color"]:checked');
+  if (!colorInput) {
+    alert("Selecciona un color.");
+    return;
+  }
 
-      const item = {
-        producto,
-        aroma,
-        color,
-        cantidad,
-        empaque,
-        precio,
-        total,
-        imagen
-      };
+  const color = colorInput.getAttribute('data-nombre'); // nombre legible
 
-      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      carrito.push(item);
-      localStorage.setItem("carrito", JSON.stringify(carrito));
+  const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
+  const empaque = document.getElementById('empaque').value;
+  const imagen = document.querySelector('input[name="imagen"]').value;
 
-      mostrarToastYRedirigir();
-    }
+  let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
+  let extra = empaque === "Caja plateada" ? precioCaja : 0;
+  let total = (precio * cantidad) + extra;
 
+  const item = {
+    producto,
+    aroma,
+    color,
+    cantidad,
+    empaque,
+    precio,
+    total,
+    imagen
+  };
+
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito.push(item);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  mostrarToastYRedirigir();
+}
+    
     function mostrarToastYRedirigir() {
       const toast = document.getElementById("toast");
       toast.classList.add("show");
