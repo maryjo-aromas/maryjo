@@ -3,110 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vela decorativa de cubo grande</title>
-<style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #fff8f0;
-    padding: 20px;
-  }
+  <title>Vela decorativa aromática de cubo grande</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+    }
 
-  .container {
-    max-width: 500px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
 
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
+    .producto-titulo {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
 
-  label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-  }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-  input[type="text"], input[type="number"], select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-    font-size: 1rem;
-  }
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
 
-  .submit-button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 12px;
-    background-color: #222;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
+    .cantidad-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-  .submit-button:hover {
-    background-color: #444;
-  }
+    .cantidad-control button {
+      padding: 5px 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
 
-  #precio {
-    margin-top: 25px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    color: #000;
-  }
+    .submit-button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #222;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-  /* 🎨 COLORES VISUALES */
-  .color-group {
-    margin-bottom: 20px;
-  }
+    .submit-button:hover {
+      background-color: #444;
+    }
 
-  .color-group-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+    #precioUnidad, #precioTotal {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #000;
+    }
 
-  .color-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
-    gap: 10px;
-  }
+    .color-group-title {
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
-  .color-option input {
-    display: none;
-  }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+      gap: 10px;
+    }
 
-  .color-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    border: 2px solid transparent;
-    cursor: pointer;
-    box-shadow: 0 0 3px rgba(0,0,0,0.3);
-  }
+    .color-option input {
+      display: none;
+    }
 
-  .color-option input:checked + .color-circle {
-    border-color: #000;
-  }
-</style>
+    .color-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 2px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+
+    .color-option input:checked + .color-circle {
+      border-color: #000;
+    }
+     .cuadro-imagen {
+      width: 280px;
+      height: 280px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .cuadro-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #323232;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px;
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      bottom: 30px;
+      font-size: 16px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h2>Personaliza tu vela</h2>
-    <form id="velaForm">
-      <label>Producto:</label>
-      <input type="text" id="producto" value="Vela decorativa de cubo grande" readonly />
+    <p class="producto-titulo">Producto: Vela decorativa aromática de cubo grande</p>
+    <div class="cuadro-imagen">
+      <img src="../img/cubo-grande-aromatico.jpeg" alt="Vela Aromática" />
+    </div> 
+    
+    <input type="hidden" name="imagen" value="img/cubo-grande-aromatico.jpeg" class="imagen-oculta" />
 
+    <form id="velaForm">
       <label for="aroma">Selecciona el aroma:</label>
       <select id="aroma" onchange="actualizarPrecio()">
         <option value="Sin aroma" selected>Sin aroma</option>
@@ -130,9 +183,10 @@
         <option value="ylang ylang">Floral dulce exótico - Ylang Ylang</option>
         <option value="lemon">Limón</option>
       </select>
+   
 
       <label>Color:</label>
-     <!-- Rojos y Rosados -->
+      <!-- Rojos y Rosados -->
 <div class="color-group">
   <div class="color-group-title">Rojos y Rosados</div>
   <div class="color-grid">
@@ -189,126 +243,113 @@
   </div>
 </div>
 
-      <label>¿Deseas empaque especial de regalo?</label>
-      <select id="empaqueRegalo" onchange="actualizarPrecio()">
+      <label for="empaque">¿Deseas empaque especial de regalo?</label>
+      <select id="empaque" onchange="actualizarPrecio()">
         <option value="estandar" selected>No, gracias (bolsita estándar)</option>
         <option value="Caja plateada">Caja plateada (+280 CUP)</option>
       </select>
 
-      <label>Cantidad (1–10):</label>
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <button type="button" onclick="cambiarCantidad(-1)" style="padding: 5px 10px;">−</button>
-        <input type="number" id="cantidad" min="1" max="10" value="1" style="text-align: center; width: 60px;" />
-        <button type="button" onclick="cambiarCantidad(1)" style="padding: 5px 10px;">+</button>
+      <label for="cantidad">Cantidad (1–10):</label>
+      <div class="cantidad-control">
+        <button type="button" onclick="cambiarCantidad(-1)">−</button>
+        <input type="number" id="cantidad" min="1" max="10" value="1" />
+        <button type="button" onclick="cambiarCantidad(1)">+</button>
       </div>
 
-      <label>Tu nombre:</label>
-      <input type="text" id="nombre" />
+      <div id="precioUnidad">💰 Precio por unidad: 1500 CUP</div>
+      <div id="precioTotal">💵 Precio total: 1500 CUP</div>
 
-      <div id="precioUnidad">Precio por unidad: 1,500 CUP</div>
-      <div id="precioTotal">Precio total: 1,500 CUP</div>
-      
-      <button type="button" class="submit-button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+      <button type="button" class="submit-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
     </form>
   </div>
 
+  <!-- Toast -->
+  <div id="toast">✅ Producto añadido al carrito</div>
+
   <script>
-    var colorCircles = document.querySelectorAll('.color-circle');
-    var colorInput = document.getElementById('color');
-    var aromaSelect = document.getElementById('aroma');
-    var precioDiv = document.getElementById('precio');
-    var empaqueSelect = document.getElementById('empaqueRegalo');
-
-    const precioSinAroma = 1400;
+    const precioSinAroma = 1500;
     const precioConAroma = 2000;
-    const precioPlateada = 280;
-
-    colorCircles.forEach(function(circle) {
-      circle.addEventListener('click', function() {
-        colorCircles.forEach(c => c.classList.remove('selected'));
-        circle.classList.add('selected');
-        colorInput.value = circle.getAttribute('data-color');
-      });
-    });
+    const precioCaja = 280;
 
     function actualizarPrecio() {
-      const aroma = aromaSelect.value;
-      const empaque = empaqueSelect.value;
+      const aroma = document.getElementById('aroma').value;
+      const empaque = document.getElementById('empaque').value;
       const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
-    
-      // Precio base solo según aroma (sin incluir empaque)
+
       let precioUnidad = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
-    
-      // Precio extra por empaque
-      let extraEmpaque = 0;
-      if (empaque === "Caja plateada") extraEmpaque = precioPlateada;
-    
-      // Total = (precio unidad × cantidad) + precio empaque
-      const total = (precioUnidad * cantidad) + extraEmpaque;
-    
+      let extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
+      let total = (precioUnidad * cantidad) + extraEmpaque;
+
       document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioUnidad + " CUP";
       document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
     }
-    
+
     function cambiarCantidad(delta) {
-      var input = document.getElementById('cantidad');
-      var value = parseInt(input.value || 1, 10);
-      var min = parseInt(input.min, 10);
-      var max = parseInt(input.max, 10);
-    
-      var nuevoValor = value + delta;
+      const input = document.getElementById('cantidad');
+      let valor = parseInt(input.value || 1, 10);
+      const min = parseInt(input.min, 10);
+      const max = parseInt(input.max, 10);
+      const nuevoValor = valor + delta;
+
       if (nuevoValor >= min && nuevoValor <= max) {
         input.value = nuevoValor;
         actualizarPrecio();
       }
     }
 
+    function agregarAlCarrito() {
+  const producto = "Vela decorativa aromática de cubo grande";
 
-    function enviarWhatsapp() {
-        var producto = document.getElementById('producto').value.trim();
-        var aroma = aromaSelect.value.trim();
-        var color = document.querySelector('input[name="color"]:checked');
-        color = color ? color.value.trim() : "";;
-        var cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-        var nombre = document.getElementById('nombre').value.trim();
-        var empaque = empaqueSelect.value.trim();
-      
-        if (!color) {
-          alert("Selecciona un color.");
-          return;
-        }
-        if (!cantidad || cantidad < 1 || cantidad > 10) {
-          alert("Ingresa una cantidad válida.");
-          return;
-        }
-        if (!nombre) {
-          alert("Ingresa tu nombre.");
-          return;
-        }
-      
-        // Solo el precio de la vela (con o sin aroma)
-        var precioUnidad = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
-      
-        // Suma del empaque
-        var extraEmpaque = 0;
-        if (empaque === "Caja plateada") extraEmpaque = precioPlateada;
-      
-        // Total final
-        var precioTotal = (precioUnidad * cantidad) + extraEmpaque;
-      
-        var mensaje = "Hola, quiero hacer un pedido de velas:\n\n"
-          + "🕯️ Producto: " + producto + "\n"
-          + "🌸 Aroma: " + aroma + "\n"
-          + "🎨 Color: " + color + "\n"
-          + "🎁 Empaque: " + empaque + "\n"
-          + "🔢 Cantidad: " + cantidad + "\n"
-          + "👤 Nombre: " + nombre + "\n"
-          + "💰 Precio por unidad: " + precioUnidad + " CUP"
-          + "\n💵 Precio total: " + precioTotal + " CUP";
-      
-        var url = "https://wa.me/5353810462?text=" + encodeURIComponent(mensaje);
-        window.open(url, "_blank");
-      }
+  // Obtener el texto visible del aroma, no solo el value
+  const aromaSelect = document.getElementById('aroma');
+  const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
+
+  // Obtener el input de color seleccionado
+  const colorInput = document.querySelector('input[name="color"]:checked');
+  if (!colorInput) {
+    alert("Selecciona un color.");
+    return;
+  }
+
+  const color = colorInput.getAttribute('data-nombre'); // nombre legible
+
+  const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
+  const empaque = document.getElementById('empaque').value;
+  const imagen = document.querySelector('input[name="imagen"]').value;
+
+  let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
+  let extra = empaque === "Caja plateada" ? precioCaja : 0;
+  let total = (precio * cantidad) + extra;
+
+  const item = {
+    producto,
+    aroma,
+    color,
+    cantidad,
+    empaque,
+    precio,
+    total,
+    imagen
+  };
+
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito.push(item);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  mostrarToastYRedirigir();
+}
+    
+    function mostrarToastYRedirigir() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+          window.location.href = "../index.html";
+        }, 100);
+      }, 2000);
+    }
 
     window.onload = actualizarPrecio;
   </script>
