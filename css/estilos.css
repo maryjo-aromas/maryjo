@@ -351,4 +351,22 @@ footer {
     object-fit: cover;
     display: block;
   }
+  /* 🎯 NUEVO: Ajustes del texto para móviles */
+  .producto h4,
+  .producto label,
+  .producto select,
+  .producto input,
+  .producto button,
+  .producto p {
+    font-size: 12px !important;
+  }
+
+  .producto button {
+    padding: 6px 10px;
+  }
+
+  .producto select,
+  .producto input {
+    padding: 4px;
+  }
 }
