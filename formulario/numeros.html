@@ -239,13 +239,6 @@
         <option value="Caja plateada">Caja plateada (+280 CUP)</option>
       </select>
 
-      <label for="cantidad">Cantidad (1–10):</label>
-      <div class="cantidad-control">
-        <button type="button" onclick="cambiarCantidad(-1)">−</button>
-        <input type="number" id="cantidad" min="1" max="10" value="1" />
-        <button type="button" onclick="cambiarCantidad(1)">+</button>
-      </div>
-
       <div id="precioUnidad">💰 Precio por unidad: 200 CUP</div>
       <div id="precioTotal">💵 Precio total: 0 CUP</div>
 
@@ -262,7 +255,6 @@
 
   function actualizarPrecio() {
     const empaque = document.getElementById('empaque').value;
-    const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
     const numerosSeleccionados = document.querySelectorAll('input[name="numeros"]:checked').length;
 
     if (numerosSeleccionados === 0) {
@@ -307,7 +299,6 @@
     }
 
     const color = colorInput.getAttribute('data-nombre');
-    const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
     const empaque = document.getElementById('empaque').value;
     const imagen = document.querySelector('input[name="imagen"]').value;
 
@@ -319,7 +310,6 @@
       producto,
       numeros: numerosString,
       color,
-      cantidad,
       empaque,
       precio: precioUnidadFijo,
       total,
