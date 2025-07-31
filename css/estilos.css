@@ -354,11 +354,8 @@ footer {
   /* 🎯 NUEVO: Ajustes del texto para móviles */
   .producto h4,
   .producto label,
-  .producto select,
-  .producto input,
-  .producto button,
   .producto p {
-    font-size: 12px !important;
+    font-size: 8px !important;
   }
 
   .producto button {
