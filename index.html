@@ -443,26 +443,27 @@
         return;
       }
 
-      let html = "<ul class='lista-carrito'>";
-      carrito.forEach((producto, index) => {
-        html += `
-          <li class="item-carrito">
-            <div class="producto-info">
-              <img src="${producto.imagen || 'img/corazon-pequeno-natural.jpeg'}" alt="${producto.producto}" class="miniatura">
-              <div class="detalle">
-                <span class="nombre">Producto: ${producto.producto}</span>
-                <span class="aroma">Aroma: ${producto.aroma || ''}</span>
-                <span class="color">Color: ${producto.color || ''}</span>
-                <span class="empaque">Empaque: ${producto.empaque || ''}</span>
-                <span class="cantidad">Cantidad: x${producto.cantidad}</span>
-                <span class="precio">Precio: ${producto.total} CUP</span>
-              </div>
+     let html = "<ul class='lista-carrito'>";
+    carrito.forEach((producto, index) => {
+      html += `
+        <li class="item-carrito">
+          <div class="producto-info">
+            <img src="${producto.imagen || 'img/corazon-pequeno-natural.jpeg'}" alt="${producto.producto}" class="miniatura">
+            <div class="detalle">
+              <span class="nombre">Producto: ${producto.producto}</span>
+              ${producto.producto.includes("número") ? <span class="numeros">Números: ${producto.numeros || ''}</span> : ''}
+              ${!producto.producto.includes("natural") && !producto.producto.includes("número") ? <span class="aroma">Aroma: ${producto.aroma || ''}</span> : ''}
+              ${!producto.producto.includes("natural") && !producto.producto.includes("número") ? <span class="color">Color: ${producto.color || ''}</span> : ''}
+              <span class="empaque">Empaque: ${producto.empaque || ''}</span>
+              ${!producto.producto.includes("número") ? <span class="cantidad">Cantidad: x${producto.cantidad}</span> : ''}
+              <span class="precio">Precio: ${producto.total} CUP</span>
             </div>
-            <button class="eliminar-producto" data-index="${index}">🗑️</button>
-          </li>
-        `;
-      });
-      html += "</ul>";
+          </div>
+          <button class="eliminar-producto" data-index="${index}">🗑️</button>
+        </li>
+      `;
+    });
+    html += "</ul>";
       carritoContenido.innerHTML = html;
 
       // Activar botones de eliminar
