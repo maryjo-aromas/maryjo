@@ -257,88 +257,95 @@
   <div id="toast">✅ Producto añadido al carrito</div>
 
   <script>
-    const precioUnidadFijo = 200;
-    const precioCaja = 280;
+  const precioUnidadFijo = 200;
+  const precioCaja = 280;
 
-    function actualizarPrecio() {
-      const empaque = document.getElementById('empaque').value;
-      const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
-      const numerosSeleccionados = document.querySelectorAll('input[name="numeros"]:checked').length || 1;
-      const extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
-      const total = (precioUnidadFijo * cantidad * numerosSeleccionados) + extraEmpaque;
+  function actualizarPrecio() {
+    const empaque = document.getElementById('empaque').value;
+    const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
+    const numerosSeleccionados = document.querySelectorAll('input[name="numeros"]:checked').length;
 
-      document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioUnidadFijo + " CUP";
-      document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
+    if (numerosSeleccionados === 0) {
+      document.getElementById("precioUnidad").textContent = "💰 Selecciona al menos un número";
+      document.getElementById("precioTotal").textContent = "";
+      return;
     }
 
-    function cambiarCantidad(delta) {
-      const input = document.getElementById('cantidad');
-      let valor = parseInt(input.value || 1, 10);
-      const min = parseInt(input.min, 10);
-      const max = parseInt(input.max, 10);
-      const nuevoValor = valor + delta;
+    const extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
+    const total = (precioUnidadFijo * cantidad * numerosSeleccionados) + extraEmpaque;
 
-      if (nuevoValor >= min && nuevoValor <= max) {
-        input.value = nuevoValor;
-        actualizarPrecio();
-      }
+    document.getElementById("precioUnidad").textContent = 💰 Precio por unidad: ${precioUnidadFijo} CUP;
+    document.getElementById("precioTotal").textContent = 💵 Precio total: ${total} CUP;
+  }
+
+  function cambiarCantidad(delta) {
+    const input = document.getElementById('cantidad');
+    let valor = parseInt(input.value || 1, 10);
+    const min = parseInt(input.min, 10);
+    const max = parseInt(input.max, 10);
+    const nuevoValor = valor + delta;
+
+    if (nuevoValor >= min && nuevoValor <= max) {
+      input.value = nuevoValor;
+      actualizarPrecio();
+    }
+  }
+
+  function agregarAlCarrito() {
+    const producto = "Vela decorativa de número";
+
+    const numeros = Array.from(document.querySelectorAll('input[name="numeros"]:checked')).map(n => n.value);
+    if (numeros.length === 0) {
+      alert("Selecciona al menos un número.");
+      return;
     }
 
-    function agregarAlCarrito() {
-      const producto = "Vela decorativa de número";
-
-      const numeros = Array.from(document.querySelectorAll('input[name="numeros"]:checked')).map(n => n.value);
-      if (numeros.length === 0) {
-        alert("Selecciona al menos un número.");
-        return;
-      }
-
-      const colorInput = document.querySelector('input[name="color"]:checked');
-      if (!colorInput) {
-        alert("Selecciona un color.");
-        return;
-      }
-
-      const color = colorInput.getAttribute('data-nombre');
-      const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-      const empaque = document.getElementById('empaque').value;
-      const imagen = document.querySelector('input[name="imagen"]').value;
-
-      const numerosString = numeros.join(", ")
-      const extra = empaque === "Caja plateada" ? precioCaja : 0;
-      const total = (precioUnidadFijo * cantidad) + extra;
-
-      const item = {
-        producto,
-        numeros: numerosString,
-        color,
-        cantidad,
-        empaque,
-        precio: precioUnidadFijo,
-        total,
-        imagen
-      };
-
-      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      carrito.push(item);
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-
-      mostrarToastYRedirigir();
+    const colorInput = document.querySelector('input[name="color"]:checked');
+    if (!colorInput) {
+      alert("Selecciona un color.");
+      return;
     }
 
-    function mostrarToastYRedirigir() {
-      const toast = document.getElementById("toast");
-      toast.classList.add("show");
+    const color = colorInput.getAttribute('data-nombre');
+    const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
+    const empaque = document.getElementById('empaque').value;
+    const imagen = document.querySelector('input[name="imagen"]').value;
 
+    const numerosString = numeros.join(", ");
+    const extra = empaque === "Caja plateada" ? precioCaja : 0;
+    const total = (precioUnidadFijo * cantidad * numeros.length) + extra;
+
+    const item = {
+      producto,
+      numeros: numerosString,
+      color,
+      cantidad,
+      empaque,
+      precio: precioUnidadFijo,
+      total,
+      imagen
+    };
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push(item);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    mostrarToastYRedirigir();
+  }
+
+  function mostrarToastYRedirigir() {
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
       setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => {
-          window.location.href = "../index.html";
-        }, 100);
-      }, 2000);
-    }
+        window.location.href = "../index.html";
+      }, 100);
+    }, 2000);
+  }
 
-    window.onload = actualizarPrecio;
-  </script>
+  window.onload = actualizarPrecio;
+</script>
 </body>
 </html>
