@@ -23,7 +23,7 @@
  
   <nav class="menu">
     <ul>
-      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#inicio">Iniciiio</a></li>
       <li><a href="#naturales">Velas Decorativas Naturales</a></li>
       <li><a href="#aromaticas">Velas Decorativas - Aromáticas</a></li>
       <li><a href="#como-funciona">Cómo Funciona</a></li>
@@ -461,6 +461,7 @@
             <div class="detalle"> 
               <span class="nombre">Producto: ${nombre}</span> 
               ${nombre.toLowerCase().includes("número") ? ` 
+                ${color ? `<span class="color">Color: ${color}</span>` : ''} 
                 <span class="numeros">Números: ${numeros}</span> 
                 ` : ` 
                   ${color ? `<span class="color">Color: ${color}</span>` : ''} 
