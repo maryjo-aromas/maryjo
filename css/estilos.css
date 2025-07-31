@@ -324,52 +324,31 @@ footer {
     flex: 1;
   }
 
-  /* 👉 2 productos por fila */
+  /* ✅ ARREGLO PARA MOSTRAR DOS PRODUCTOS BIEN ALINEADOS EN PANTALLAS PEQUEÑAS */
   .productos .galeria {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    width: 100%;
+    padding: 0 10px; /* opcional para dar respiro en los bordes */
+    box-sizing: border-box;
   }
 
-  /* 👉 Producto individual */
   .producto {
-    padding: 8px;
-    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
   }
 
-  /* 👉 Imagen cuadrada uniforme */
   .cuadro-imagen {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    border-radius: 8px;
+    height: auto;
   }
 
   .cuadro-imagen img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-  }
-
-  /* 👉 Título de vela */
-  .producto h4 {
-    font-size: 14px;
-    margin: 8px 0 4px 0;
-    line-height: 1.2;
-  }
-
-  /* 👉 Descripción o texto adicional */
-  .producto p {
-    font-size: 12px;
-    margin: 2px 0;
-  }
-
-  /* 👉 Botón "Añadir al carrito" */
-  .boton-carrito {
-    font-size: 12px;
-    padding: 6px 8px;
-    margin-top: 8px;
-    width: 100%;
-    display: inline-block;
+    display: block;
   }
 }
