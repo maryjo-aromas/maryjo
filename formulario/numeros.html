@@ -154,7 +154,7 @@
 <body>
   <div class="container">
     <form onsubmit="event.preventDefault(); agregarAlCarrito();">
-      <p class="producto-titulo">Producto: Vela decorativa de númerooooo</p>
+      <p class="producto-titulo">Producto: Vela decorativa de número</p>
 
       <div class="cuadro-imagen">
         <img src="../img/numero.jpeg" alt="Vela decorativa de número" />
@@ -266,9 +266,9 @@
   const extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
   const total = (precioUnidadFijo * numerosSeleccionados) + extraEmpaque;
 
+  document.getElementById("precioUnidad").textContent = `💰 Precio por unidad: ${precioUnidadFijo} CUP`; 
+  document.getElementById("precioTotal").textContent = `💵 Precio total: ${total} CUP`;
 
-  document.getElementById("precioUnidad").textContent = '💰 Precio por unidad: ${precioUnidadFijo} CUP';
-  document.getElementById("precioTotal").textContent = '💵 Precio total: ${total} CUP';
 }
 
   function agregarAlCarrito() {
