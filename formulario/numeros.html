@@ -249,7 +249,7 @@
   <!-- Toast -->
   <div id="toast">✅ Producto añadido al carrito</div>
 
-  <script>
+<script>
   const precioUnidadFijo = 200;
   const precioCaja = 280;
 
@@ -264,23 +264,10 @@
     }
 
     const extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
-    const total = (precioUnidadFijo * cantidad * numerosSeleccionados) + extraEmpaque;
+    const total = (precioUnidadFijo * numerosSeleccionados) + extraEmpaque;
 
     document.getElementById("precioUnidad").textContent = 💰 Precio por unidad: ${precioUnidadFijo} CUP;
     document.getElementById("precioTotal").textContent = 💵 Precio total: ${total} CUP;
-  }
-
-  function cambiarCantidad(delta) {
-    const input = document.getElementById('cantidad');
-    let valor = parseInt(input.value || 1, 10);
-    const min = parseInt(input.min, 10);
-    const max = parseInt(input.max, 10);
-    const nuevoValor = valor + delta;
-
-    if (nuevoValor >= min && nuevoValor <= max) {
-      input.value = nuevoValor;
-      actualizarPrecio();
-    }
   }
 
   function agregarAlCarrito() {
@@ -304,7 +291,7 @@
 
     const numerosString = numeros.join(", ");
     const extra = empaque === "Caja plateada" ? precioCaja : 0;
-    const total = (precioUnidadFijo * cantidad * numeros.length) + extra;
+    const total = (precioUnidadFijo * numeros.length) + extra;
 
     const item = {
       producto,
@@ -335,7 +322,14 @@
     }, 2000);
   }
 
+  // Escuchar cambios de selección para actualizar el precio en tiempo real
+  document.querySelectorAll('input[name="numeros"]').forEach(cb => {
+    cb.addEventListener('change', actualizarPrecio);
+  });
+  document.getElementById('empaque').addEventListener('change', actualizarPrecio);
+
   window.onload = actualizarPrecio;
 </script>
+  
 </body>
 </html>
