@@ -23,7 +23,7 @@
  
   <nav class="menu">
     <ul>
-      <li><a href="#inicio">Iniciooo</a></li>
+      <li><a href="#inicio">Inicio</a></li>
       <li><a href="#naturales">Velas Decorativas Naturales</a></li>
       <li><a href="#aromaticas">Velas Decorativas - Aromáticas</a></li>
       <li><a href="#como-funciona">Cómo Funciona</a></li>
@@ -443,27 +443,40 @@
         return;
       }
 
-     let html = "<ul class='lista-carrito'>";
-    carrito.forEach((producto, index) => {
-      html += `
-        <li class="item-carrito">
-          <div class="producto-info">
-            <img src="${producto.imagen || 'img/corazon-pequeno-natural.jpeg'}" alt="${producto.producto}" class="miniatura">
-            <div class="detalle">
-              <span class="nombre">Producto: ${producto.producto}</span>
-              ${producto.producto.includes("número") ? <span class="numeros">Números: ${producto.numeros || ''}</span> : ''}
-              ${!producto.producto.includes("natural") && !producto.producto.includes("número") ? <span class="aroma">Aroma: ${producto.aroma || ''}</span> : ''}
-              ${!producto.producto.includes("natural") && !producto.producto.includes("número") ? <span class="color">Color: ${producto.color || ''}</span> : ''}
-              <span class="empaque">Empaque: ${producto.empaque || ''}</span>
-              ${!producto.producto.includes("número") ? <span class="cantidad">Cantidad: x${producto.cantidad}</span> : ''}
-              <span class="precio">Precio: ${producto.total} CUP</span>
-            </div>
-          </div>
-          <button class="eliminar-producto" data-index="${index}">🗑️</button>
-        </li>
-      `;
-    });
-    html += "</ul>";
+      let html = "<ul class='lista-carrito'>"; 
+      carrito.forEach((producto, index) => { 
+        const nombre = producto.producto || ''; 
+        const imagen = producto.imagen || 'img/default.png'; 
+        const color = producto.color || ''; 
+        const aroma = producto.aroma || ''; 
+        const empaque = producto.empaque || ''; 
+        const cantidad = producto.cantidad || ''; 
+        const total = producto.total || ''; 
+        const numeros = producto.numeros || ''; 
+        
+        html += ` 
+        <li class="item-carrito"> 
+          <div class="producto-info"> 
+            <img src="${imagen}" alt="${nombre}" class="miniatura"> 
+            <div class="detalle"> 
+              <span class="nombre">Producto: ${nombre}</span> 
+              ${nombre.toLowerCase().includes("número") ? ` 
+                <span class="numeros">Números: ${numeros}</span> 
+                ` : ` 
+                  ${color ? `<span class="color">Color: ${color}</span>` : ''} 
+                  ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
+                  ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
+                `} 
+                <span class="empaque">Empaque: ${empaque}</span> 
+                <span class="precio">Precio: ${total} CUP</span> 
+              </div> 
+            </div> 
+            <button class="eliminar-producto" data-index="${index}">🗑️</button> 
+          </li> 
+        `;
+      }); 
+      html += "</ul>";
+      
       carritoContenido.innerHTML = html;
 
       // Activar botones de eliminar
