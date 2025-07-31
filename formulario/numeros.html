@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Velas de números</title>
+  <title>Vela decorativa de número</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -20,10 +20,11 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
-    h2 {
+    .producto-titulo {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
       text-align: center;
-      color: #333;
-      margin-bottom: 20px;
     }
 
     label {
@@ -32,7 +33,8 @@
       font-weight: bold;
     }
 
-    input[type="text"], select {
+    select,
+    input[type="number"] {
       width: 100%;
       padding: 10px;
       border-radius: 8px;
@@ -41,31 +43,16 @@
       font-size: 1rem;
     }
 
-    .color-options {
+    .cantidad-control {
       display: flex;
-      margin-top: 10px;
+      align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
     }
 
-    .color-circle {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+    .cantidad-control button {
+      padding: 5px 10px;
+      font-size: 1.2rem;
       cursor: pointer;
-      border: 2px solid transparent;
-      box-shadow: 0 0 3px rgba(0,0,0,0.3);
-    }
-
-    .color-circle.selected {
-      border: 2px solid #000;
-    }
-
-    .numbers-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      margin-top: 10px;
     }
 
     .submit-button {
@@ -91,13 +78,87 @@
       text-align: center;
       color: #000;
     }
+
+    .color-group-title {
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+      gap: 10px;
+    }
+
+    .color-option input {
+      display: none;
+    }
+
+    .color-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 2px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+
+    .color-option input:checked + .color-circle {
+      border-color: #000;
+    }
+     .cuadro-imagen {
+      width: 280px;
+      height: 280px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .cuadro-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #323232;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px;
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      bottom: 30px;
+      font-size: 16px;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Velas decorativas de números</h2>
-    <form id="velaForm">
-      <label>Selecciona los números que deseas:</label>
+    <p class="producto-titulo">Producto: Vela decorativa de número</p>
+    <div class="cuadro-imagen">
+      <img src="../img/numero.jpeg" alt="Vela Aromática" />
+    </div> 
+    <input type="hidden" name="imagen" value="img/numero.jpeg" class="imagen-oculta" />
+
+     <label>Selecciona los números que deseas:</label>
       <div class="numbers-grid">
         <label><input type="checkbox" name="numeros" value="0" onchange="actualizarPrecio()"> 0</label>
         <label><input type="checkbox" name="numeros" value="1" onchange="actualizarPrecio()"> 1</label>
@@ -111,100 +172,172 @@
         <label><input type="checkbox" name="numeros" value="9" onchange="actualizarPrecio()"> 9</label>
       </div>
 
-      <label>Color de todas las velas:</label>
-      <div class="color-options" id="colorOptions">
-        <div class="color-circle" style="background-color: #90EE90;" data-color="Verde claro"></div>
-        <div class="color-circle" style="background-color: #f66b92;" data-color="Rosado suave"></div>
-        <div class="color-circle" style="background-color: #ff3855;" data-color="Rojo neón"></div>
-        <div class="color-circle" style="background-color: #3f00ff;" data-color="Azul Ultramarino"></div>
-        <div class="color-circle" style="background-color: #fe59c2;" data-color="Fucsia"></div>
-        <div class="color-circle" style="background-color: #ffa500;" data-color="Naranja"></div>
-        <div class="color-circle" style="background-color: #bf00ff;" data-color="Púrpura"></div>
-        <div class="color-circle" style="background-color: #ffd67b;" data-color="Amarillo pastel"></div>
-        <div class="color-circle" style="background-color: #a3989d;" data-color="Lila grisáceo"></div>
-        <div class="color-circle" style="background-color: red;" data-color="Rojo"></div>
+      <label>Color:</label>
+      <!-- Rojos y Rosados -->
+      <div class="color-group">
+        <div class="color-group-title">Rojos y Rosados</div>
+        <div class="color-grid">
+          <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
+        </div>
       </div>
-      <input type="hidden" id="color" />
+      
+      <!-- Naranjas y Amarillos -->
+      <div class="color-group">
+        <div class="color-group-title">Naranjas y Amarillos</div>
+        <div class="color-grid">
+          <label class="color-option"><input type="radio" name="color" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
+        </div>
+      </div>
+      
+      <!-- Azules y Verdes -->
+      <div class="color-group">
+        <div class="color-group-title">Azules y Verdes</div>
+        <div class="color-grid">
+          <label class="color-option"><input type="radio" name="color" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
+        </div>
+      </div>
+      
+      <!-- Neutros y Violetas -->
+      <div class="color-group">
+        <div class="color-group-title">Neutros y Violetas</div>
+        <div class="color-grid">
+          <label class="color-option"><input type="radio" name="color" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
+          <label class="color-option"><input type="radio" name="color" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
+        </div>
+      </div>
 
-      <label>¿Deseas empaque especial de regalo?</label>
-      <select id="empaqueRegalo" onchange="actualizarPrecio()">
+      <label for="empaque">¿Deseas empaque especial de regalo?</label>
+      <select id="empaque" onchange="actualizarPrecio()">
         <option value="estandar" selected>No, gracias (bolsita estándar)</option>
         <option value="Caja plateada">Caja plateada (+280 CUP)</option>
       </select>
 
-      <label>Tu nombre:</label>
-      <input type="text" id="nombre" />
+      <label for="cantidad">Cantidad (1–10):</label>
+      <div class="cantidad-control">
+        <button type="button" onclick="cambiarCantidad(-1)">−</button>
+        <input type="number" id="cantidad" min="1" max="10" value="1" />
+        <button type="button" onclick="cambiarCantidad(1)">+</button>
+      </div>
 
-      <div id="precioUnidad">💰 Precio por vela: 200 CUP</div>
+      <div id="precioUnidad">💰 Precio por unidad: 200 CUP</div>
       <div id="precioTotal">💵 Precio total: 0 CUP</div>
 
-      <button type="button" class="submit-button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+      <button type="button" class="submit-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
     </form>
   </div>
 
+  <!-- Toast -->
+  <div id="toast">✅ Producto añadido al carrito</div>
+
   <script>
-    const precioUnidad = 200;
-    const precioCajaPlateada = 280;
-
-    const colorCircles = document.querySelectorAll('.color-circle');
-    const colorInput = document.getElementById('color');
-
-    colorCircles.forEach(circle => {
-      circle.addEventListener('click', () => {
-        colorCircles.forEach(c => c.classList.remove('selected'));
-        circle.classList.add('selected');
-        colorInput.value = circle.getAttribute('data-color');
-      });
-    });
+    const precioSinAroma = 200;
+    const precioCaja = 280;
 
     function actualizarPrecio() {
-      const numerosSeleccionados = document.querySelectorAll('input[name="numeros"]:checked');
-      const cantidad = numerosSeleccionados.length;
-      const empaque = document.getElementById('empaqueRegalo').value;
+      const aroma = document.getElementById('aroma').value;
+      const empaque = document.getElementById('empaque').value;
+      const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
 
-      const extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
-      const total = (precioUnidad * cantidad) + extraEmpaque;
+      let precioUnidad = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
+      let extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
+      let total = (precioUnidad * cantidad) + extraEmpaque;
 
-      document.getElementById("precioUnidad").textContent = "💰 Precio por vela: " + precioUnidad + " CUP";
+      document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioUnidad + " CUP";
       document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
     }
 
-    function enviarWhatsapp() {
-      const numeros = Array.from(document.querySelectorAll('input[name="numeros"]:checked')).map(n => n.value);
-      const cantidad = numeros.length;
-      const color = document.getElementById('color').value.trim();
-      const nombre = document.getElementById('nombre').value.trim();
-      const empaque = document.getElementById('empaqueRegalo').value;
+    function cambiarCantidad(delta) {
+      const input = document.getElementById('cantidad');
+      let valor = parseInt(input.value || 1, 10);
+      const min = parseInt(input.min, 10);
+      const max = parseInt(input.max, 10);
+      const nuevoValor = valor + delta;
 
-      if (numeros.length === 0) {
+      if (nuevoValor >= min && nuevoValor <= max) {
+        input.value = nuevoValor;
+        actualizarPrecio();
+      }
+    }
+
+    function agregarAlCarrito() {
+  const producto = "Vela decorativa de número";
+
+   if (numeros.length === 0) {
         alert("Selecciona al menos un número.");
         return;
       }
 
-      if (!color) {
-        alert("Selecciona un color.");
-        return;
-      }
+  const numeros = Array.from(document.querySelectorAll('input[name="numeros"]:checked')).map(n => n.value);
+  
+  // Obtener el input de color seleccionado
+  const colorInput = document.querySelector('input[name="color"]:checked');
+  if (!colorInput) {
+    alert("Selecciona un color.");
+    return;
+  }
 
-      if (!nombre) {
-        alert("Ingresa tu nombre.");
-        return;
-      }
+  const color = colorInput.getAttribute('data-nombre'); // nombre legible
 
-      const extraEmpaque = empaque === "Caja plateada" ? precioCajaPlateada : 0;
-      const total = (precioUnidad * cantidad) + extraEmpaque;
+  const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
+  const empaque = document.getElementById('empaque').value;
+  const imagen = document.querySelector('input[name="imagen"]').value;
 
-      const mensaje = "Hola, quiero hacer un pedido de velas de números:\n\n"
-        + "🔢 Números seleccionados: " + numeros.join(', ') + "\n"
-        + "🎨 Color: " + color + "\n"
-        + "🎁 Empaque: " + empaque + "\n"
-        + "🕯️ Cantidad total de velas: " + cantidad + "\n"
-        + "👤 Nombre: " + nombre + "\n"
-        + "💰 Precio por unidad: " + precioUnidad + " CUP\n"
-        + "💵 Precio total: " + total + " CUP";
+  let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
+  let extra = empaque === "Caja plateada" ? precioCaja : 0;
+  let total = (precio * cantidad) + extra;
 
-      const url = "https://wa.me/5353810462?text=" + encodeURIComponent(mensaje);
-      window.open(url, "_blank");
+  const item = {
+    producto,
+    numeros,
+    color,
+    cantidad,
+    empaque,
+    precio,
+    total,
+    imagen
+  };
+
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito.push(item);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  mostrarToastYRedirigir();
+}
+    
+    function mostrarToastYRedirigir() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+          window.location.href = "../index.html";
+        }, 100);
+      }, 2000);
     }
 
     window.onload = actualizarPrecio;
