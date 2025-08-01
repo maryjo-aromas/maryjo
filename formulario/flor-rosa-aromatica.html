@@ -437,13 +437,24 @@
   const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
 
   // Obtener el input de color seleccionado
-  const colorInput = document.querySelector('input[name="color"]:checked');
-  if (!colorInput) {
-    alert("Selecciona un color.");
-    return;
+  let color = ""; 
+  const tipoColor = document.getElementById("tipoColor").value; 
+  if (tipoColor === "unico") { 
+    const colorInput = document.querySelector('input[name="color"]:checked'); 
+    if (!colorInput) { 
+      alert("Selecciona un color."); 
+      return;
+    } 
+    color = colorInput.getAttribute("data-nombre"); 
+  } else { 
+    const colorPrincipal = document.querySelector('input[name="colorPrincipal"]:checked'); 
+    const colorSecundario = document.querySelector('input[name="colorSecundario"]:checked'); 
+    if (!colorPrincipal || !colorSecundario) { 
+      alert("Selecciona ambos colores."); 
+      return; 
+    } 
+    color = `${colorPrincipal.getAttribute("data-nombre")} + ${colorSecundario.getAttribute("data-nombre")}`; 
   }
-
-  const color = colorInput.getAttribute('data-nombre'); // nombre legible
 
   const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
   const empaque = document.getElementById('empaque').value;
@@ -470,6 +481,19 @@
 
   mostrarToastYRedirigir();
 }
+    function mostrarOpcionesColor() {
+  const tipo = document.getElementById("tipoColor").value;
+  const unico = document.getElementById("colorUnico");
+  const bicolor = document.getElementById("colorBicolor");
+
+  if (tipo === "unico") {
+    unico.style.display = "block";
+    bicolor.style.display = "none";
+  } else {
+    unico.style.display = "none";
+    bicolor.style.display = "block";
+  }
+}
     
     function mostrarToastYRedirigir() {
       const toast = document.getElementById("toast");
@@ -484,7 +508,9 @@
     }
 
     window.onload = actualizarPrecio;
+    
   </script>
 </body>
 </html>
+
 
