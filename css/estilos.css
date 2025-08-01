@@ -341,14 +341,17 @@ footer {
 
   .cuadro-imagen {
     width: 100%;
-    height: auto;
+    height: 200px; /* o cualquier altura consistente que prefieras */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .cuadro-imagen img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    display: block;
   }
   /* 🎯 NUEVO: Ajustes del texto para móviles */
   .producto h4,
