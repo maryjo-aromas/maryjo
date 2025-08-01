@@ -341,7 +341,7 @@ footer {
 
   .cuadro-imagen {
     width: 100%;
-    height: 200px; /* o cualquier altura consistente que prefieras */
+    height: 160px; /* o cualquier altura consistente que prefieras */
     overflow: hidden;
     display: flex;
     justify-content: center;
