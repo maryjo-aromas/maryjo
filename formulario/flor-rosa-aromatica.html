@@ -430,7 +430,7 @@
   } else { 
     const colorPrincipal = document.querySelector('input[name="colorPrincipal"]:checked'); 
     const colorSecundario = document.querySelector('input[name="colorSecundario"]:checked'); 
-    if (!colorPrincipal || !colorSecundario) { 
+    if (colorPrincipal === null || colorPrincipal === undefined || colorSecundario === null || colorSecundario === undefined) { 
       alert("Selecciona ambos colores."); 
       return; 
     } 
@@ -493,26 +493,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
