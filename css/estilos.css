@@ -360,7 +360,7 @@ footer {
   /* ✅ ARREGLO PARA MOSTRAR DOS PRODUCTOS BIEN ALINEADOS EN PANTALLAS PEQUEÑAS */
   .productos .galeria {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 12px;
     width: 100%;
     padding: 0 10px; /* opcional para dar respiro en los bordes */
