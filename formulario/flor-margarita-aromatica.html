@@ -243,41 +243,123 @@
         <option value="ylang ylang">Floral dulce exótico - Ylang Ylang</option>
         <option value="lemon">Limón</option>
       </select>
-   
 
+      <label for="tipoColor">¿Cómo deseas la vela?</label>
+      <select id="tipoColor" onchange="actualizarTipoColor()">
+        <option value="unico" selected>Color único</option>
+        <option value="bicolor">Centro y pétalos diferentes</option>
+      </select>
+      
+      <div id="colorUnico">
+        <div class="color-group">
+          <br>
+          <div class="color-group-title">Colores (desliza para verlos todos)</div>
+            <div class="color-grid">
+              <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
+              <label class="color-option"><input type="radio" name="color" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
+          </div>
+        </div>
+      </div>
+            
+      <div id="colorCentro">
+        <div class="color-group" style="margin-top: 15px;">
+          <div class="color-group-title">Colores (desliza para verlos todos)</div>
+          <div class="color-grid">
+            <label class="color-option"><input type="radio" name="colorCentro" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
+            <label class="color-option"><input type="radio" name="colorCentro" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
+          </div>
+      </div>
+    </div>
+
+      <div id="colorPetalos">
       <div class="color-group" style="margin-top: 15px;">
       <div class="color-group-title">Colores (desliza para verlos todos)</div>
       <div class="color-grid">
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
-        <label class="color-option"><input type="radio" name="color" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
+        <label class="color-option"><input type="radio" name="colorPetalos" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
       </div>
+    </div>
     </div>
 
       
@@ -322,6 +404,13 @@
       document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
     }
 
+    function actualizarTipoColor() {
+      const tipo = document.getElementById("tipoColor").value;
+      document.getElementById("colorUnico").style.display = tipo === "unico" ? "block" : "none";
+      document.getElementById("colorCentro").style.display = tipo === "bicolor" ? "block" : "none";
+      document.getElementById("colorPetalos").style.display = tipo === "bicolor" ? "block" : "none";
+    }
+    
     function cambiarCantidad(delta) {
       const input = document.getElementById('cantidad');
       let valor = parseInt(input.value || 1, 10);
@@ -343,13 +432,26 @@
   const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
 
   // Obtener el input de color seleccionado
-  const colorInput = document.querySelector('input[name="color"]:checked');
-  if (!colorInput) {
-    alert("Selecciona un color.");
-    return;
+  const tipoColor = document.getElementById("tipoColor").value; 
+  let color; 
+  if (tipoColor === "unico") { 
+    const colorInput = document.querySelector('input[name="color"]:checked'); 
+    if (!colorInput) { 
+      alert("Selecciona un color."); 
+      return; 
+    } 
+    color = colorInput.getAttribute('data-nombre'); 
+  } else { 
+    const colorCentroInput = document.querySelector('input[name="colorCentro"]:checked'); 
+    const colorPetalosInput = document.querySelector('input[name="colorPetalos"]:checked'); 
+    if (!colorCentroInput || !colorPetalosInput) { 
+      alert("Selecciona un color para el centro y los pétalos."); 
+      return; 
+    } 
+    const colorCentro = colorCentroInput.getAttribute('data-nombre'); 
+    const colorPetalos = colorPetalosInput.getAttribute('data-nombre'); 
+    color = `Centro: ${colorCentro} | Pétalos: ${colorPetalos}`; 
   }
-
-  const color = colorInput.getAttribute('data-nombre'); // nombre legible
 
   const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
   const empaque = document.getElementById('empaque').value;
@@ -389,8 +491,12 @@
       }, 2000);
     }
 
-    window.onload = actualizarPrecio;
+    window.onload = () => {
+      actualizarTipoColor();
+      actualizarPrecio();
+    };
   </script>
 </body>
 </html>
+
 
