@@ -78,7 +78,7 @@
       text-align: center;
       color: #000;
     }
-
+  /*
     .color-group-title {
       font-weight: bold;
       margin-top: 20px;
@@ -107,6 +107,55 @@
 
     .color-option input:checked + .color-circle {
       border-color: #000;
+    }
+    */
+    .color-group {
+      margin-bottom: 24px;
+    }
+
+    .color-group-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .color-grid {
+      display: flex;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .color-option {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+
+    .color-option input {
+      display: none;
+    }
+
+    .color-circle {
+      display: block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
     }
      .cuadro-imagen {
       width: 280px;
@@ -509,6 +558,7 @@
   </script>
 </body>
 </html>
+
 
 
 
