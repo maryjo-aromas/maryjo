@@ -112,13 +112,13 @@
     .color-group {
       margin-bottom: 15px;
     }
-
+    
     .color-group-title {
       font-weight: bold;
       margin-bottom: 8px;
       font-size: 16px;
     }
-
+    
     .color-grid {
       display: flex;
       overflow-x: auto;
@@ -127,34 +127,32 @@
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
-
+    
     .color-option {
       scroll-snap-align: start;
       flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      border: 2px solid #ddd;
+      border: 2px solid #ccc; /* Borde gris clarito */
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
     }
-
-    .color-option:hover {
-      transform: scale(1.3);
-    }
-
+    
     .color-option input {
       display: none;
     }
-
-    .color-circle {
-      display: block;
-      width: 30px;
-      height: 30px;
-      border: 1px solid #000;
+    
+    /* El color de fondo se aplicará a .color-option desde inline style o clase extra */
+    
+    .color-option:hover {
+      transform: scale(1.2);
+    }
+    
+    /* Al estar seleccionado, el borde se vuelve negro */
+    .color-option:has(input:checked) {
+      border-color: #000;
     }
 
      .cuadro-imagen {
@@ -494,6 +492,7 @@
   </script>
 </body>
 </html>
+
 
 
 
