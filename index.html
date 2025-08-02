@@ -489,6 +489,7 @@
                 <span class="numeros">Números: ${numeros}</span> 
                 ` : ` 
                   ${color ? `<span class="color">Color: ${color}</span>` : ''} 
+                  ${producto.tono ? `<span class="tono">Tono: ${producto.tono === 'base-oscura' ? 'Base oscura, parte superior clara' : 'Color uniforme'}</span>` : ''} 
                   ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
                   ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
                 `} 
