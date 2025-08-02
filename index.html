@@ -493,7 +493,8 @@
                   <span class="tono">Tono: ${
                   tono === 'base-oscura'
                     ? 'Base oscura, parte superior clara'
-                    : 'Color uniforme'
+                    : tono === 'uniforme'
+                    ? 'Color uniforme'
                 }</span>
                 ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
                 ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
