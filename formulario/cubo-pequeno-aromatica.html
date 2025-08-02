@@ -358,7 +358,7 @@
 
   const color = colorInput.getAttribute('data-nombre'); // nombre legible
 
-  const tonoInput = document.getElementById('tono').value;
+  const tono = document.querySelector('input[name="tono"]:checked')?.value || '';
 
   const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
   const empaque = document.getElementById('empaque').value;
