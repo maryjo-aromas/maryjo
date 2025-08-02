@@ -80,59 +80,47 @@
     }
 
     /*Color*/
-    .color-group {
-      margin-bottom: 20px;
-    }
-    
-    .color-group-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    
-    .color-grid {
+     .color-grid {
       display: flex;
-      gap: 10px;
       overflow-x: auto;
       padding-bottom: 10px;
-      scrollbar-width: thin; /* para Firefox */
-      scrollbar-color: #ccc transparent;
-    }
-    
-    .color-grid::-webkit-scrollbar {
-      height: 6px;
-    }
-    
-    .color-grid::-webkit-scrollbar-thumb {
-      background-color: #ccc;
-      border-radius: 3px;
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
     
     .color-option {
+      scroll-snap-align: start;
       flex: 0 0 auto;
-    }
-    
-    .color-circle {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      border: 2px solid #ccc;
-      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      border: 2px solid #ccc; /* gris claro */
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
     
-    .color-circle:hover {
-      transform: scale(1.1);
+    .color-option:hover {
+      transform: scale(1.2);
     }
     
-    .color-option input[type="radio"] {
+    .color-option input {
       display: none;
     }
     
-    .color-option input[type="radio"]:checked + .color-circle {
-      border: 2px solid #000;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    .color-option:has(input:checked) {
+      border-color: #000; /* negro al seleccionar */
+    }
+    
+    .color-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: block;
     }
     /*Color*/
     
@@ -360,4 +348,5 @@
   </script>
 </body>
 </html>
+
 
