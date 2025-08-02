@@ -109,51 +109,44 @@
       border-color: #000;
     }
     */
-    .color-group {
-      margin-bottom: 15px;
-    }
-    
-    .color-group-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-    
+
     .color-grid {
-      display: flex;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      gap: 12px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  gap: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
     .color-option {
       scroll-snap-align: start;
       flex: 0 0 auto;
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      border: 2px solid #ccc; /* Borde gris clarito */
+      border: 2px solid #ccc; /* borde gris claro */
       cursor: pointer;
       transition: transform 0.2s, border-color 0.2s;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .color-option input {
       display: none;
     }
     
-    /* El color de fondo se aplicará a .color-option desde inline style o clase extra */
-    
     .color-option:hover {
       transform: scale(1.2);
     }
     
-    /* Al estar seleccionado, el borde se vuelve negro */
+    /* cuando está seleccionado: borde negro */
     .color-option:has(input:checked) {
       border-color: #000;
     }
+  
 
      .cuadro-imagen {
       width: 280px;
@@ -492,6 +485,7 @@
   </script>
 </body>
 </html>
+
 
 
 
