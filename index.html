@@ -468,16 +468,17 @@
       }
 
       let html = "<ul class='lista-carrito'>"; 
+     
       carrito.forEach((producto, index) => { 
         const nombre = producto.producto || ''; 
         const imagen = producto.imagen || 'img/default.png'; 
         const color = producto.color || ''; 
-        const tono = producto.tono || ''; 
         const aroma = producto.aroma || ''; 
         const empaque = producto.empaque || ''; 
         const cantidad = producto.cantidad || ''; 
         const total = producto.total || ''; 
         const numeros = producto.numeros || ''; 
+        const tono = producto.tono || ''; 
         
         html += ` 
         <li class="item-carrito"> 
@@ -490,12 +491,11 @@
                 <span class="numeros">Números: ${numeros}</span> 
                 ` : ` 
                   ${color ? `<span class="color">Color: ${color}</span>` : ''}  
-                  <span class="tono">Tono: ${
-                  tono === 'base-oscura'
-                    ? 'Base oscura, parte superior clara'
-                    : tono === 'uniforme'
-                    ? 'Color uniforme'
-                }</span>
+                  ${tono ? `<span class="tono">Tono: ${  
+                    tono === 'base-oscura'
+                      ? 'Base oscura, parte superior clara'
+                      : 'Color uniforme'
+                }</span>`  : ''} 
                 ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
                 ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
               `} 
@@ -509,7 +509,9 @@
     }); 
     html += "</ul>";
     carritoContenido.innerHTML = html;
-
+  }
+    
+    
       // Activar botones de eliminar
       const botonesEliminar = document.querySelectorAll(".eliminar-producto");
       botonesEliminar.forEach(boton => {
