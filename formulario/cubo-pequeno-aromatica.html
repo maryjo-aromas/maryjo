@@ -4,195 +4,213 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vela decorativa aromática de cubo pequeño</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff8f0;
-      padding: 20px;
-    }
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff8f0;
+    padding: 20px;
+  }
 
-    .producto-titulo {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      text-align: center;
-    }
+  .container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+  .producto-titulo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-    select,
-    input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-      font-size: 1rem;
-    }
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
 
-    .cantidad-control {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+  select,
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    font-size: 1rem;
+  }
 
-    .cantidad-control button {
-      padding: 5px 10px;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
+  .cantidad-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .submit-button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 12px;
-      background-color: #222;
-      color: white;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+  .cantidad-control button {
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
 
-    .submit-button:hover {
-      background-color: #444;
-    }
+  .submit-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background-color: #222;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 
-    #precioUnidad, #precioTotal {
-      margin-top: 20px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-align: center;
-      color: #000;
-    }
+  .submit-button:hover {
+    background-color: #444;
+  }
 
-    .color-group-title {
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
+  #precioUnidad,
+  #precioTotal {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+  }
 
-    .color-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
-      gap: 10px;
-    }
+  .cuadro-imagen {
+    width: 280px;
+    height: 280px;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
 
-    .color-option input {
-      display: none;
-    }
+  .cuadro-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 
-    .color-circle {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: inline-block;
-      border: 2px solid transparent;
-      cursor: pointer;
-      box-shadow: 0 0 3px rgba(0,0,0,0.3);
-    }
+  #toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #323232;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 12px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    font-size: 16px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s;
+  }
 
-    .color-option input:checked + .color-circle {
-      border-color: #000;
-    }
-     .cuadro-imagen {
-      width: 280px;
-      height: 280px;
-      overflow: hidden;
-      margin: 0 auto 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-    }
+  #toast.show {
+    visibility: visible;
+    opacity: 1;
+  }
 
-    .cuadro-imagen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    
-    #toast {
-      visibility: hidden;
-      min-width: 250px;
-      background-color: #323232;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 12px;
-      position: fixed;
-      z-index: 1000;
-      left: 50%;
-      bottom: 30px;
-      font-size: 16px;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.5s ease, visibility 0.5s;
-    }
+  /* Estilos para selección de estilo de color */
+  .color-style-options {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
 
-    #toast.show {
-      visibility: visible;
-      opacity: 1;
-    }
+  .color-style {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+  }
 
-    .color-style-options {
-  display: flex;
-  gap: 15px;
-  margin: 10px 0;
-  flex-wrap: wrap;
-}
+  .color-style input[type="radio"] {
+    display: none;
+  }
 
-.color-style {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  position: relative;
-}
+  .custom-radio {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+  }
 
-.color-style input[type="radio"] {
-  display: none;
-}
+  .color-style input[type="radio"]:checked + .custom-radio::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+  }
 
-.custom-radio {
-  width: 16px;
-  height: 16px;
-  border: 2px solid #555;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-}
+  .description {
+    font-size: 14px;
+    color: #333;
+  }
 
-.color-style input[type="radio"]:checked + .custom-radio::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #555;
-  border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-}
+  /* NUEVOS ESTILOS PARA COLORES EN LÍNEA HORIZONTAL */
+  .color-grid {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.description {
-  font-size: 14px;
-  color: #333;
-}
-  </style>
+  .color-option {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .color-option:hover {
+    transform: scale(1.2);
+  }
+
+  .color-option input {
+    display: none;
+  }
+
+  .color-option:has(input:checked) {
+    border-color: #000;
+  }
+
+  .color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+  }
+</style>
 </head>
 <body>
   <div class="container">
@@ -244,64 +262,42 @@
       </div>
     </div>
 
-      <label>Color:</label>
-      <!-- Rojos y Rosados -->
-<div class="color-group">
-  <div class="color-group-title">Rojos y Rosados</div>
-  <div class="color-grid">
-    <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
-  </div>
-</div>
+      <div class="color-group" style="margin-top: 15px;">
+      <div class="color-group-title">Colores (desliza para verlos todos)</div>
+      <div class="color-grid">
+        <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#ff2f92;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="hot-coral" data-nombre="Hot Coral"><span class="color-circle" style="background-color:#ff6b6b;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="pink" data-nombre="Pink"><span class="color-circle" style="background-color:#ffc0cb;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="fluorescent-fuchsia" data-nombre="Fluorescent Fuchsia"><span class="color-circle" style="background-color:#ff4ff0;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="carmine" data-nombre="Carmine"><span class="color-circle" style="background-color:#960018;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
+        <label class="color-option"><input type="radio" name="color" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
+      </div>
+    </div>
 
-<!-- Naranjas y Amarillos -->
-<div class="color-group">
-  <div class="color-group-title">Naranjas y Amarillos</div>
-  <div class="color-grid">
-    <label class="color-option"><input type="radio" name="color" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
-  </div>
-</div>
-
-<!-- Azules y Verdes -->
-<div class="color-group">
-  <div class="color-group-title">Azules y Verdes</div>
-  <div class="color-grid">
-    <label class="color-option"><input type="radio" name="color" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="cerulean-blue" data-nombre="Cerulean Blue"><span class="color-circle" style="background-color:#2a52be;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="matcha-green" data-nombre="Matcha Green"><span class="color-circle" style="background-color:#9caf88;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="light-green" data-nombre="Light Green"><span class="color-circle" style="background-color:#90ee90;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
-  </div>
-</div>
-
-<!-- Neutros y Violetas -->
-<div class="color-group">
-  <div class="color-group-title">Neutros y Violetas</div>
-  <div class="color-grid">
-    <label class="color-option"><input type="radio" name="color" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
-    <label class="color-option"><input type="radio" name="color" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
-  </div>
-</div>
-
+      
       <label for="empaque">¿Deseas empaque especial de regalo?</label>
       <select id="empaque" onchange="actualizarPrecio()">
         <option value="estandar" selected>No, gracias (bolsita estándar)</option>
