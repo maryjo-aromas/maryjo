@@ -79,35 +79,63 @@
       color: #000;
     }
 
+    /*Color*/
+    .color-group {
+      margin-bottom: 20px;
+    }
+    
     .color-group-title {
       font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-
+    
     .color-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+      display: flex;
       gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: thin; /* para Firefox */
+      scrollbar-color: #ccc transparent;
     }
-
-    .color-option input {
+    
+    .color-grid::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .color-grid::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 3px;
+    }
+    
+    .color-option {
+      flex: 0 0 auto;
+    }
+    
+    .color-circle {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .color-circle:hover {
+      transform: scale(1.1);
+    }
+    
+    .color-option input[type="radio"] {
       display: none;
     }
-
-    .color-circle {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: inline-block;
-      border: 2px solid transparent;
-      cursor: pointer;
-      box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    
+    .color-option input[type="radio"]:checked + .color-circle {
+      border: 2px solid #000;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     }
-
-    .color-option input:checked + .color-circle {
-      border-color: #000;
-    }
+    /*Color*/
+    
      .cuadro-imagen {
       width: 280px;
       height: 280px;
@@ -185,10 +213,8 @@
       </select>
    
 
-      <label>Color:</label>
-      <!-- Rojos y Rosados -->
 <div class="color-group">
-  <div class="color-group-title">Rojos y Rosados</div>
+  <div class="color-group-title">Colores (desliza para verlos todos)</div>
   <div class="color-grid">
     <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ff5555;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#800000;"></span></label>
@@ -201,24 +227,10 @@
     <label class="color-option"><input type="radio" name="color" value="plum" data-nombre="Plum"><span class="color-circle" style="background-color:#dda0dd;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="wild-rose" data-nombre="Wild Rose"><span class="color-circle" style="background-color:#f66285;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="bourbon" data-nombre="Bourbon"><span class="color-circle" style="background-color:#ab4e52;"></span></label>
-  </div>
-</div>
-
-<!-- Naranjas y Amarillos -->
-<div class="color-group">
-  <div class="color-group-title">Naranjas y Amarillos</div>
-  <div class="color-grid">
     <label class="color-option"><input type="radio" name="color" value="macaron-yellow" data-nombre="Macaron Yellow"><span class="color-circle" style="background-color:#fdfd96;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="orange" data-nombre="Orange"><span class="color-circle" style="background-color:#ffa500;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="yellow" data-nombre="Yellow"><span class="color-circle" style="background-color:#ffff00;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="fluorescent-golden-yellow" data-nombre="Fluorescent Golden Yellow"><span class="color-circle" style="background-color:#ffea00;"></span></label>
-  </div>
-</div>
-
-<!-- Azules y Verdes -->
-<div class="color-group">
-  <div class="color-group-title">Azules y Verdes</div>
-  <div class="color-grid">
     <label class="color-option"><input type="radio" name="color" value="fluorescent-blue" data-nombre="Fluorescent Blue"><span class="color-circle" style="background-color:#0096ff;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="ultramarine" data-nombre="Ultramarine"><span class="color-circle" style="background-color:#120a8f;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="blue" data-nombre="Blue"><span class="color-circle" style="background-color:#0000ff;"></span></label>
@@ -228,13 +240,6 @@
     <label class="color-option"><input type="radio" name="color" value="green" data-nombre="Green"><span class="color-circle" style="background-color:#008000;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="grass-green" data-nombre="Grass Green"><span class="color-circle" style="background-color:#7cfc00;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="olive-green" data-nombre="Olive Green"><span class="color-circle" style="background-color:#808000;"></span></label>
-  </div>
-</div>
-
-<!-- Neutros y Violetas -->
-<div class="color-group">
-  <div class="color-group-title">Neutros y Violetas</div>
-  <div class="color-grid">
     <label class="color-option"><input type="radio" name="color" value="brown" data-nombre="Brown"><span class="color-circle" style="background-color:#a52a2a;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="black-grey" data-nombre="Black Grey"><span class="color-circle" style="background-color:#3a3a3a;"></span></label>
     <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
@@ -355,3 +360,4 @@
   </script>
 </body>
 </html>
+
