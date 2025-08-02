@@ -488,11 +488,17 @@
                 ${color ? `<span class="color">Color: ${color}</span>` : ''} 
                 <span class="numeros">Números: ${numeros}</span> 
                 ` : ` 
-                  ${color ? `<span class="color">Color: ${color}</span>` : ''} 
-                  ${producto.tono ? `<span class="tono">Tono: ${producto.tono === 'base-oscura' ? 'Base oscura, parte superior clara' : 'Color uniforme'}</span>` : ''} 
+                  ${color ? `<span class="color">Color: ${color}</span>` : ''}  
                   ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
                   ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
                 `} 
+                <span class="tono">Tono: ${
+                producto.tono === 'base-oscura'
+                  ? 'Base oscura, parte superior clara'
+                  : producto.tono === 'uniforme'
+                  ? 'Color uniforme'
+                  : 'No especificado'
+              }</span>
                 <span class="empaque">Empaque: ${empaque}</span> 
                 <span class="precio">Precio: ${total} CUP</span> 
               </div> 
