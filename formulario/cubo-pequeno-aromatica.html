@@ -246,21 +246,11 @@
         <option value="lemon">Limón</option>
       </select>
 
-      <div class="form-section">
-      <label class="form-label">Aplicación del color</label>
-      <div class="color-style-options">
-        <label class="color-style">
-          <input type="radio" name="tono" value="uniforme" checked>
-          <span class="custom-radio"></span>
-          <span class="description">Color uniforme</span>
-        </label>
-        <label class="color-style">
-          <input type="radio" name="tono" value="base-oscura">
-          <span class="custom-radio"></span>
-          <span class="description">Base oscura, parte superior clara</span>
-        </label>
-      </div>
-    </div>
+      <label for="tono">Aplicación del color:</label>
+      <select id="tono">
+        <option value="uniforme">Color uniforme</option>
+        <option value="base-oscura">Base oscura, parte superior clara</option>
+      </select>
 
       <div class="color-group" style="margin-top: 15px;">
       <div class="color-group-title">Colores (desliza para verlos todos)</div>
@@ -368,8 +358,7 @@
 
   const color = colorInput.getAttribute('data-nombre'); // nombre legible
 
-  const tonoInput = document.querySelector('input[name="tono"]:checked');
-  const tono = tonoInput ? tonoInput.value : "uniforme"; // Valor por defecto
+  const tonoInput = document.getElementById('tono').value;
 
   const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
   const empaque = document.getElementById('empaque').value;
