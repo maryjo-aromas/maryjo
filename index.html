@@ -472,6 +472,7 @@
         const nombre = producto.producto || ''; 
         const imagen = producto.imagen || 'img/default.png'; 
         const color = producto.color || ''; 
+        const tono = producto.tono || ''; 
         const aroma = producto.aroma || ''; 
         const empaque = producto.empaque || ''; 
         const cantidad = producto.cantidad || ''; 
@@ -489,27 +490,24 @@
                 <span class="numeros">Números: ${numeros}</span> 
                 ` : ` 
                   ${color ? `<span class="color">Color: ${color}</span>` : ''}  
-                  ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
-                  ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
-                `} 
-                <span class="tono">Tono: ${
-                producto.tono === 'base-oscura'
-                  ? 'Base oscura, parte superior clara'
-                  : producto.tono === 'uniforme'
-                  ? 'Color uniforme'
-                  : 'No especificado'
-              }</span>
-                <span class="empaque">Empaque: ${empaque}</span> 
-                <span class="precio">Precio: ${total} CUP</span> 
-              </div> 
+                  <span class="tono">Tono: ${
+                  tono === 'base-oscura'
+                    ? 'Base oscura, parte superior clara'
+                    : 'Color uniforme'
+                }</span>
+                ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
+                ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
+              `} 
+              <span class="empaque">Empaque: ${empaque}</span> 
+              <span class="precio">Precio: ${total} CUP</span> 
             </div> 
-            <button class="eliminar-producto" data-index="${index}">🗑️</button> 
-          </li> 
-        `;
-      }); 
-      html += "</ul>";
-      
-      carritoContenido.innerHTML = html;
+          </div> 
+          <button class="eliminar-producto" data-index="${index}">🗑️</button> 
+        </li> 
+      `;
+    }); 
+    html += "</ul>";
+    carritoContenido.innerHTML = html;
 
       // Activar botones de eliminar
       const botonesEliminar = document.querySelectorAll(".eliminar-producto");
