@@ -360,67 +360,53 @@ footer {
     flex: 1;
   }
 
-  /* Ajuste productos para 2 columnas en pantallas pequeñas */
-  .productos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    width: 100%;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-
-  .producto {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-  }
-
-  .cuadro-imagen {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    box-sizing: border-box;
-  }
-
-  .cuadro-imagen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Ajustes del texto para móviles */
-  .producto h4 {
-    font-size: 14px !important;
-  }
-
-  .producto p {
-    font-size: 12px !important;
-  }
-
-  .producto .btn,
-  .producto a {
-    font-size: 12px;
-    padding: 6px 10px;
-    min-width: auto;
-  }
+  /* Productos */
+.producto {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
 }
 
-/* Galería general responsiva para todas las pantallas */
+.cuadro-imagen {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.cuadro-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ajustes del texto */
+.producto h4 {
+  font-size: 14px !important;
+}
+
+.producto p {
+  font-size: 12px !important;
+}
+
+.producto .btn,
+.producto a {
+  font-size: 12px;
+  padding: 6px 10px;
+  min-width: auto;
+}
+
+/* Galería: una sola columna en todas las pantallas */
 .galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 15px;
   padding: 10px;
   box-sizing: border-box;
 }
 
-/* Extra para pantallas muy pequeñas (menos de 769px) */
-@media (max-width: 768px) {
-  .galeria {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+
