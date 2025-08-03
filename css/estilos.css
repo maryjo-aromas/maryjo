@@ -405,3 +405,17 @@ footer {
   }
 
 }
+/* 🎯 AJUSTE RESPONSIVO FINAL PARA LA GALERÍA DE PRODUCTOS */
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .galeria {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
