@@ -127,6 +127,19 @@
       object-fit: cover;
       object-position: center;
     }
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+      gap: 8px; /* espacio entre los números */
+      margin-top: 8px;
+    }
+    
+    .numbers-grid label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+    }
 
     #toast {
       visibility: hidden;
@@ -313,5 +326,6 @@
   
 </body>
 </html>
+
 
 
