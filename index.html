@@ -512,8 +512,14 @@
       `;
     }); 
     html += "</ul>";
+
+      // Botón para enviar por WhatsApp
+      html += `
+        <div class="boton-whatsapp-container">
+          <button id="enviar-whatsapp" class="btn">Comprar por WhatsApp</button>
+        </div>
+      `;
     carritoContenido.innerHTML = html;
-    
     
       // Activar botones de eliminar
       const botonesEliminar = document.querySelectorAll(".eliminar-producto");
@@ -531,8 +537,35 @@
       localStorage.setItem("carrito", JSON.stringify(carrito));
       cargarCarrito(); // Recargar vista
     }
+    function enviarCarritoPorWhatsApp(carrito) {
+      let mensaje = "¡Hola! Quiero hacer el siguiente pedido de velas:\n\n";
 
-    cargarCarrito(); // Al iniciar la página
+      carrito.forEach((producto, i) => {
+        mensaje += `🕯️ *${producto.producto}*\n`;
+        if (producto.color) mensaje += `• Color: ${producto.color}\n`;
+        if (producto.tono) {
+          mensaje += `• Tono: ${
+            producto.tono === 'base-oscura'
+              ? 'Base oscura, parte superior clara'
+              : 'Color uniforme'
+          }\n`;
+        }
+        if (producto.numeros) mensaje += `• Números: ${producto.numeros}\n`;
+        if (producto.aroma) mensaje += `• Aroma: ${producto.aroma}\n`;
+        if (producto.empaque) mensaje += `• Empaque: ${producto.empaque}\n`;
+        if (producto.cantidad) mensaje += `• Cantidad: x${producto.cantidad}\n`;
+        if (producto.total) mensaje += `• Precio: ${producto.total} CUP\n`;
+        mensaje += `\n`;
+      });
+
+      mensaje += "Gracias! 😊";
+
+      const mensajeCodificado = encodeURIComponent(mensaje);
+      const numero = "5353810462"; 
+      const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+      window.open(url, "_blank");
+    }
+    cargarCarrito();
   });
 </script>
   
