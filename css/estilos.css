@@ -375,17 +375,20 @@ footer {
 
   .cuadro-imagen {
     width: 100%;
-    height: 160px; /* o cualquier altura consistente que prefieras */
+    aspect-ratio: 1 / 1; /* Hace el contenedor cuadrado automáticamente */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px; /* Opcional para esquinas suaves */
+    box-sizing: border-box;
   }
-
+  
   .cuadro-imagen img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Recorta sin deformar */
+    display: block;
   }
   /* 🎯 NUEVO: Ajustes del texto para móviles */
   .producto h4 {
