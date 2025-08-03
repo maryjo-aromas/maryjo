@@ -374,7 +374,7 @@ footer {
   }
 
   .cuadro-imagen {
-    width: 150px;
+    width: 180px;
     aspect-ratio: 1 / 1; /* Hace el contenedor cuadrado automáticamente */
     overflow: hidden;
     display: flex;
