@@ -48,8 +48,6 @@ header {
   border-radius: 50%;
 }
 
-
-
 nav {
   display: flex;
   align-items: center;
@@ -76,8 +74,6 @@ nav a:hover {
   color: #8b7e6b;
 }
 
-
-
 /* TÍTULOS GENERALES */
 h3 {
   font-size: 17px;
@@ -90,15 +86,17 @@ h4 {
   font-weight: bold;
 }
 
+/* CUADRO IMAGENES */
 .cuadro-imagen {
-  width: 280px;       
+  width: 280px;
   height: 280px;
   overflow: hidden;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px; 
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .cuadro-imagen img {
@@ -106,12 +104,13 @@ h4 {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  display: block;
 }
 
 .cuadro-imagen.carrusel {
   position: relative;
   width: 280px;
-  height: 280px; /* Puedes ajustar la altura según tus necesidades */
+  height: 280px;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -139,7 +138,6 @@ h4 {
   0%, 45% { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
-  
 
 /* PÁRRAFOS GENERALES */
 p {
@@ -204,6 +202,11 @@ section {
   padding: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.producto:hover {
+  transform: translateY(-3px);
 }
 
 .producto img {
@@ -217,7 +220,8 @@ section {
   color: #777;
 }
 
-.producto a {
+.producto a,
+.producto .btn {
   display: inline-block;
   margin-top: 10px;
   padding: 8px 12px;
@@ -226,9 +230,15 @@ section {
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 100px;
+  text-align: center;
 }
 
-.producto a:hover {
+.producto a:hover,
+.producto .btn:hover {
   background-color: #bfb6a8;
 }
 
@@ -245,46 +255,45 @@ section {
 }
 
 /* CARRITO */
+.lista-carrito {
+  list-style: none;
+  padding: 0;
+}
 
- .lista-carrito {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .item-carrito {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-  
-  .producto-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .miniatura {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 10px;
-    border-radius: 6px;
-  }
-  
-  .detalle {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .eliminar-producto {
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #b00;
-  }
+.item-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.producto-info {
+  display: flex;
+  align-items: center;
+}
+
+.miniatura {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+
+.detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eliminar-producto {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #b00;
+}
 
 /* PIE DE PÁGINA */
 footer {
@@ -293,12 +302,6 @@ footer {
   padding: 15px;
   font-size: 14px;
   border-top: 1px solid #ddd;
-}
-
-/* ANIMACIONES */
-.producto:hover {
-  transform: translateY(-3px);
-  transition: transform 0.2s ease-in-out;
 }
 
 /* RESPONSIVE */
@@ -357,8 +360,8 @@ footer {
     flex: 1;
   }
 
-  /* ✅ Arreglo para mostrar 2 productos alineados en pantallas pequeñas */
-  .productos .galeria {
+  /* Ajuste productos para 2 columnas en pantallas pequeñas */
+  .productos {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     width: 100%;
@@ -398,14 +401,15 @@ footer {
     font-size: 12px !important;
   }
 
-  .producto .btn {
+  .producto .btn,
+  .producto a {
     font-size: 12px;
     padding: 6px 10px;
     min-width: auto;
   }
 }
 
-/* 🎯 Galería general responsiva para todas las pantallas */
+/* Galería general responsiva para todas las pantallas */
 .galeria {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -414,7 +418,7 @@ footer {
   box-sizing: border-box;
 }
 
-/* Extra por si usas pantallas entre 769 y 850px */
+/* Extra para pantallas muy pequeñas (menos de 769px) */
 @media (max-width: 768px) {
   .galeria {
     grid-template-columns: repeat(2, 1fr);
