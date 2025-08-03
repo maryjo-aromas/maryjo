@@ -557,11 +557,13 @@
       // Asignar funcionalidad al botón de WhatsApp
       const botonWhatsApp = document.getElementById("enviar-whatsapp");
       if (botonWhatsApp) {
-        const carritoActual = JSON.parse(localStorage.getItem("carrito")) || [];
         botonWhatsApp.addEventListener("click", function () {
-          enviarCarritoPorWhatsApp(carritoActual);
+          const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+          enviarCarritoPorWhatsApp(carrito);
         });
       }
+    }
+          
   
 
     function eliminarDelCarrito(index) {
