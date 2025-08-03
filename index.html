@@ -6,6 +6,23 @@
   <title>MaryJo Aromas</title>
   <link rel="stylesheet" href="css/estilos.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 180px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-whatsapp:hover {
+    background-color: #1ebe5d;
+  }
+</style>
+  
 </head>
   
 <body>
@@ -516,7 +533,7 @@
       // Botón para enviar por WhatsApp
       html += `
         <div class="boton-whatsapp-container">
-          <button id="enviar-whatsapp" class="btn">Comprar por WhatsApp</button>
+          <button id="enviar-whatsapp" class="btn btn-whatsapp">Comprar por WhatsApp</button>
         </div>
       `;
     carritoContenido.innerHTML = html;
