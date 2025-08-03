@@ -357,13 +357,12 @@ footer {
     flex: 1;
   }
 
-  /* ✅ ARREGLO PARA MOSTRAR DOS PRODUCTOS BIEN ALINEADOS EN PANTALLAS PEQUEÑAS */
+  /* ✅ Arreglo para mostrar 2 productos alineados en pantallas pequeñas */
   .productos .galeria {
-    display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     width: 100%;
-    padding: 0 10px; /* opcional para dar respiro en los bordes */
+    padding: 0 10px;
     box-sizing: border-box;
   }
 
@@ -374,22 +373,23 @@ footer {
   }
 
   .cuadro-imagen {
-    aspect-ratio: 1 / 1; /* Hace el contenedor cuadrado automáticamente */
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px; /* Opcional para esquinas suaves */
+    border-radius: 8px;
     box-sizing: border-box;
   }
-  
+
   .cuadro-imagen img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta sin deformar */
+    object-fit: cover;
     display: block;
   }
-  /* 🎯 NUEVO: Ajustes del texto para móviles */
+
+  /* Ajustes del texto para móviles */
   .producto h4 {
     font-size: 14px !important;
   }
@@ -403,19 +403,20 @@ footer {
     padding: 6px 10px;
     min-width: auto;
   }
-
 }
-/* 🎯 AJUSTE RESPONSIVO FINAL PARA LA GALERÍA DE PRODUCTOS */
+
+/* 🎯 Galería general responsiva para todas las pantallas */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Extra por si usas pantallas entre 769 y 850px */
+@media (max-width: 768px) {
   .galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
-    padding: 10px;
-    box-sizing: border-box;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (max-width: 768px) {
-    .galeria {
-      grid-template-columns: repeat(2, 1fr);
-    }
 }
