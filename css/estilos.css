@@ -350,6 +350,12 @@ footer {
     display: block;
   }
 
+  .menu {
+    text-align: center;
+    font-size: 12px;
+  }
+
+
   .titulo {
     font-size: 13px;
   }
