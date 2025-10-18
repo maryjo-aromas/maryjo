@@ -28,6 +28,110 @@
     justify-content: center;
     margin-top: 12px;
   }
+  .halloween-section {
+    color: #000000d7;
+    padding: 20px 20px;
+    text-align: center;
+    background-color: rgba(77, 77, 77, 0.336); 
+    background-blend-mode: multiply; 
+  }
+
+  .halloween-section h2 {
+    color: #ff741e;
+    font-size: 1.5em;
+    margin-bottom: 25px;
+  }
+
+  .product-group {
+    margin-bottom: 50px;
+  }
+
+  .product-description {
+    font-size: 0.8em;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  .product-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .product {
+    background-color: #3a3a3a23;
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(2, 0, 0, 0.432);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .product:hover {
+    transform: translateY(-5px);
+  }
+
+  .product img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .halloween-section h3 {
+    color: #42016dad;
+    font-size: 1.2em;
+  }
+
+  .halloween-section p {
+    margin: 6px 0;
+    font-size: 1em;
+  }
+
+  .availability {
+    color: #ffa339;
+    font-weight: bold;
+  }
+
+  .buy-btn {
+    display: inline-block;
+    background-color: #fd8439ad;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .buy-btn.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: none;
+  }
+
+  .buy-btn:hover {
+    background-color: #e46825e3;
+  }
+
+  @media (max-width: 768px) {
+    .product-row {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product {
+      width: 90%;
+    }
+
+    .halloween-section h2 {
+      font-size: 1.5em;
+    }
+  }
 </style>
   
 </head>
@@ -85,6 +189,177 @@
     </p>
   </section>
 
+   <!-- ========== INICIO SECCIÓN COLECCIÓN HALLOWEEN ========== -->
+  
+  <section id="halloween-collection" class="halloween-section">
+  <h2>Colección Halloween - edición limitada 🎃</h2>
+  <p>Cada mini pack incluye una vela principal y dos mini velas, hechas a mano. Son piezas únicas, disponibles solo por esta temporada hasta agotar existencias.</p>
+
+  <div class="product-group">
+    <h3>Mini pack - Calabaza 🎃</h3>
+    <p class="product-description">
+      Símbolo por excelencia de Halloween, la vela <strong>Calabaza</strong> aporta calidez y un toque festivo a cualquier rincón.    
+      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
+    </p>
+
+    <div class="product-row">
+      <div class="product">
+        <img src="img/Calabaza naranja.jpeg" alt="Vela Calabaza Naranja">
+        <p><strong>Color:</strong> Naranja</p>
+        <p><strong>Aroma:</strong> Canela</p>
+        <p><strong>Precio:</strong> 630 CUP</p>
+        <p class="availability">Disponibles: 2</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calabaza%20Naranja%20(aroma%20Canela)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/Calabaza morada.jpeg" alt="Vela Calabaza Violeta">
+        <p><strong>Color:</strong> Violeta</p>
+        <p><strong>Aroma:</strong> Naranja Dulce</p>
+        <p><strong>Precio:</strong> 630 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20de%20Calabaza%20Violeta%20(aroma%20Naranja%20dulce)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/calabaza sin aroma.jpeg" alt="Vela Calabaza Negra">
+        <p><strong>Color:</strong> Negro</p>
+        <p><strong>Sin aroma</strong></p>
+        <p><strong>Precio:</strong> 350 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calabaza%20Negra%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-group">
+    <h3>Mini pack - Calavera 💀</h3>
+    <p class="product-description">
+      Nuestra vela <strong>Calavera</strong> combina elegancia y simbolismo, representando transformación y misticismo.  
+      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
+    </p>
+
+    <div class="product-row">
+      <div class="product">
+        <img src="img/Calavera blanca.jpeg" alt="Vela Calavera Blanca">
+        <p><strong>Color:</strong> Blanco</p>
+        <p><strong>Aroma:</strong> Incienso</p>
+        <p><strong>Precio:</strong> 530 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calavera%20Blanca%20(aroma%20Incienso)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/Calavera negra.jpeg" alt="Vela Calavera Negra">
+        <p><strong>Color:</strong> Negro</p>
+        <p><strong>Aroma:</strong> Sándalo</p>
+        <p><strong>Precio:</strong> 530 CUP</p>
+        <p class="availability">Disponibles: 2</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calavera%20Negra%20(aroma%20Sándalo)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/calavera sin aroma.jpeg" alt="Vela Calavera sin aroma">
+        <p><strong>Color:</strong> Negra</p>
+        <p><strong>Sin aroma</strong></p>
+        <p><strong>Precio:</strong> 350 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calavera%20Negra%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-group">
+    <h3>Mini pack - Fantasmita 👻</h3>
+    <p class="product-description">
+      Dulce y encantadora, la vela <strong>Fantasmita</strong> captura la esencia más tierna del Halloween.  
+      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
+    </p>
+
+    <div class="product-row">
+      <div class="product">
+        <img src="img/Fantasma blanco.jpeg" alt="Vela Fantasmita blanco">
+        <p><strong>Color:</strong> Blanco</p>
+        <p><strong>Aroma:</strong> Pachuli y Vainilla</p>
+        <p><strong>Precio:</strong> 550 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Fantasmita%20Blanca%20(aroma%20Pachuli%20y%20Vainilla)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn ">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/Fantasma verde.jpeg" alt="Vela Fantasmita Verde">
+        <p><strong>Color:</strong> Verde</p>
+        <p><strong>Aroma:</strong> Naranja Dulce</p>
+        <p><strong>Precio:</strong> 550 CUP</p>
+        <p class="availability">Disponibles: 2</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Fantasmita%20Verde%20(aroma%20Naranja%20dulce)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/fantasma sin aroma.jpeg" alt="Vela fantasma sin aroma">
+        <p><strong>Color:</strong> Violeta</p>
+        <p><strong>Sin aroma</strong></p>
+        <p><strong>Precio:</strong> 360 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Fantasmita%20Violeta%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-group">
+    <h3>Mini pack - Murciélago 🦇</h3>
+    <p class="product-description">
+      Una de las figuras más icónicas de Halloween. Nuestra vela <strong>Murciélago</strong> combina misterio y elegancia, perfecta para ambientar espacios con un toque gótico y festivo.  
+      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
+    </p>
+
+    <div class="product-row">
+      <div class="product">
+        <img src="img/murcielago gris purpura.jpeg" alt="Vela Murciélago prupura grisaceo">
+        <p><strong>Color:</strong> Púrpura grisáceo</p>
+        <p><strong>Aroma:</strong> Eucalipto</p>
+        <p><strong>Precio:</strong> 460 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Purpura%20grisaceo%20(aroma%20Eucalipto)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/Murcielago purpura.jpeg" alt="Vela Murciélago purpura">
+        <p><strong>Color:</strong> Púrpura</p>
+        <p><strong>Aroma:</strong> Eucalipto</p>
+        <p><strong>Precio:</strong> 460 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Purpura%20(aroma%20Eucalipto)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/Murcielago negro.jpeg" alt="Vela Murciélago Negro">
+        <p><strong>Color:</strong> Negro</p>
+        <p><strong>Aroma:</strong> Romero</p>
+        <p><strong>Precio:</strong> 460 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5355300075?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Negro%20(aroma%20Romero)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+
+      <div class="product">
+        <img src="img/murcielago sin aroma.jpeg" alt="Vela Murciélago sin aroma">
+        <p><strong>Color:</strong> Negro</p>
+        <p><strong>Sin aroma</strong></p>
+        <p><strong>Precio:</strong> 360 CUP</p>
+        <p class="availability">Disponibles: 1</p>
+        <a href="https://wa.me/5355300075?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Negro%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+ <!--
+   -->
+  <!-- ========== FIN SECCIÓN COLECCIÓN HALLOWEEN ========== -->
+  
+  
   <!-- SECCIÓN VELAS AROMÁTICAS -->
   <section id="aromaticas" class="productos">
     <h3>Velas Decorativas - Aromáticas</h3>
@@ -473,282 +748,7 @@
     </div>
   </section>
 
-  <!-- ========== INICIO SECCIÓN COLECCIÓN HALLOWEEN ========== -->
- <!--
-  
-  <section id="halloween-collection" class="halloween-section">
-  <h2>Colección Halloween - edición limitada 🎃</h2>
-  <p>Cada mini pack incluye una vela principal y dos mini velas, hechas a mano. Son piezas únicas, disponibles solo por esta temporada hasta agotar existencias.</p>
-
-  <div class="product-group">
-    <h3>Mini pack - Calabaza 🎃</h3>
-    <p class="product-description">
-      Símbolo por excelencia de Halloween, la vela <strong>Calabaza</strong> aporta calidez y un toque festivo a cualquier rincón.    
-      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
-    </p>
-
-    <div class="product-row">
-      <div class="product">
-        <img src="img/Calabaza naranja.jpeg" alt="Vela Calabaza Naranja">
-        <p><strong>Color:</strong> Naranja</p>
-        <p><strong>Aroma:</strong> Canela</p>
-        <p><strong>Precio:</strong> 630 CUP</p>
-        <p class="availability">Disponibles: 2</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calabaza%20Naranja%20(aroma%20Canela)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/Calabaza morada.jpeg" alt="Vela Calabaza Violeta">
-        <p><strong>Color:</strong> Violeta</p>
-        <p><strong>Aroma:</strong> Naranja Dulce</p>
-        <p><strong>Precio:</strong> 630 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20de%20Calabaza%20Violeta%20(aroma%20Naranja%20dulce)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/calabaza sin aroma.jpeg" alt="Vela Calabaza Negra">
-        <p><strong>Color:</strong> Negro</p>
-        <p><strong>Sin aroma</strong></p>
-        <p><strong>Precio:</strong> 350 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calabaza%20Negra%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="product-group">
-    <h3>Mini pack - Calavera 💀</h3>
-    <p class="product-description">
-      Nuestra vela <strong>Calavera</strong> combina elegancia y simbolismo, representando transformación y misticismo.  
-      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
-    </p>
-
-    <div class="product-row">
-      <div class="product">
-        <img src="img/Calavera blanca.jpeg" alt="Vela Calavera Blanca">
-        <p><strong>Color:</strong> Blanco</p>
-        <p><strong>Aroma:</strong> Incienso</p>
-        <p><strong>Precio:</strong> 530 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calavera%20Blanca%20(aroma%20Incienso)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/Calavera negra.jpeg" alt="Vela Calavera Negra">
-        <p><strong>Color:</strong> Negro</p>
-        <p><strong>Aroma:</strong> Sándalo</p>
-        <p><strong>Precio:</strong> 530 CUP</p>
-        <p class="availability">Disponibles: 2</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calavera%20Negra%20(aroma%20Sándalo)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/calavera sin aroma.jpeg" alt="Vela Calavera sin aroma">
-        <p><strong>Color:</strong> Negra</p>
-        <p><strong>Sin aroma</strong></p>
-        <p><strong>Precio:</strong> 350 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Calavera%20Negra%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="product-group">
-    <h3>Mini pack - Fantasmita 👻</h3>
-    <p class="product-description">
-      Dulce y encantadora, la vela <strong>Fantasmita</strong> captura la esencia más tierna del Halloween.  
-      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
-    </p>
-
-    <div class="product-row">
-      <div class="product">
-        <img src="img/Fantasma blanco.jpeg" alt="Vela Fantasmita blanco">
-        <p><strong>Color:</strong> Blanco</p>
-        <p><strong>Aroma:</strong> Pachuli y Vainilla</p>
-        <p><strong>Precio:</strong> 550 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Fantasmita%20Blanca%20(aroma%20Pachuli%20y%20Vainilla)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn ">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/Fantasma verde.jpeg" alt="Vela Fantasmita Verde">
-        <p><strong>Color:</strong> Verde</p>
-        <p><strong>Aroma:</strong> Naranja Dulce</p>
-        <p><strong>Precio:</strong> 550 CUP</p>
-        <p class="availability">Disponibles: 2</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Fantasmita%20Verde%20(aroma%20Naranja%20dulce)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/fantasma sin aroma.jpeg" alt="Vela fantasma sin aroma">
-        <p><strong>Color:</strong> Violeta</p>
-        <p><strong>Sin aroma</strong></p>
-        <p><strong>Precio:</strong> 360 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Fantasmita%20Violeta%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="product-group">
-    <h3>Mini pack - Murciélago 🦇</h3>
-    <p class="product-description">
-      Una de las figuras más icónicas de Halloween. Nuestra vela <strong>Murciélago</strong> combina misterio y elegancia, perfecta para ambientar espacios con un toque gótico y festivo.  
-      Cada pack incluye dos mini velitas sorpresa como detalle especial de la colección.
-    </p>
-
-    <div class="product-row">
-      <div class="product">
-        <img src="img/murcielago gris purpura.jpeg" alt="Vela Murciélago prupura grisaceo">
-        <p><strong>Color:</strong> Púrpura grisáceo</p>
-        <p><strong>Aroma:</strong> Eucalipto</p>
-        <p><strong>Precio:</strong> 460 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Purpura%20grisaceo%20(aroma%20Eucalipto)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/Murcielago purpura.jpeg" alt="Vela Murciélago purpura">
-        <p><strong>Color:</strong> Púrpura</p>
-        <p><strong>Aroma:</strong> Eucalipto</p>
-        <p><strong>Precio:</strong> 460 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5353810462?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Purpura%20(aroma%20Eucalipto)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/Murcielago negro.jpeg" alt="Vela Murciélago Negro">
-        <p><strong>Color:</strong> Negro</p>
-        <p><strong>Aroma:</strong> Romero</p>
-        <p><strong>Precio:</strong> 460 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5355300075?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Negro%20(aroma%20Romero)%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-
-      <div class="product">
-        <img src="img/murcielago sin aroma.jpeg" alt="Vela Murciélago sin aroma">
-        <p><strong>Color:</strong> Negro</p>
-        <p><strong>Sin aroma</strong></p>
-        <p><strong>Precio:</strong> 360 CUP</p>
-        <p class="availability">Disponibles: 1</p>
-        <a href="https://wa.me/5355300075?text=Hola,%20quiero%20comprar%20el%20pack%20de%20la%20vela%20Murciélago%20Negro%20sin%20aroma%20de%20la%20colección%20Halloween%20🎃" class="buy-btn">Comprar por WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
-  
-</section>
-
-<style>
-  .halloween-section {
-    color: #000000d7;
-    padding: 20px 20px;
-    text-align: center;
-    background-color: rgba(77, 77, 77, 0.336); 
-    background-blend-mode: multiply; 
-  }
-
-  .halloween-section h2 {
-    color: #ff741e;
-    font-size: 1.5em;
-    margin-bottom: 25px;
-  }
-
-  .product-group {
-    margin-bottom: 50px;
-  }
-
-  .product-description {
-    font-size: 0.8em;
-    color: #000000;
-    margin-bottom: 20px;
-  }
-
-  .product-row {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .product {
-    background-color: #3a3a3a23;
-    border-radius: 10px;
-    padding: 20px;
-    width: 280px;
-    box-shadow: 0 4px 8px rgba(2, 0, 0, 0.432);
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-
-  .product:hover {
-    transform: translateY(-5px);
-  }
-
-  .product img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-
-  .halloween-section h3 {
-    color: #42016dad;
-    font-size: 1.2em;
-  }
-
-  .halloween-section p {
-    margin: 6px 0;
-    font-size: 1em;
-  }
-
-  .availability {
-    color: #ffa339;
-    font-weight: bold;
-  }
-
-  .buy-btn {
-    display: inline-block;
-    background-color: #fd8439ad;
-    color: #fff;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-
-  .buy-btn.disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    pointer-events: none;
-    text-decoration: none;
-  }
-
-  .buy-btn:hover {
-    background-color: #e46825e3;
-  }
-
-  @media (max-width: 768px) {
-    .product-row {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product {
-      width: 90%;
-    }
-
-    .halloween-section h2 {
-      font-size: 1.5em;
-    }
-  }
-</style>
-   -->
-  <!-- ========== FIN SECCIÓN COLECCIÓN HALLOWEEN ========== -->
-  
+ 
 
   <!-- SECCIÓN CONTACTO  -->
   <section id="contacto" class="contacto">
