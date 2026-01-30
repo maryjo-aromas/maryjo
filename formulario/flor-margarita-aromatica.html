@@ -456,9 +456,19 @@
 
     function actualizarTipoColor() {
       const tipo = document.getElementById("tipoColor").value;
-      document.getElementById("colorUnico").style.display = tipo === "unico" ? "block" : "none";
-      document.getElementById("colorCentro").style.display = tipo === "bicolor" ? "block" : "none";
-      document.getElementById("colorPetalos").style.display = tipo === "bicolor" ? "block" : "none";
+      const colorUnico = document.getElementById("colorUnico");
+      const colorCentro = document.getElementById("colorCentro");
+      const colorPetalos = document.getElementById("colorPetalos");
+    
+      if (tipo === "unico") {
+        colorUnico.style.display = "block";
+        colorCentro.style.display = "none";
+        colorPetalos.style.display = "none";
+      } else if (tipo === "bicolor") {
+        colorUnico.style.display = "none";
+        colorCentro.style.display = "flex";  // <--- Cambiado de "block" a "flex"
+        colorPetalos.style.display = "flex"; // <--- Cambiado de "block" a "flex"
+      }
     }
     
     function cambiarCantidad(delta) {
@@ -542,6 +552,7 @@
   </script>
 </body>
 </html>
+
 
 
 
