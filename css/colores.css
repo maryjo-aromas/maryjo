@@ -158,4 +158,82 @@ body {
       visibility: visible;
       opacity: 1;
     }
+
+/* ===== EMPAQUES ESTILO TIENDA ===== */
+
+.empaques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.empaque-card {
+  border: 2px solid #eee;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #fff;
+}
+
+.empaque-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.empaque-card input {
+  display: none;
+}
+
+.empaque-card img {
+  width: 100%;
+  max-width: 90px;   /* 👈 controla el tamaño */
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 6px;
+  display: block;
+}
+
+.empaque-card span {
+  font-size: 0.85rem;
+  line-height: 1.2;
+  display: block;
+}
+
+.empaque-card input:checked + img,
+.empaque-card input:checked ~ span {
+  border-color: #e28aa8;
+}
+
+.empaque-card input:checked ~ span {
+  font-weight: 600;
+  color: #e28aa8;
+}
+
+/* ===== AJUSTES GENERALES DEL CONTENEDOR ===== */
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.cuadro-imagen img {
+  width: 100%;
+  max-width: 260px;
+  display: block;
+  margin: auto;
+  border-radius: 12px;
+}
+
+.producto-titulo {
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
     
