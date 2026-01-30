@@ -403,6 +403,9 @@
       const aromaSelect = document.getElementById('aroma');
       const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
 
+      const tonoSelect = document.getElementById('tono');
+      const tono = tonoSelect.options[tonoSelect.selectedIndex].text;
+
       const colorInput = document.querySelector('input[name="color"]:checked');
       if (!colorInput) {
         alert("Selecciona un color.");
@@ -415,13 +418,13 @@
       const empaqueInput = document.querySelector('input[name="empaque"]:checked');
       const empaque = empaqueInput.value;
       const extra = parseInt(empaqueInput.dataset.precio, 10) || 0;
-
+      
       let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
       let total = (precio * cantidad) + extra;
 
       const imagen = document.querySelector('input[name="imagen"]').value;
 
-      const item = { producto, aroma, color, cantidad, empaque, precio, total, imagen };
+      const item = { producto, aroma, color, tono, cantidad, empaque, precio, total, imagen };
 
       let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       carrito.push(item);
