@@ -453,12 +453,16 @@
       document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
     }
 
-
     function actualizarTipoColor() {
       const tipo = document.getElementById("tipoColor").value;
       const colorUnico = document.getElementById("colorUnico");
       const colorCentro = document.getElementById("colorCentro");
       const colorPetalos = document.getElementById("colorPetalos");
+    
+      // Limpiar selecciones
+      document.querySelectorAll('input[name="color"], input[name="colorCentro"], input[name="colorPetalos"]').forEach(radio => {
+        radio.checked = false;
+      });
     
       if (tipo === "unico") {
         colorUnico.style.display = "block";
@@ -466,8 +470,8 @@
         colorPetalos.style.display = "none";
       } else if (tipo === "bicolor") {
         colorUnico.style.display = "none";
-        colorCentro.style.display = "flex";  // <--- Cambiado de "block" a "flex"
-        colorPetalos.style.display = "flex"; // <--- Cambiado de "block" a "flex"
+        colorCentro.style.display = "block";
+        colorPetalos.style.display = "block";
       }
     }
     
@@ -485,53 +489,52 @@
     }
 
     function agregarAlCarrito() {
-  const producto = "Vela decorativa de margarita";
-
-  // Obtener el texto visible del aroma, no solo el value
-  const aromaSelect = document.getElementById('aroma');
-  const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
-
-  // Obtener el input de color seleccionado
-  const tipoColor = document.getElementById("tipoColor").value; 
-  let color; 
-  if (tipoColor === "unico") { 
-    const colorInput = document.querySelector('input[name="color"]:checked'); 
-    if (!colorInput) { 
-      alert("Selecciona un color."); 
-      return; 
-    } 
-    color = colorInput.getAttribute('data-nombre'); 
-  } else { 
-    const colorCentroInput = document.querySelector('input[name="colorCentro"]:checked'); 
-    const colorPetalosInput = document.querySelector('input[name="colorPetalos"]:checked'); 
-    if (!colorCentroInput || !colorPetalosInput) { 
-      alert("Selecciona un color para el centro y los pétalos."); 
-      return; 
-    } 
-    const colorCentro = colorCentroInput.getAttribute('data-nombre'); 
-    const colorPetalos = colorPetalosInput.getAttribute('data-nombre'); 
-    color = `Centro: ${colorCentro} | Pétalos: ${colorPetalos}`; 
-  }
-
-  const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-      
-  const empaqueInput = document.querySelector('input[name="empaque"]:checked');
-  const empaque = empaqueInput.value
-  const extra = parseInt(empaqueInput.dataset.precio, 10) || 0;
-      
-  const imagen = document.querySelector('input[name="imagen"]').value;
-
-  let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
-  let total = (precio * cantidad) + extra;
-  const imagen = document.querySelector('input[name="imagen"]').value;
-  const item = { producto, aroma, color, cantidad, empaque, precio, total, imagen };
-
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  carrito.push(item);
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-
-  mostrarToastYRedirigir();
-}
+      const producto = "Vela decorativa de margarita";
+    
+      const aromaSelect = document.getElementById('aroma');
+      const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
+    
+      const tipoColor = document.getElementById("tipoColor").value; 
+      let color; 
+    
+      if (tipoColor === "unico") { 
+        const colorInput = document.querySelector('input[name="color"]:checked'); 
+        if (!colorInput) { 
+          alert("Selecciona un color."); 
+          return; 
+        } 
+        color = colorInput.getAttribute('data-nombre'); 
+      } else { 
+        const colorCentroInput = document.querySelector('input[name="colorCentro"]:checked'); 
+        const colorPetalosInput = document.querySelector('input[name="colorPetalos"]:checked'); 
+        if (!colorCentroInput || !colorPetalosInput) { 
+          alert("Selecciona un color para el centro y los pétalos."); 
+          return; 
+        } 
+        const colorCentro = colorCentroInput.getAttribute('data-nombre'); 
+        const colorPetalos = colorPetalosInput.getAttribute('data-nombre'); 
+        color = Centro: ${colorCentro} | Pétalos: ${colorPetalos}; 
+      }
+    
+      const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
+          
+      const empaqueInput = document.querySelector('input[name="empaque"]:checked');
+      const empaque = empaqueInput.value;
+      const extra = parseInt(empaqueInput.dataset.precio, 10) || 0;
+    
+      const imagen = document.querySelector('input[name="imagen"]').value;
+    
+      let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
+      let total = (precio * cantidad) + extra;
+    
+      const item = { producto, aroma, color, cantidad, empaque, precio, total, imagen };
+    
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.push(item);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    
+      mostrarToastYRedirigir();
+    }
     
     function mostrarToastYRedirigir() {
       const toast = document.getElementById("toast");
@@ -552,6 +555,7 @@
   </script>
 </body>
 </html>
+
 
 
 
