@@ -169,7 +169,7 @@
       const extraEmpaque = parseInt(empaqueInput.dataset.precio, 10) || 0;
 
       let precioUnidad = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
-      let total = (precioUnidad * cantidad) + extraEmpaque;
+      let total = (precioUnidad * cantidad) + (extraEmpaque * cantidad);
 
       document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioUnidad + " CUP";
       document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
@@ -243,5 +243,6 @@
   </script>
 </body>
 </html>
+
 
 
