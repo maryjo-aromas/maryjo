@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vela decorativa de rosa</title>
+  <link rel="stylesheet" href="../css/colores.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -241,7 +242,6 @@
       <label for="aroma">Selecciona el aroma:</label>
       <select id="aroma" onchange="actualizarPrecio()">
         <option value="Sin aroma" selected>Sin aroma</option>
-        <option value="patchouli">Terroso dulce - Pachuli</option>
         <option value="citronella">Hierba cítrica - Citronela</option>
         <option value="coconut">Coco</option>
         <option value="Strawberry">Fresa</option>
@@ -249,6 +249,9 @@
         <option value="peppermint">Menta</option>
         <option value="tea tree">Árbol de té</option>
         <option value="clary sage">Hierba suave - Salvia esclarea</option>
+        <option value="apple">Manzana</option>
+        <option value="lemon">Limón</option>
+        <option value="chocolate">Chocolate</option>
         <option value="chamomile">Manzanilla</option>
         <option value="lemon">Hierba limón</option>
       </select>
@@ -375,11 +378,30 @@
   
       
       
-      <label for="empaque">¿Deseas empaque especial de regalo?</label>
-      <select id="empaque" onchange="actualizarPrecio()">
-        <option value="estandar" selected>No, gracias (bolsita estándar)</option>
-        <option value="Caja plateada">Caja plateada (+280 CUP)</option>
-      </select>
+      <!-- === EMPAQUES CON PRECIOS === -->
+      <label>¿Deseas empaque especial de regalo?</label>
+      <div class="empaques-grid">
+
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="estandar" data-precio="0" checked onchange="actualizarPrecio()">
+          <img src="../img/empaque-estandar.jpeg" alt="Bolsa estándar">
+          <span>No, gracias (bolsita estándar)</span>
+        </label>
+
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="Caja plateada" data-precio="280" onchange="actualizarPrecio()">
+          <img src="../img/caja-pateada.jpeg" alt="Caja plateada">
+          <span>Caja plateada (+280 CUP)</span>
+        </label>
+
+     
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="Caja con cinta" data-precio="450" onchange="actualizarPrecio()">
+          <img src="../img/caja-cinta.jpeg" alt="Caja con cinta">
+          <span>Caja con cinta (+450 CUP)</span>
+        </label>
+
+      </div>
 
       <label for="cantidad">Cantidad (1–10):</label>
       <div class="cantidad-control">
@@ -457,7 +479,8 @@
   }
 
   const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-  const empaque = document.getElementById('empaque').value;
+  const empaqueInput = document.querySelector('input[name="empaque"]:checked');
+  const empaque = empaqueInput.value;
   const imagen = document.querySelector('input[name="imagen"]').value;
 
   let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
@@ -512,6 +535,7 @@
   </script>
 </body>
 </html>
+
 
 
 
