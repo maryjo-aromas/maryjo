@@ -203,7 +203,7 @@
 
       const colorCentro = colorCentroInput.getAttribute('data-nombre'); 
       const colorPetalos = colorPetalosInput.getAttribute('data-nombre'); 
-      const color = Centro: ${colorCentro} | Pétalos: ${colorPetalos};
+      const color = `Centro: ${colorCentro} | Pétalos: ${colorPetalos}`;
 
       const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
 
@@ -214,7 +214,7 @@
       const imagen = document.querySelector('input[name="imagen"]').value;
 
       let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
-      let total = (precio * cantidad) + extra;
+      let total = (precio * cantidad) + (extra * cantidad);
 
       const item = { producto, aroma, color, cantidad, empaque, precio, total, imagen };
 
@@ -243,6 +243,7 @@
   </script>
 </body>
 </html>
+
 
 
 
