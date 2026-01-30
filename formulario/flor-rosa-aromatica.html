@@ -427,12 +427,14 @@
 
     function actualizarPrecio() {
       const aroma = document.getElementById('aroma').value;
-      const empaque = document.getElementById('empaque').value;
+      
+      const empaqueInput = document.querySelector('input[name="empaque"]:checked');
+      const extraEmpaque = parseInt(empaqueInput.dataset.precio, 10) || 0;
+      
       const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
 
       let precioUnidad = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
-      let extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
-      let total = (precioUnidad * cantidad) + extraEmpaque;
+      let total = (precioUnidad + extraEmpaque) * cantidad;
 
       document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioUnidad + " CUP";
       document.getElementById("precioTotal").textContent = "💵 Precio total: " + total + " CUP";
@@ -484,8 +486,8 @@
   const imagen = document.querySelector('input[name="imagen"]').value;
 
   let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
-  let extra = empaque === "Caja plateada" ? precioCaja : 0;
-  let total = (precio * cantidad) + extra;
+  const extra = parseInt(empaqueInput.dataset.precio, 10) || 0;
+  let total = (precio + extra) * cantidad;
 
   const item = {
     producto,
@@ -535,6 +537,7 @@
   </script>
 </body>
 </html>
+
 
 
 
