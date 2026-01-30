@@ -9,8 +9,9 @@
 <body>
   <div class="container">
     <p class="producto-titulo">Producto: Vela decorativa de octoedro</p>
+
     <div class="cuadro-imagen">
-      <img src="../img/octoedro-aromatico.jpeg" alt="Vela de octoedro" />
+      <img src="../img/octoedro-aromatico.jpeg" alt="Vela octoedro" />
     </div> 
     
     <input type="hidden" name="imagen" value="img/octoedro-aromatico.jpeg" class="imagen-oculta" />
@@ -19,7 +20,6 @@
       <label for="aroma">Selecciona el aroma:</label>
       <select id="aroma" onchange="actualizarPrecio()">
         <option value="Sin aroma" selected>Sin aroma</option>
-        <option value="patchouli">Terroso dulce - Pachuli</option>
         <option value="citronella">Hierba cítrica - Citronela</option>
         <option value="coconut">Coco</option>
         <option value="Strawberry">Fresa</option>
@@ -27,14 +27,17 @@
         <option value="peppermint">Menta</option>
         <option value="tea tree">Árbol de té</option>
         <option value="clary sage">Hierba suave - Salvia esclarea</option>
+        <option value="apple">Manzana</option>
+        <option value="lemon">Limón</option>
+        <option value="chocolate">Chocolate</option>
         <option value="chamomile">Manzanilla</option>
         <option value="lemon">Hierba limón</option>
       </select>
-   
+
       <div class="color-group" style="margin-top: 15px;">
-      <div class="color-group-title">Colores (desliza para verlos todos)</div>
-      <div class="color-grid">
-        <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ec5f79;"></span></label>
+  <div class="color-group-title">Colores (desliza para verlos todos)</div>
+  <div class="color-grid">
+    <label class="color-option"><input type="radio" name="color" value="fluorescent-red" data-nombre="Fluorescent Red"><span class="color-circle" style="background-color:#ec5f79;"></span></label>
         <label class="color-option"><input type="radio" name="color" value="garnet" data-nombre="Garnet"><span class="color-circle" style="background-color:#8d2817;"></span></label>
         <label class="color-option"><input type="radio" name="color" value="fluorescent-rose-red" data-nombre="Fluorescent Rose Red"><span class="color-circle" style="background-color:#cc5d97"></span></label>
         <label class="color-option"><input type="radio" name="color" value="red" data-nombre="Red"><span class="color-circle" style="background-color:#ff0000;"></span></label>
@@ -60,14 +63,37 @@
         <label class="color-option"><input type="radio" name="color" value="grey-purple" data-nombre="Grey Purple"><span class="color-circle" style="background-color:#a3989d;"></span></label>
         <label class="color-option"><input type="radio" name="color" value="fluorescent-purple" data-nombre="Fluorescent Purple"><span class="color-circle" style="background-color:#bf00ff;"></span></label>
         <label class="color-option"><input type="radio" name="color" value="violet" data-nombre="Violet"><span class="color-circle" style="background-color:#8f00ff;"></span></label>
+  </div>
+</div>
+      <!-- === EMPAQUES CON PRECIOS === -->
+      <label>¿Deseas empaque especial de regalo?</label>
+      <div class="empaques-grid">
+
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="estandar" data-precio="0" checked onchange="actualizarPrecio()">
+          <img src="../img/empaque-estandar.jpeg" alt="Bolsa estándar">
+          <span>No, gracias (bolsita estándar)</span>
+        </label>
+
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="Caja plateada" data-precio="280" onchange="actualizarPrecio()">
+          <img src="../img/caja-pateada.jpeg" alt="Caja plateada">
+          <span>Caja plateada (+280 CUP)</span>
+        </label>
+
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="Caja blanca" data-precio="220" onchange="actualizarPrecio()">
+          <img src="../img/caja-blanca.jpeg" alt="Caja blanca">
+          <span>Caja blanca (+220 CUP)</span>
+        </label>
+
+        <label class="empaque-card">
+          <input type="radio" name="empaque" value="Caja con cinta" data-precio="450" onchange="actualizarPrecio()">
+          <img src="../img/caja-cinta.jpeg" alt="Caja con cinta">
+          <span>Caja con cinta (+450 CUP)</span>
+        </label>
+
       </div>
-    </div>
-      
-      <label for="empaque">¿Deseas empaque especial de regalo?</label>
-      <select id="empaque" onchange="actualizarPrecio()">
-        <option value="estandar" selected>No, gracias (bolsita estándar)</option>
-        <option value="Caja plateada">Caja plateada (+280 CUP)</option>
-      </select>
 
       <label for="cantidad">Cantidad (1–10):</label>
       <div class="cantidad-control">
@@ -76,28 +102,27 @@
         <button type="button" onclick="cambiarCantidad(1)">+</button>
       </div>
 
-      <div id="precioUnidad">💰 Precio por unidad: 350 CUP</div>
-      <div id="precioTotal">💵 Precio total: 350 CUP</div>
+      <div id="precioUnidad">💰 Precio por unidad: 180 CUP</div>
+      <div id="precioTotal">💵 Precio total: 180 CUP</div>
 
       <button type="button" class="submit-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
     </form>
   </div>
 
-  <!-- Toast -->
   <div id="toast">✅ Producto añadido al carrito</div>
 
   <script>
-    const precioSinAroma = 350;
-    const precioConAroma = 800;
-    const precioCaja = 280;
+    const precioSinAroma = 180;
+    const precioConAroma = 300;
 
     function actualizarPrecio() {
       const aroma = document.getElementById('aroma').value;
-      const empaque = document.getElementById('empaque').value;
       const cantidad = parseInt(document.getElementById('cantidad').value || 1, 10);
 
+      const empaqueInput = document.querySelector('input[name="empaque"]:checked');
+      const extraEmpaque = parseInt(empaqueInput.dataset.precio, 10) || 0;
+
       let precioUnidad = aroma === "Sin aroma" ? precioSinAroma : precioConAroma;
-      let extraEmpaque = empaque === "Caja plateada" ? precioCaja : 0;
       let total = (precioUnidad * cantidad) + extraEmpaque;
 
       document.getElementById("precioUnidad").textContent = "💰 Precio por unidad: " + precioUnidad + " CUP";
@@ -118,47 +143,38 @@
     }
 
     function agregarAlCarrito() {
-  const producto = "Vela decorativa de octoedro";
+      const producto = "Vela decorativa de octoedro";
 
-  // Obtener el texto visible del aroma, no solo el value
-  const aromaSelect = document.getElementById('aroma');
-  const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
+      const aromaSelect = document.getElementById('aroma');
+      const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
 
-  // Obtener el input de color seleccionado
-  const colorInput = document.querySelector('input[name="color"]:checked');
-  if (!colorInput) {
-    alert("Selecciona un color.");
-    return;
-  }
+      const colorInput = document.querySelector('input[name="color"]:checked');
+      if (!colorInput) {
+        alert("Selecciona un color.");
+        return;
+      }
 
-  const color = colorInput.getAttribute('data-nombre'); // nombre legible
+      const color = colorInput.getAttribute('data-nombre');
+      const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
 
-  const cantidad = parseInt(document.getElementById('cantidad').value.trim(), 10);
-  const empaque = document.getElementById('empaque').value;
-  const imagen = document.querySelector('input[name="imagen"]').value;
+      const empaqueInput = document.querySelector('input[name="empaque"]:checked');
+      const empaque = empaqueInput.value;
+      const extra = parseInt(empaqueInput.dataset.precio, 10) || 0;
 
-  let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
-  let extra = empaque === "Caja plateada" ? precioCaja : 0;
-  let total = (precio * cantidad) + extra;
+      let precio = aromaSelect.value === "Sin aroma" ? precioSinAroma : precioConAroma;
+      let total = (precio * cantidad) + extra;
 
-  const item = {
-    producto,
-    aroma,
-    color,
-    cantidad,
-    empaque,
-    precio,
-    total,
-    imagen
-  };
+      const imagen = document.querySelector('input[name="imagen"]').value;
 
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  carrito.push(item);
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+      const item = { producto, aroma, color, cantidad, empaque, precio, total, imagen };
 
-  mostrarToastYRedirigir();
-}
-    
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.push(item);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+
+      mostrarToastYRedirigir();
+    }
+
     function mostrarToastYRedirigir() {
       const toast = document.getElementById("toast");
       toast.classList.add("show");
