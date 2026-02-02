@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vela decorativa de corazones</title>
+  <title>Vela decorativa de corazones grandes</title>
   <link rel="stylesheet" href="../css/colores.css" />
 </head>
 <body>
   <div class="container">
-    <p class="producto-titulo">Producto: Vela decorativa de corazones</p>
+    <p class="producto-titulo">Producto: Vela decorativa de corazones grandes</p>
 
     <div class="cuadro-imagen">
-      <img src="../img/corazones.jpeg" alt="Vela corazones" />
+      <img src="../img/corazones-amor.jpeg" alt="Vela corazones grandes" />
     </div> 
     
-    <input type="hidden" name="imagen" value="img/corazones.jpeg" class="imagen-oculta" />
+    <input type="hidden" name="imagen" value="img/corazones-amor.jpeg" class="imagen-oculta" />
 
     <form id="velaForm">
       <label for="aroma">Selecciona el aroma:</label>
@@ -96,8 +96,8 @@
         <button type="button" onclick="cambiarCantidad(1)">+</button>
       </div>
 
-      <div id="precioUnidad">💰 Precio por unidad: 150 CUP</div>
-      <div id="precioTotal">💵 Precio total: 150 CUP</div>
+      <div id="precioUnidad">💰 Precio por unidad: 350 CUP</div>
+      <div id="precioTotal">💵 Precio total: 350 CUP</div>
 
       <button type="button" class="submit-button" onclick="agregarAlCarrito()">Añadir al carrito</button>
     </form>
@@ -106,8 +106,8 @@
   <div id="toast">✅ Producto añadido al carrito</div>
 
   <script>
-    const precioSinAroma = 150;
-    const precioConAroma = 280;
+    const precioSinAroma = 350;
+    const precioConAroma = 950;
 
     function actualizarPrecio() {
       const aroma = document.getElementById('aroma').value;
@@ -137,7 +137,7 @@
     }
 
     function agregarAlCarrito() {
-      const producto = "Vela decorativa de corazones";
+      const producto = "Vela decorativa de corazones grandes";
 
       const aromaSelect = document.getElementById('aroma');
       const aroma = aromaSelect.options[aromaSelect.selectedIndex].text;
