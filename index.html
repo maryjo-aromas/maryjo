@@ -761,18 +761,43 @@
   </footer>
 
 
-  <!-- JAVASCRIPT: MENÚ Y CARRITO -->
-  <script>
-  // FUNCIONALIDAD DEL MENÚ
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.querySelectorAll('nav a');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.checked = false; // Cierra el menú al hacer clic en un enlace
-    });
-  });
-</script>
+  <!-- JAVASCRIPT: MENÚ Y CONTADOR DEL CARRITO -->
+    <script>
+        // FUNCIONALIDAD DEL MENÚ
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelectorAll('nav a');
+    
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.checked = false;
+            });
+        });
+    
+        // CONTADOR DEL CARRITO
+        function actualizarContadorCarrito() {
+            const contador = document.getElementById('contador-carrito');
+    
+            if (!contador) return;
+    
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+            const totalUnidades = carrito.reduce((total, producto) => {
+                return total + (Number(producto.cantidad) || 1);
+            }, 0);
+    
+            contador.textContent = totalUnidades > 0 ? totalUnidades : '';
+        }
+    
+        // Actualizar al cargar la página
+        actualizarContadorCarrito();
+    
+        // Actualizar cuando cambie el carrito desde otra página o formulario
+        window.addEventListener('storage', actualizarContadorCarrito);
+    
+        // Actualizar al regresar a la página
+        window.addEventListener('pageshow', actualizarContadorCarrito);
+        window.addEventListener('focus', actualizarContadorCarrito);
+    </script>
   
 </body>
 </html>
