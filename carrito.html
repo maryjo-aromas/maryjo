@@ -310,276 +310,227 @@
     <script>
         const CART_KEY = "carrito";
         const WHATSAPP_NUMBER = "5353810462";
-
+        
         const cartContent = document.getElementById("cart-content");
-
+        
         function obtenerCarrito() {
-            try {
-                return JSON.parse(localStorage.getItem(CART_KEY)) || [];
-            } catch (error) {
-                return [];
-            }
+          try {
+            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+          } catch (error) {
+            return [];
+          }
         }
-
+        
         function guardarCarrito(carrito) {
-            localStorage.setItem(CART_KEY, JSON.stringify(carrito));
+          localStorage.setItem(CART_KEY, JSON.stringify(carrito));
         }
-
-        function escaparHTML(texto) {
-            return String(texto ?? "").replace(/[&<>"']/g, caracter => {
-                const entidades = {
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#039;"
-                };
-
-                return entidades[caracter];
-            });
+        
+        function escaparHTML(valor) {
+          return String(valor ?? "").replace(/[&<>"']/g, caracter => {
+            const caracteres = {
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;"
+            };
+            return caracteres[caracter];
+          });
         }
-
+        
         function numeroPrecio(valor) {
-            if (typeof valor === "number") {
-                return valor;
-            }
-
-            const numero = Number(
-                String(valor ?? "").replace(",", ".").replace(/[^\d.-]/g, "")
-            );
-
-            return Number.isFinite(numero) ? numero : 0;
+          const numero = Number(valor);
+          return Number.isFinite(numero) ? numero : 0;
         }
-
+        
         function formatoPrecio(valor) {
-            return numeroPrecio(valor).toLocaleString("es-ES") + " $";
+          return numeroPrecio(valor).toLocaleString("es-ES") + " CUP";
         }
-
+        
         function renderizarCarrito() {
-            const carrito = obtenerCarrito();
-
+          if (!cartContent) return;
+        
+          const carrito = obtenerCarrito();
+        
+          if (carrito.length === 0) {
             cartContent.innerHTML = `
-                <h2>Prueba de almacenamiento</h2>
-                <p>Productos encontrados: ${carrito.length}</p>
-                <pre style="white-space:pre-wrap; overflow-wrap:anywhere;">
-                    ${escaparHTML(JSON.stringify(carrito, null, 2))}
-                </pre>
+              <div class="cart-empty">
+                <p>Tu carrito está vacío.</p>
+                <a href="index.html" class="btn">Volver a la tienda</a>
+              </div>
             `;
             return;
-            
-            if (carrito.length === 0) {
-                cartContent.innerHTML = `
-                    <div class="cart-empty">
-                        <div class="cart-empty-icon">🛍️</div>
-                        <h2>Tu carrito está vacío</h2>
-                        <p>
-                            Todavía no has añadido ninguna vela.
-                            Explora nuestro catálogo y encuentra tu favorita.
-                        </p>
-                        <a href="index.html" class="cart-button">
-                            Volver al catálogo
-                        </a>
-                    </div>
-                `;
-
-                return;
+          }
+        
+          let totalPedido = 0;
+        
+          const productosHTML = carrito.map((item, index) => {
+            const nombre = item.producto || "Vela artesanal";
+            const imagen = item.imagen
+              ? `<img src="${escaparHTML(item.imagen)}" alt="${escaparHTML(nombre)}" class="cart-image">`
+              : "";
+        
+            const cantidad = Math.max(1, parseInt(item.cantidad, 10) || 1);
+            const total = numeroPrecio(item.total);
+            totalPedido += total;
+        
+            const detalles = [];
+        
+            if (item.color) {
+              detalles.push(`<p><strong>Color:</strong> ${escaparHTML(item.color)}</p>`);
             }
-
-            let totalPedido = 0;
-
-            const productosHTML = carrito.map((item, index) => {
-                const cantidad = Math.max(1, Number(item.cantidad) || 1);
-                const totalProducto = numeroPrecio(item.total);
-
-                totalPedido += totalProducto;
-
-                const detalles = [];
-
-                if (item.color) detalles.push("Color: " + escaparHTML(item.color));
-                if (item.tono) detalles.push("Tono: " + escaparHTML(item.tono));
-                if (item.aroma) detalles.push("Aroma: " + escaparHTML(item.aroma));
-                if (item.empaque) detalles.push("Empaque: " + escaparHTML(item.empaque));
-                if (item.numeros) detalles.push("Número: " + escaparHTML(item.numeros));
-
-                const imagen = item.imagen
-                    ? `<img src="${escaparHTML(item.imagen)}"
-                            alt="${escaparHTML(item.producto || "Vela")}"
-                            onerror="this.style.display='none'">`
-                    : <div></div>;
-
-                return `
-                    <article class="cart-item">
-                        ${imagen}
-
-                        <div class="cart-item-info">
-                            <h2 class="cart-item-name">
-                                ${escaparHTML(item.producto || "Vela artesanal")}
-                            </h2>
-
-                            <div class="cart-item-details">
-                                ${detalles.join("<br>")}
-                            </div>
-
-                            <div class="cart-item-price">
-                                ${formatoPrecio(totalProducto)}
-                            </div>
-
-                            <div class="cart-item-actions">
-                                <div class="cart-quantity">
-                                    <button type="button"
-                                            data-action="decrease"
-                                            data-index="${index}"
-                                            aria-label="Disminuir cantidad">−</button>
-
-                                    <span>${cantidad}</span>
-
-                                    <button type="button"
-                                            data-action="increase"
-                                            data-index="${index}"
-                                            aria-label="Aumentar cantidad">+</button>
-                                </div>
-
-                                <button type="button"
-                                        class="cart-remove"
-                                        data-action="remove"
-                                        data-index="${index}">
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                `;
-            }).join("");
-
-            cartContent.innerHTML = `
-                <div class="cart-list">
-                    ${productosHTML}
+        
+            if (item.tono) {
+              const tono = item.tono === "base-oscura"
+                ? "Base oscura, parte superior clara"
+                : "Color uniforme";
+              detalles.push(`<p><strong>Tono:</strong> ${escaparHTML(tono)}</p>`);
+            }
+        
+            if (item.aroma) {
+              detalles.push(`<p><strong>Aroma:</strong> ${escaparHTML(item.aroma)}</p>`);
+            }
+        
+            if (item.numeros) {
+              detalles.push(`<p><strong>Números:</strong> ${escaparHTML(item.numeros)}</p>`);
+            }
+        
+            if (item.empaque) {
+              detalles.push(`<p><strong>Empaque:</strong> ${escaparHTML(item.empaque)}</p>`);
+            }
+        
+            return `
+              <article class="cart-item">
+                ${imagen}
+                <div class="cart-item-details">
+                  <h3>${escaparHTML(nombre)}</h3>
+                  ${detalles.join("")}
+                  <p><strong>Precio:</strong> <span class="cart-item-total">${formatoPrecio(total)}</span></p>
+                  <div class="cart-quantity">
+                    <button type="button" class="quantity-minus" data-index="${index}" aria-label="Restar una unidad">−</button>
+                    <span>${cantidad}</span>
+                    <button type="button" class="quantity-plus" data-index="${index}" aria-label="Añadir una unidad">+</button>
+                  </div>
                 </div>
-
-                <div class="cart-summary">
-                    <div class="cart-total">
-                        <span>Total del pedido</span>
-                        <span class="cart-total-amount">
-                            ${formatoPrecio(totalPedido)}
-                        </span>
-                    </div>
-
-                    <button type="button"
-                            class="cart-button"
-                            id="send-whatsapp">
-                        Realizar pedido por WhatsApp
-                    </button>
-
-                    <button type="button"
-                            class="cart-button-secondary"
-                            id="clear-cart">
-                        Vaciar carrito
-                    </button>
-                </div>
+                <button type="button" class="cart-remove" data-index="${index}" aria-label="Eliminar producto">Eliminar</button>
+              </article>
             `;
-
-            document.getElementById("send-whatsapp")
-                .addEventListener("click", enviarPedidoWhatsApp);
-
-            document.getElementById("clear-cart")
-                .addEventListener("click", vaciarCarrito);
+          }).join("");
+        
+          cartContent.innerHTML = `
+            <div class="cart-list">
+              ${productosHTML}
+            </div>
+            <div class="cart-summary">
+              <p class="cart-total"><strong>Total del pedido:</strong> ${formatoPrecio(totalPedido)}</p>
+              <button type="button" id="send-whatsapp" class="btn btn-whatsapp">
+                Comprar por WhatsApp
+              </button>
+              <button type="button" id="clear-cart" class="btn btn-clear">
+                Vaciar carrito
+              </button>
+            </div>
+          `;
         }
-
+        
         function cambiarCantidad(index, cambio) {
-            const carrito = obtenerCarrito();
-            const item = carrito[index];
-
-            if (!item) return;
-
-            const cantidadAnterior = Math.max(1, Number(item.cantidad) || 1);
-            const totalAnterior = numeroPrecio(item.total);
-
-            const precioUnitario = totalAnterior / cantidadAnterior;
-            const nuevaCantidad = cantidadAnterior + cambio;
-
-            if (nuevaCantidad < 1) return;
-
-            item.cantidad = nuevaCantidad;
-            item.total = Math.round(precioUnitario * nuevaCantidad * 100) / 100;
-
-            guardarCarrito(carrito);
-            renderizarCarrito();
+          const carrito = obtenerCarrito();
+          const item = carrito[index];
+        
+          if (!item) return;
+        
+          const cantidadAnterior = Math.max(1, parseInt(item.cantidad, 10) || 1);
+          const nuevaCantidad = cantidadAnterior + cambio;
+        
+          if (nuevaCantidad < 1) return;
+        
+          const precioUnidad = numeroPrecio(item.precio);
+          const totalAnterior = numeroPrecio(item.total);
+        
+          // El total guardado incluye el posible extra fijo del empaque.
+          const extraEmpaque = totalAnterior - (precioUnidad * cantidadAnterior);
+        
+          item.cantidad = nuevaCantidad;
+          item.total = (precioUnidad * nuevaCantidad) + extraEmpaque;
+        
+          guardarCarrito(carrito);
+          renderizarCarrito();
         }
-
+        
         function eliminarProducto(index) {
-            const carrito = obtenerCarrito();
-
-            carrito.splice(index, 1);
-
-            guardarCarrito(carrito);
-            renderizarCarrito();
+          const carrito = obtenerCarrito();
+          carrito.splice(index, 1);
+          guardarCarrito(carrito);
+          renderizarCarrito();
         }
-
+        
         function vaciarCarrito() {
-            const confirmar = confirm(
-                "¿Estás segura de que quieres vaciar tu carrito?"
-            );
-
-            if (!confirmar) return;
-
-            guardarCarrito([]);
-            renderizarCarrito();
+          localStorage.removeItem(CART_KEY);
+          renderizarCarrito();
         }
-
+        
         function enviarPedidoWhatsApp() {
-            const carrito = obtenerCarrito();
-
-            if (carrito.length === 0) return;
-
-            let mensaje = "¡Hola! Quisiera realizar el siguiente pedido de MaryJo Aromas:\n\n";
-
-            carrito.forEach((item, index) => {
-                mensaje += ${index + 1}. ${item.producto || "Vela artesanal"}\n;
-                mensaje += Cantidad: ${item.cantidad || 1}\n;
-
-                if (item.color) mensaje += Color: ${item.color}\n;
-                if (item.tono) mensaje += Tono: ${item.tono}\n;
-                if (item.aroma) mensaje += Aroma: ${item.aroma}\n;
-                if (item.empaque) mensaje += Empaque: ${item.empaque}\n;
-                if (item.numeros) mensaje += Número: ${item.numeros}\n;
-
-                mensaje += Precio: ${formatoPrecio(item.total)}\n\n;
-            });
-
-            const totalPedido = carrito.reduce(
-                (suma, item) => suma + numeroPrecio(item.total),
-                0
-            );
-
-            mensaje += TOTAL DEL PEDIDO: ${formatoPrecio(totalPedido)};
-
-            const url = https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)};
-
-            window.open(url, "_blank");
+          const carrito = obtenerCarrito();
+        
+          if (carrito.length === 0) return;
+        
+          let totalPedido = 0;
+          let mensaje = "¡Hola! Quiero realizar el siguiente pedido de velas:\n\n";
+        
+          carrito.forEach((item, index) => {
+            const cantidad = Math.max(1, parseInt(item.cantidad, 10) || 1);
+            const total = numeroPrecio(item.total);
+            totalPedido += total;
+        
+            mensaje += `${index + 1}. ${item.producto || "Vela artesanal"}\n`;
+            mensaje += `Cantidad: ${cantidad}\n`;
+        
+            if (item.color) mensaje += `Color: ${item.color}\n`;
+            if (item.tono) {
+              mensaje += `Tono: ${
+                item.tono === "base-oscura"
+                  ? "Base oscura, parte superior clara"
+                  : "Color uniforme"
+              }\n`;
+            }
+            if (item.aroma) mensaje += `Aroma: ${item.aroma}\n`;
+            if (item.numeros) mensaje += `Números: ${item.numeros}\n`;
+            if (item.empaque) mensaje += `Empaque: ${item.empaque}\n`;
+        
+            mensaje += `Precio: ${formatoPrecio(total)}\n\n`;
+          });
+        
+          mensaje += `TOTAL DEL PEDIDO: ${formatoPrecio(totalPedido)}\n\n`;
+          mensaje += "¡Gracias!";
+        
+          const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+          window.open(url, "_blank");
         }
-
-        cartContent.addEventListener("click", function(event) {
-            const boton = event.target.closest("button[data-action]");
-
+        
+        // Un solo listener para los botones de los productos y del resumen.
+        if (cartContent) {
+          cartContent.addEventListener("click", function (evento) {
+            const boton = evento.target.closest("button");
             if (!boton) return;
-
+        
             const index = Number(boton.dataset.index);
-            const accion = boton.dataset.action;
-
-            if (accion === "increase") {
-                cambiarCantidad(index, 1);
+        
+            if (boton.classList.contains("quantity-minus")) {
+              cambiarCantidad(index, -1);
+            } else if (boton.classList.contains("quantity-plus")) {
+              cambiarCantidad(index, 1);
+            } else if (boton.classList.contains("cart-remove")) {
+              eliminarProducto(index);
+            } else if (boton.id === "send-whatsapp") {
+              enviarPedidoWhatsApp();
+            } else if (boton.id === "clear-cart") {
+              vaciarCarrito();
             }
+          });
+        }
+        
+        renderizarCarrito();
 
-            if (accion === "decrease") {
-                cambiarCantidad(index, -1);
-            }
-
-            if (accion === "remove") {
-                eliminarProducto(index);
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", renderizarCarrito);
     </script>
 
 </body>
