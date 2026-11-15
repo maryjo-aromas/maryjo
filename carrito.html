@@ -1,135 +1,577 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carrito de Compras</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #fdfdfd;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .acciones {
-      color: red;
-      cursor: pointer;
-    }
-    #total {
-      text-align: right;
-      font-size: 1.2em;
-      margin-top: 15px;
-    }
-    .whatsapp-btn {
-      display: block;
-      margin: 30px auto;
-      padding: 10px 20px;
-      background-color: #25D366;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.1em;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi carrito | MaryJo Aromas</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #faf8f5;
+            color: #49382f;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .cart-page {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 35px 20px 60px;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cart-brand {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .cart-heading {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            font-weight: normal;
+            margin: 25px 0 10px;
+        }
+
+        .cart-intro {
+            color: #81756c;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cart-back {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #806b59;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .cart-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 115px minmax(0, 1fr);
+            gap: 18px;
+            padding: 16px;
+            background: #fff;
+            border: 1px solid #eee5dc;
+            border-radius: 12px;
+        }
+
+        .cart-item img {
+            width: 115px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #f5f0e9;
+        }
+
+        .cart-item-info {
+            min-width: 0;
+        }
+
+        .cart-item-name {
+            font-family: Georgia, serif;
+            font-size: 18px;
+            margin: 2px 0 8px;
+        }
+
+        .cart-item-details {
+            color: #786d64;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .cart-item-price {
+            margin-top: 9px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 13px;
+        }
+
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e5d9cc;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+
+        .cart-quantity button {
+            width: 32px;
+            height: 30px;
+            border: none;
+            background: #f5f0e9;
+            color: #49382f;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .cart-quantity span {
+            min-width: 32px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .cart-remove {
+            border: none;
+            background: transparent;
+            color: #9a655c;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .cart-summary {
+            margin-top: 25px;
+            padding: 22px;
+            background: #f3ede5;
+            border: 1px solid #e9dfd2;
+            border-radius: 12px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .cart-total-amount {
+            font-size: 22px;
+        }
+
+        .cart-button {
+            display: block;
+            width: 100%;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #49382f;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s ease;
+        }
+
+        .cart-button:hover {
+            background: #675143;
+        }
+
+        .cart-button-secondary {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 11px;
+            border: 1px solid #d9cbbd;
+            border-radius: 8px;
+            background: transparent;
+            color: #78675a;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .cart-empty {
+            padding: 45px 20px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #eee5dc;
+            border-radius: 12px;
+        }
+
+        .cart-empty-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .cart-empty h2 {
+            font-family: Georgia, serif;
+            font-weight: normal;
+            font-size: 23px;
+        }
+
+        .cart-empty p {
+            color: #81756c;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cart-footer {
+            margin-top: 35px;
+            text-align: center;
+            color: #9a8c80;
+            font-size: 12px;
+        }
+
+        @media (max-width: 520px) {
+            .cart-page {
+                padding: 25px 13px 45px;
+            }
+
+            .cart-heading {
+                font-size: 26px;
+            }
+
+            .cart-item {
+                grid-template-columns: 90px minmax(0, 1fr);
+                gap: 12px;
+                padding: 12px;
+            }
+
+            .cart-item img {
+                width: 90px;
+                height: 105px;
+            }
+
+            .cart-item-name {
+                font-size: 16px;
+            }
+
+            .cart-item-details {
+                font-size: 12px;
+            }
+
+            .cart-item-price {
+                font-size: 15px;
+            }
+
+            .cart-item-actions {
+                gap: 8px;
+            }
+
+            .cart-summary {
+                padding: 17px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <h1>🛒 Tu Carrito</h1>
+    <main class="cart-page">
 
-  <table id="tablaCarrito">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Empaque</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Total</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+        <header class="cart-header">
+            <div class="cart-brand">MaryJo Aromas</div>
 
-  <div id="total"></div>
+            <h1 class="cart-heading">Mi carrito</h1>
 
-  <button class="whatsapp-btn" onclick="enviarPorWhatsApp()">Enviar pedido por WhatsApp</button>
+            <p class="cart-intro">
+                Aquí puedes revisar tus velas y personalizaciones
+                antes de realizar tu pedido.
+            </p>
 
-  <script>
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const tabla = document.querySelector("#tablaCarrito tbody");
-    const totalDiv = document.getElementById("total");
+            <a href="index.html" class="cart-back">
+                ← Seguir explorando el catálogo
+            </a>
+        </header>
 
-    function mostrarCarrito() {
-      tabla.innerHTML = "";
-      let total = 0;
+        <section id="cart-content">
+            <!-- Los productos se muestran aquí -->
+        </section>
 
-      carrito.forEach((item, index) => {
-        const subtotal = item.precio * item.cantidad;
-        total += subtotal;
+        <footer class="cart-footer">
+            © 2025 MaryJo Aromas. Todos los derechos reservados.
+        </footer>
 
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
-          <td>${item.nombre}</td>
-          <td>${item.empaque}</td>
-          <td>${item.cantidad}</td>
-          <td>${item.precio} CUP</td>
-          <td>${subtotal} CUP</td>
-          <td><span class="acciones" onclick="eliminarProducto(${index})">Eliminar</span></td>
-        `;
-        tabla.appendChild(fila);
-      });
+    </main>
 
-      totalDiv.textContent = Total: ${total} CUP;
-    }
+    <script>
+        const CART_KEY = "carrito";
+        const WHATSAPP_NUMBER = "5353810462";
 
-    function eliminarProducto(index) {
-      carrito.splice(index, 1);
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      mostrarCarrito();
-    }
+        const cartContent = document.getElementById("cart-content");
 
-    function enviarPorWhatsApp() {
-      if (carrito.length === 0) {
-        alert("Tu carrito está vacío");
-        return;
-      }
+        function obtenerCarrito() {
+            try {
+                return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+            } catch (error) {
+                return [];
+            }
+        }
 
-      let mensaje = "Hola, quiero hacer el siguiente pedido:%0A";
-      let total = 0;
+        function guardarCarrito(carrito) {
+            localStorage.setItem(CART_KEY, JSON.stringify(carrito));
+        }
 
-      carrito.forEach(item => {
-        mensaje += - ${item.cantidad} ${item.nombre} con ${item.empaque}%0A;
-        total += item.precio * item.cantidad;
-      });
+        function escaparHTML(texto) {
+            return String(texto ?? "").replace(/[&<>"']/g, caracter => {
+                const entidades = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+                };
 
-      mensaje += %0ATotal: ${total} CUP;
+                return entidades[caracter];
+            });
+        }
 
-      const numero = "5353810462"; // Aquí tu número de WhatsApp
-      const url = https://wa.me/${numero}?text=${mensaje};
+        function numeroPrecio(valor) {
+            if (typeof valor === "number") {
+                return valor;
+            }
 
-      window.open(url, "_blank");
-    }
+            const numero = Number(
+                String(valor ?? "").replace(",", ".").replace(/[^\d.-]/g, "")
+            );
 
-    mostrarCarrito();
-  </script>
+            return Number.isFinite(numero) ? numero : 0;
+        }
+
+        function formatoPrecio(valor) {
+            return numeroPrecio(valor).toLocaleString("es-ES") + " $";
+        }
+
+        function renderizarCarrito() {
+            const carrito = obtenerCarrito();
+
+            if (carrito.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon">🛍️</div>
+                        <h2>Tu carrito está vacío</h2>
+                        <p>
+                            Todavía no has añadido ninguna vela.
+                            Explora nuestro catálogo y encuentra tu favorita.
+                        </p>
+                        <a href="index.html" class="cart-button">
+                            Volver al catálogo
+                        </a>
+                    </div>
+                `;
+
+                return;
+            }
+
+            let totalPedido = 0;
+
+            const productosHTML = carrito.map((item, index) => {
+                const cantidad = Math.max(1, Number(item.cantidad) || 1);
+                const totalProducto = numeroPrecio(item.total);
+
+                totalPedido += totalProducto;
+
+                const detalles = [];
+
+                if (item.color) detalles.push("Color: " + escaparHTML(item.color));
+                if (item.tono) detalles.push("Tono: " + escaparHTML(item.tono));
+                if (item.aroma) detalles.push("Aroma: " + escaparHTML(item.aroma));
+                if (item.empaque) detalles.push("Empaque: " + escaparHTML(item.empaque));
+                if (item.numeros) detalles.push("Número: " + escaparHTML(item.numeros));
+
+                const imagen = item.imagen
+                    ? `<img src="${escaparHTML(item.imagen)}"
+                            alt="${escaparHTML(item.producto || "Vela")}"
+                            onerror="this.style.display='none'">`
+                    : <div></div>;
+
+                return `
+                    <article class="cart-item">
+                        ${imagen}
+
+                        <div class="cart-item-info">
+                            <h2 class="cart-item-name">
+                                ${escaparHTML(item.producto || "Vela artesanal")}
+                            </h2>
+
+                            <div class="cart-item-details">
+                                ${detalles.join("<br>")}
+                            </div>
+
+                            <div class="cart-item-price">
+                                ${formatoPrecio(totalProducto)}
+                            </div>
+
+                            <div class="cart-item-actions">
+                                <div class="cart-quantity">
+                                    <button type="button"
+                                            data-action="decrease"
+                                            data-index="${index}"
+                                            aria-label="Disminuir cantidad">−</button>
+
+                                    <span>${cantidad}</span>
+
+                                    <button type="button"
+                                            data-action="increase"
+                                            data-index="${index}"
+                                            aria-label="Aumentar cantidad">+</button>
+                                </div>
+
+                                <button type="button"
+                                        class="cart-remove"
+                                        data-action="remove"
+                                        data-index="${index}">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            cartContent.innerHTML = `
+                <div class="cart-list">
+                    ${productosHTML}
+                </div>
+
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total del pedido</span>
+                        <span class="cart-total-amount">
+                            ${formatoPrecio(totalPedido)}
+                        </span>
+                    </div>
+
+                    <button type="button"
+                            class="cart-button"
+                            id="send-whatsapp">
+                        Realizar pedido por WhatsApp
+                    </button>
+
+                    <button type="button"
+                            class="cart-button-secondary"
+                            id="clear-cart">
+                        Vaciar carrito
+                    </button>
+                </div>
+            `;
+
+            document.getElementById("send-whatsapp")
+                .addEventListener("click", enviarPedidoWhatsApp);
+
+            document.getElementById("clear-cart")
+                .addEventListener("click", vaciarCarrito);
+        }
+
+        function cambiarCantidad(index, cambio) {
+            const carrito = obtenerCarrito();
+            const item = carrito[index];
+
+            if (!item) return;
+
+            const cantidadAnterior = Math.max(1, Number(item.cantidad) || 1);
+            const totalAnterior = numeroPrecio(item.total);
+
+            const precioUnitario = totalAnterior / cantidadAnterior;
+            const nuevaCantidad = cantidadAnterior + cambio;
+
+            if (nuevaCantidad < 1) return;
+
+            item.cantidad = nuevaCantidad;
+            item.total = Math.round(precioUnitario * nuevaCantidad * 100) / 100;
+
+            guardarCarrito(carrito);
+            renderizarCarrito();
+        }
+
+        function eliminarProducto(index) {
+            const carrito = obtenerCarrito();
+
+            carrito.splice(index, 1);
+
+            guardarCarrito(carrito);
+            renderizarCarrito();
+        }
+
+        function vaciarCarrito() {
+            const confirmar = confirm(
+                "¿Estás segura de que quieres vaciar tu carrito?"
+            );
+
+            if (!confirmar) return;
+
+            guardarCarrito([]);
+            renderizarCarrito();
+        }
+
+        function enviarPedidoWhatsApp() {
+            const carrito = obtenerCarrito();
+
+            if (carrito.length === 0) return;
+
+            let mensaje = "¡Hola! Quisiera realizar el siguiente pedido de MaryJo Aromas:\n\n";
+
+            carrito.forEach((item, index) => {
+                mensaje += ${index + 1}. ${item.producto || "Vela artesanal"}\n;
+                mensaje += Cantidad: ${item.cantidad || 1}\n;
+
+                if (item.color) mensaje += Color: ${item.color}\n;
+                if (item.tono) mensaje += Tono: ${item.tono}\n;
+                if (item.aroma) mensaje += Aroma: ${item.aroma}\n;
+                if (item.empaque) mensaje += Empaque: ${item.empaque}\n;
+                if (item.numeros) mensaje += Número: ${item.numeros}\n;
+
+                mensaje += Precio: ${formatoPrecio(item.total)}\n\n;
+            });
+
+            const totalPedido = carrito.reduce(
+                (suma, item) => suma + numeroPrecio(item.total),
+                0
+            );
+
+            mensaje += TOTAL DEL PEDIDO: ${formatoPrecio(totalPedido)};
+
+            const url = https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)};
+
+            window.open(url, "_blank");
+        }
+
+        cartContent.addEventListener("click", function(event) {
+            const boton = event.target.closest("button[data-action]");
+
+            if (!boton) return;
+
+            const index = Number(boton.dataset.index);
+            const accion = boton.dataset.action;
+
+            if (accion === "increase") {
+                cambiarCantidad(index, 1);
+            }
+
+            if (accion === "decrease") {
+                cambiarCantidad(index, -1);
+            }
+
+            if (accion === "remove") {
+                eliminarProducto(index);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", renderizarCarrito);
+    </script>
 
 </body>
 </html>
