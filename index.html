@@ -753,15 +753,7 @@
       Enviar mensaje
     </a>
   </section>
-
-
-  <!-- CARRITO -->
-  <section id="carrito" class="seccion-carrito">
-    <h3 class="carrito-titulo">🛒 Tu carrito</h3>
-    <div id="carrito-contenido" class="carrito-contenido"></div>
-  </section>
-
-
+  
   <!-- PIE DE PÁGINA -->
   <footer class="footer">
     <p>&copy; 2025 MaryJo Aromas. Todos los derechos reservados.</p>
@@ -778,126 +770,6 @@
     link.addEventListener('click', () => {
       menuToggle.checked = false; // Cierra el menú al hacer clic en un enlace
     });
-  });
-
-  // FUNCIONALIDAD DEL CARRITO
-  document.addEventListener("DOMContentLoaded", function () {
-    const carritoContenido = document.getElementById("carrito-contenido");
-
-    function cargarCarrito() {
-      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-      if (carrito.length === 0) {
-        carritoContenido.innerHTML = "<p>Tu carrito está vacío.</p>";
-        return;
-      }
-
-      let html = "<ul class='lista-carrito'>"; 
-     
-      carrito.forEach((producto, index) => { 
-        const nombre = producto.producto || ''; 
-        const imagen = producto.imagen || 'img/default.png'; 
-        const color = producto.color || ''; 
-        const aroma = producto.aroma || ''; 
-        const empaque = producto.empaque || ''; 
-        const cantidad = producto.cantidad || ''; 
-        const total = producto.total || ''; 
-        const numeros = producto.numeros || ''; 
-        const tono = producto.tono || ''; 
-        
-        html += ` 
-        <li class="item-carrito"> 
-          <div class="producto-info"> 
-            <img src="${imagen}" alt="${nombre}" class="miniatura"> 
-            <div class="detalle"> 
-              <span class="nombre">Producto: ${nombre}</span> 
-              ${nombre.toLowerCase().includes("número") ? ` 
-                ${color ? `<span class="color">Color: ${color}</span>` : ''} 
-                <span class="numeros">Números: ${numeros}</span> 
-                ` : ` 
-                  ${color ? `<span class="color">Color: ${color}</span>` : ''}  
-                  ${tono ? `<span class="tono">Tono: ${  
-                    tono === 'base-oscura'
-                      ? 'Base oscura, parte superior clara'
-                      : 'Color uniforme'
-                }</span>`  : ''} 
-                ${aroma ? `<span class="aroma">Aroma: ${aroma}</span>` : ''} 
-                ${cantidad ? `<span class="cantidad">Cantidad: x${cantidad}</span>` : ''} 
-              `} 
-              <span class="empaque">Empaque: ${empaque}</span> 
-              <span class="precio">Precio: ${total} CUP</span> 
-            </div> 
-          </div> 
-          <button class="eliminar-producto" data-index="${index}">🗑️</button> 
-        </li> 
-      `;
-    }); 
-    html += "</ul>";
-
-      // Botón para enviar por WhatsApp
-      html += `
-        <div class="boton-whatsapp-container">
-          <button id="enviar-whatsapp" class="btn btn-whatsapp">Comprar por WhatsApp</button>
-        </div>
-      `;
-    carritoContenido.innerHTML = html;
-    
-      // Activar botones de eliminar
-      const botonesEliminar = document.querySelectorAll(".eliminar-producto");
-      botonesEliminar.forEach(boton => {
-        boton.addEventListener("click", function () {
-          const index = this.getAttribute("data-index");
-          eliminarDelCarrito(index);
-        });
-      });
-
-      // Asignar funcionalidad al botón de WhatsApp
-      const botonWhatsApp = document.getElementById("enviar-whatsapp");
-      if (botonWhatsApp) {
-        botonWhatsApp.addEventListener("click", function () {
-          const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-          enviarCarritoPorWhatsApp(carrito);
-        });
-      }
-    }
-          
-  
-
-    function eliminarDelCarrito(index) {
-      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      carrito.splice(index, 1); // Eliminar producto en esa posición
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      cargarCarrito(); // Recargar vista
-    }
-    function enviarCarritoPorWhatsApp(carrito) {
-      let mensaje = "¡Hola! Quiero hacer el siguiente pedido de velas:\n\n";
-
-      carrito.forEach((producto, i) => {
-        mensaje += `🕯️ *${producto.producto}*\n`;
-        if (producto.color) mensaje += `• Color: ${producto.color}\n`;
-        if (producto.tono) {
-          mensaje += `• Tono: ${
-            producto.tono === 'base-oscura'
-              ? 'Base oscura, parte superior clara'
-              : 'Color uniforme'
-          }\n`;
-        }
-        if (producto.numeros) mensaje += `• Números: ${producto.numeros}\n`;
-        if (producto.aroma) mensaje += `• Aroma: ${producto.aroma}\n`;
-        if (producto.empaque) mensaje += `• Empaque: ${producto.empaque}\n`;
-        if (producto.cantidad) mensaje += `• Cantidad: x${producto.cantidad}\n`;
-        if (producto.total) mensaje += `• Precio: ${producto.total} CUP\n`;
-        mensaje += `\n`;
-      });
-
-      mensaje += "Gracias! 😊";
-
-      const mensajeCodificado = encodeURIComponent(mensaje);
-      const numero = "5353810462"; 
-      const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
-      window.open(url, "_blank");
-    }
-    cargarCarrito();
   });
 </script>
   
