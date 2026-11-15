@@ -623,3 +623,33 @@ footer {
     }
 
 }
+
+/* BOTÓN DEL CARRITO */
+
+.carrito-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #d9cbbd;
+    border-radius: 10px;
+    background: transparent;
+    color: #49382f;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.carrito-icono svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.carrito-icono:hover {
+    background: #eee5dc;
+}
