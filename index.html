@@ -1,300 +1,199 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MaryJo Aromas</title>
-  <link rel="stylesheet" href="css/estilos.css" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  .btn-whatsapp {
-    background-color: #25D366;
-    color: white;
-    padding: 5px 8px;
-    border-radius: 8px;
-    font-size: 16px;
-    min-width: 160px;
-    margin-top: 10px;
-    margin-bottom: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-whatsapp:hover {
-    background-color: #1ebe5d;
-  }
-  
-  .boton-whatsapp-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 12px;
-  }
-  .halloween-section {
-    color: #000000d7;
-    padding: 20px 20px;
-    text-align: center;
-    background-color: rgba(77, 77, 77, 0.336); 
-    background-blend-mode: multiply; 
-  }
-
-  .halloween-section h2 {
-    color: #ff741e;
-    font-size: 1.5em;
-    margin-bottom: 25px;
-  }
-
-  .product-group {
-    margin-bottom: 50px;
-  }
-
-  .product-description {
-    font-size: 0.8em;
-    color: #000000;
-    margin-bottom: 20px;
-  }
-
-  .product-row {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .product {
-    background-color: #3a3a3a23;
-    border-radius: 10px;
-    padding: 20px;
-    width: 280px;
-    box-shadow: 0 4px 8px rgba(2, 0, 0, 0.432);
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-
-  .product:hover {
-    transform: translateY(-5px);
-  }
-
-  .product img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-
-  .halloween-section h3 {
-    color: #42016dad;
-    font-size: 1.2em;
-  }
-
-  .halloween-section p {
-    margin: 6px 0;
-    font-size: 1em;
-  }
-
-  .availability {
-    color: #ffa339;
-    font-weight: bold;
-  }
-
-  .buy-btn {
-    display: inline-block;
-    background-color: #fd8439ad;
-    color: #fff;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-
-  .buy-btn.disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    pointer-events: none;
-    text-decoration: none;
-  }
-
-  .buy-btn:hover {
-    background-color: #e46825e3;
-  }
-
-  @media (max-width: 768px) {
-    .product-row {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product {
-      width: 90%;
-    }
-
-    .halloween-section h2 {
-      font-size: 1.5em;
-    }
-  }
-</style>
-  
+  <meta name="description" content="Velas artesanales MaryJo Aromas. Descubre nuestras velas decorativas, aromáticas y naturales, hechas a mano y personalizadas para ti.">
+  <title>MaryJo Aromas</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
-  
+
 <body>
+
+  <!-- HEADER Y MENÚ -->
   <header class="header">
-  <div class="logo-titulo">
-    <img src="img/logo-maryjo.png" alt="Logo MaryJo" class="logo" />
-    <span class="titulo">MaryJo Aromas</span>
-  </div>
+    <div class="logo-titulo">
+      <img src="img/logo-maryjo.png" alt="Logo MaryJo Aromas" class="logo">
+      <span class="titulo">MaryJo Aromas</span>
+    </div>
 
+    <a href="#carrito" class="carrito-icono" aria-label="Ir al carrito">🛒</a>
 
-    <a href="#carrito" class="carrito-icono">🛒</a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
- 
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
- 
-  <nav class="menu">
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#aromaticas">Velas Decorativas - Aromáticas</a></li>
-      <li><a href="#naturales">Velas Decorativas Naturales</a></li>
-      <li><a href="#como-funciona">Cómo funciona el catálogo?</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
+    <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">&#9776;</label>
 
-  <!-- SECCIÓN INICIO -->
+    <nav class="menu">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#categorias">Categorías</a></li>
+        <li><a href="#novedades">Novedades</a></li>
+        <li><a href="#aromaticas">Velas aromáticas</a></li>
+        <li><a href="#navidenas">Velas navideñas</a></li>
+        <li><a href="#naturales">Velas naturales</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- BIENVENIDA -->
   <section id="inicio" class="inicio bienvenida">
     <h3>Bienvenida a MaryJo Aromas</h3>
     <p>
       Velas artesanales hechas a mano, pensadas especialmente para ti.<br>
-      Aquí puedes explorar cada una de nuestras velas: creadas con cariño, paciencia y mucha atención al detalle.
+      Aquí puedes explorar cada una de nuestras velas: creadas con cariño,
+      paciencia y mucha atención al detalle.
     </p>
   </section>
 
-  <!-- SECCIÓN CÓMO FUNCIONA -->
-  <section id="como-funciona" class="como-funciona">
-    <h3>✨ Cómo funciona el catálogo?</h3>
-    <ul>
-      <li>Puedes comprar directamente cualquiera de nuestras velas decorativas naturales.</li>
-      <li>También puedes personalizar las velas decorativas-aromáticas: elige el aroma (o sin aroma), color, tipo de empaque y cantidad.</li>
-      <li>Solo toca el botón de tu vela favorita y te llevamos directo a WhatsApp. ¡Así de fácil!</li>
-    </ul>
-    <p>
-      🕯️ Todas nuestras velas se elaboran por encargo, especialmente para ti.<br>
-      📦 Atención personalizada a través de WhatsApp.<br>
-      🕥 Tiempo de elaboración: hasta 5 días.<br>
+
+  <!-- ACCESOS RÁPIDOS A CATEGORÍAS -->
+  <section id="categorias" class="categorias">
+    <h3>Explora nuestras categorías</h3>
+    <p class="categorias-intro">
+      Encuentra tu vela favorita y descubre todo lo que tenemos para ti.
     </p>
-    <p class="gracias">
-      Gracias por apoyar este emprendimiento hecho con el corazón. ❤️<br>
-      Bienvenida al mundo de MaryJo Aromas.
-    </p>
-  </section>
 
-  
-     <!-- SECCIÓN VELAS Nuevas   -->
-  
-  <section id="aromaticas" class="productos">
-    <h3>Novedades</h3>
-    <div class="galeria">
+    <div class="categorias-grid">
 
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/esferarosas.jpeg" alt="Vela de esfera de rosas" />
-          </div>
-          <h4>Vela Esfera de Rosas</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>350$</strong></p>
-          <a href="formulario/esferarosas.html" class="btn">Añadir al carrito</a>
-        </div>
-      
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/nudoentrelazado.jpeg" alt="Vela de nudo entrelazado" />
-          </div>
-          <h4>Vela de Nudo Entrelazado</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>600$</strong></p>
-          <a href="formulario/nudoentrelazado.html" class="btn">Añadir al carrito</a>
-        </div>
+      <a href="#novedades" class="categoria-enlace">
+        <span class="categoria-numero">01</span>
+        <span class="categoria-nombre">Novedades</span>
+        <span class="categoria-descripcion">Nuestros últimos diseños</span>
+      </a>
 
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/nudofino.jpeg" alt="Vela de nudo fino" />
-          </div>
-          <h4>Vela de Nudo Fino</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>700$</strong></p>
-          <a href="formulario/nudofino.html" class="btn">Añadir al carrito</a>
-        </div>
-      
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/rosaabierta.jpeg" alt="Vela de rosa abierta" />
-          </div>
-          <h4>Vela de Rosa Abierta</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>400$</strong></p>
-          <a href="formulario/rosaabierta.html" class="btn">Añadir al carrito</a>
-        </div>
-      
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/tarrofresa.jpeg" alt="Vela de tarrito de fresa" />
-          </div>
-          <h4>Vela Tarrito de Fresa</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>550$</strong></p>
-          <a href="formulario/tarrofresa.html" class="btn">Añadir al carrito</a>
-        </div>
+      <a href="#aromaticas" class="categoria-enlace">
+        <span class="categoria-numero">02</span>
+        <span class="categoria-nombre">Aromáticas</span>
+        <span class="categoria-descripcion">Velas decorativas y personalizables</span>
+      </a>
 
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/tarroflor.jpeg" alt="Vela de tarrito de flor" />
-          </div>
-          <h4>Vela Tarrito de Flor</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>600$</strong></p>
-          <a href="formulario/tarroflor.html" class="btn">Añadir al carrito</a>
-        </div>
-        
+      <a href="#navidenas" class="categoria-enlace">
+        <span class="categoria-numero">03</span>
+        <span class="categoria-nombre">Navideñas</span>
+        <span class="categoria-descripcion">Diseños especiales para Navidad</span>
+      </a>
+
+      <a href="#naturales" class="categoria-enlace">
+        <span class="categoria-numero">04</span>
+        <span class="categoria-nombre">Naturales</span>
+        <span class="categoria-descripcion">Velas decorativas naturales</span>
+      </a>
+
     </div>
   </section>
-  
-  <!-- SECCIÓN VELAS AROMÁTICAS -->
-  <section id="aromaticas" class="productos">
-    <h3>Velas Decorativas - Aromáticas</h3>
+
+
+  <!-- NOVEDADES -->
+  <section id="novedades" class="productos">
+    <h3>Novedades</h3>
+
     <div class="galeria">
-      <div class="producto">
-          <div class="cuadro-imagen">
-            <img src="img/nubepeque.jpeg" alt="Vela de nube pequeña" />
-          </div>
-          <h4>Vela de nube pequeña</h4>
-          <p>Color y aroma: a tu elección.</p>
-          <p>Desde <strong>180$</strong></p>
-          <a href="formulario/nubepeque.html" class="btn">Añadir al carrito</a>
-        </div>
-  
-        <div class="producto">
-              <div class="cuadro-imagen">
-                <img src="img/nubegrande.jpeg" alt="Vela de nube grande" />
-              </div>
-              <h4>Vela de nube grande</h4>
-              <p>Color y aroma: a tu elección.</p>
-              <p>Desde <strong>300$</strong></p>
-              <a href="formulario/nubegrande.html" class="btn">Añadir al carrito</a>
-        </div>
-      
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/osito.jpeg" alt="Vela de osito" />
+          <img src="img/esferarosas.jpeg" alt="Vela de esfera de rosas">
+        </div>
+        <h4>Vela Esfera de Rosas</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>350$</strong></p>
+        <a href="formulario/esferarosas.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/nudoentrelazado.jpeg" alt="Vela de nudo entrelazado">
+        </div>
+        <h4>Vela de Nudo Entrelazado</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>600$</strong></p>
+        <a href="formulario/nudoentrelazado.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/nudofino.jpeg" alt="Vela de nudo fino">
+        </div>
+        <h4>Vela de Nudo Fino</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>700$</strong></p>
+        <a href="formulario/nudofino.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/rosaabierta.jpeg" alt="Vela de rosa abierta">
+        </div>
+        <h4>Vela de Rosa Abierta</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>400$</strong></p>
+        <a href="formulario/rosaabierta.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/tarrofresa.jpeg" alt="Vela de tarrito de fresa">
+        </div>
+        <h4>Vela Tarrito de Fresa</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>550$</strong></p>
+        <a href="formulario/tarrofresa.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/tarroflor.jpeg" alt="Vela de tarrito de flor">
+        </div>
+        <h4>Vela Tarrito de Flor</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>600$</strong></p>
+        <a href="formulario/tarroflor.html" class="btn">Añadir al carrito</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- VELAS DECORATIVAS - AROMÁTICAS -->
+  <section id="aromaticas" class="productos">
+    <h3>Velas Decorativas - Aromáticas</h3>
+
+    <div class="galeria">
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/nubepeque.jpeg" alt="Vela de nube pequeña">
+        </div>
+        <h4>Vela de nube pequeña</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>180$</strong></p>
+        <a href="formulario/nubepeque.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/nubegrande.jpeg" alt="Vela de nube grande">
+        </div>
+        <h4>Vela de nube grande</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>300$</strong></p>
+        <a href="formulario/nubegrande.html" class="btn">Añadir al carrito</a>
+      </div>
+
+      <div class="producto">
+        <div class="cuadro-imagen">
+          <img src="img/osito.jpeg" alt="Vela de osito">
         </div>
         <h4>Vela de osito</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>350$</strong></p>
         <a href="formulario/osito.html" class="btn">Añadir al carrito</a>
       </div>
-      
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/mariposa.jpeg" alt="Vela de mariposa" />
+          <img src="img/mariposa.jpeg" alt="Vela de mariposa">
         </div>
         <h4>Vela de mariposa</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -304,7 +203,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/osito-enamorado.jpeg" alt="Vela de osito enamorado " />
+          <img src="img/osito-enamorado.jpeg" alt="Vela de osito enamorado">
         </div>
         <h4>Vela de osito enamorado</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -314,7 +213,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazones-amor.jpeg" alt="Vela de corazones" />
+          <img src="img/corazones-amor.jpeg" alt="Vela de corazones grandes">
         </div>
         <h4>Vela de corazones grandes</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -322,9 +221,9 @@
         <a href="formulario/corazones-amor.html" class="btn">Añadir al carrito</a>
       </div>
 
-       <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazones.jpeg" alt="Vela de corazones" />
+          <img src="img/corazones.jpeg" alt="Vela de corazones">
         </div>
         <h4>Vela de corazones</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -334,7 +233,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/cubito-amor.jpeg" alt="Vela de cubito de amor" />
+          <img src="img/cubito-amor.jpeg" alt="Vela de cubito de amor">
         </div>
         <h4>Vela de cubito de amor</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -344,7 +243,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/rosa-amor.jpeg" alt="Vela de rosa de amor" />
+          <img src="img/rosa-amor.jpeg" alt="Vela de rosa de amor">
         </div>
         <h4>Vela de rosa de amor</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -352,40 +251,40 @@
         <a href="formulario/rosa-amor.html" class="btn">Añadir al carrito</a>
       </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen carrusel">
-          <img src="img/rosa-aromatico.jpeg" alt="Vela de rosa unicolor" />
-          <img src="img/rosa-aromatica-dos-colores.jpeg" alt="Vela de rosa bicolor" />
+          <img src="img/rosa-aromatico.jpeg" alt="Vela de rosa unicolor">
+          <img src="img/rosa-aromatica-dos-colores.jpeg" alt="Vela de rosa bicolor">
         </div>
         <h4>Vela de rosa</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>250$</strong></p>
         <a href="formulario/flor-rosa-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
-    
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazon-pequeno-aromatico.jpeg" alt="Vela de corazón pequeño" />
+          <img src="img/corazon-pequeno-aromatico.jpeg" alt="Vela de corazón pequeño">
         </div>
         <h4>Vela de corazón pequeño</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>250$</strong></p>
         <a href="formulario/corazon-pequeno-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
-      
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazon-grande-aromatico.jpeg" alt="Vela de corazón grande" />
+          <img src="img/corazon-grande-aromatico.jpeg" alt="Vela de corazón grande">
         </div>
         <h4>Vela de corazón grande</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>400$</strong></p>
         <a href="formulario/corazon-grande-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
-      
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/girasol.jpeg" alt="Vela de girasol" />
+          <img src="img/girasol.jpeg" alt="Vela de girasol">
         </div>
         <h4>Vela de girasol</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -395,7 +294,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-cubo-pequeno-aromatico.jpeg" alt="Vela de flor cubo pequeño" />
+          <img src="img/flor-cubo-pequeno-aromatico.jpeg" alt="Vela de flor cubo pequeño">
         </div>
         <h4>Vela de flor cubo pequeño</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -403,41 +302,40 @@
         <a href="formulario/flor-cubo-pequeno-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-cubo-grande-aromatico.jpeg" alt="Vela de flor cubo grande" />
+          <img src="img/flor-cubo-grande-aromatico.jpeg" alt="Vela de flor cubo grande">
         </div>
         <h4>Vela de flor cubo mediano</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>250$</strong></p>
         <a href="formulario/flor-cubo-mediano-aromatica.html" class="btn">Añadir al carrito</a>
-    </div>
+      </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/cubo-mini-aromatico.jpeg" alt="Vela de cubo mini" />
+          <img src="img/cubo-mini-aromatico.jpeg" alt="Vela de cubo mini">
         </div>
         <h4>Vela de cubo mini</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>100$</strong></p>
         <a href="formulario/cubo-mini-aromatica.html" class="btn">Añadir al carrito</a>
-    </div>
+      </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/margarita-aromatica-dos-colores.jpeg" alt="Vela de margarita bicolor" />
+          <img src="img/margarita-aromatica-dos-colores.jpeg" alt="Vela de margarita bicolor">
         </div>
         <h4>Vela de flor margarita</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>150$</strong></p>
         <a href="formulario/flor-margarita-aromatica.html" class="btn">Añadir al carrito</a>
-    </div>
+      </div>
 
-
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen carrusel">
-          <img src="img/rosa-aromatico.jpeg" alt="Vela de rosa unicolor" />
-          <img src="img/rosa-aromatica-dos-colores.jpeg" alt="Vela de rosa bicolor" />
+          <img src="img/rosa-aromatico.jpeg" alt="Vela de rosa unicolor">
+          <img src="img/rosa-aromatica-dos-colores.jpeg" alt="Vela de rosa bicolor">
         </div>
         <h4>Vela de rosa</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -445,9 +343,9 @@
         <a href="formulario/flor-rosa-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-peonia-aromatica.jpeg" alt="Vela de flor peonia abierta" />
+          <img src="img/flor-peonia-aromatica.jpeg" alt="Vela de flor peonía abierta">
         </div>
         <h4>Vela de flor peonia abierta</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -455,9 +353,9 @@
         <a href="formulario/flor-peonia-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
 
-     <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-peonia-compacta-aromatica.jpeg" alt="Vela de flor peonia compacta" />
+          <img src="img/flor-peonia-compacta-aromatica.jpeg" alt="Vela de flor peonía compacta">
         </div>
         <h4>Vela de flor peonia compacta</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -465,20 +363,20 @@
         <a href="formulario/flor-peonia-compacta-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
 
-    <div class="producto">
-      <div class="cuadro-imagen carrusel">
-        <img src="img/cubo-pequeno-aromatico.jpeg" alt="Vela de cubo pequeño unicolor" />
-        <img src="img/cubo-pequeno-aromatico-dos-colores.jpeg" alt="Vela de cubo pequeño bicolor" />
+      <div class="producto">
+        <div class="cuadro-imagen carrusel">
+          <img src="img/cubo-pequeno-aromatico.jpeg" alt="Vela de cubo pequeño unicolor">
+          <img src="img/cubo-pequeno-aromatico-dos-colores.jpeg" alt="Vela de cubo pequeño bicolor">
+        </div>
+        <h4>Vela de cubo pequeño</h4>
+        <p>Color y aroma: a tu elección.</p>
+        <p>Desde <strong>250$</strong></p>
+        <a href="formulario/cubo-pequeno-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
-      <h4>Vela de cubo pequeño</h4>
-      <p>Color y aroma: a tu elección.</p>
-      <p>Desde <strong>250$</strong></p>
-      <a href="formulario/cubo-pequeno-aromatica.html" class="btn">Añadir al carrito</a>
-    </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/octoedro-aromatico.jpeg" alt="Vela de octoedro" />
+          <img src="img/octoedro-aromatico.jpeg" alt="Vela de octoedro">
         </div>
         <h4>Vela de octoedro</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -486,9 +384,9 @@
         <a href="formulario/octoedro-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/espiral-aromatico.jpeg" alt="Vela de espiral" />
+          <img src="img/espiral-aromatico.jpeg" alt="Vela de espiral">
         </div>
         <h4>Vela de espiral</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -496,37 +394,40 @@
         <a href="formulario/espiral-aromatica.html" class="btn">Añadir al carrito</a>
       </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/cubo-grande-aromatico.jpeg" alt="Vela de cubo grande" />
+          <img src="img/cubo-grande-aromatico.jpeg" alt="Vela de cubo grande">
         </div>
         <h4>Vela de cubo grande</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>550$</strong></p>
         <a href="formulario/cubo-grande-aromatica.html" class="btn">Añadir al carrito</a>
-    </div>
+      </div>
 
-    <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/numero.jpeg" alt="Vela Decorativa de cumpleaños" />
+          <img src="img/numero.jpeg" alt="Vela decorativa de cumpleaños">
         </div>
         <h4>Vela de número</h4>
         <p>Color: a tu elección.</p>
         <p>Todos los números disponibles</p>
         <p><strong>180$</strong></p>
         <a href="formulario/numeros.html" class="btn">Añadir al carrito</a>
-      </div>  
+      </div>
+
     </div>
   </section>
 
-   <!-- SECCIÓN VELAS NAVIDEÑAS -->
- 
-  <section id="aromaticas" class="productos">
+
+  <!-- VELAS NAVIDEÑAS -->
+  <section id="navidenas" class="productos">
     <h3>Velas Navideñas</h3>
+
     <div class="galeria">
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/copo.jpeg" alt="Vela de copo de nieve" />
+          <img src="img/copo.jpeg" alt="Vela de copo de nieve">
         </div>
         <h4>Vela de copo de nieve</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -534,9 +435,9 @@
         <a href="formulario/copo.html" class="btn">Añadir al carrito</a>
       </div>
 
-       <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/caja.jpeg" alt="Vela de caja de regalo" />
+          <img src="img/caja.jpeg" alt="Vela de caja de regalo">
         </div>
         <h4>Vela de cajita de regalo</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -546,7 +447,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/campana.jpeg" alt="Vela de campana" />
+          <img src="img/campana.jpeg" alt="Vela de campana">
         </div>
         <h4>Vela de campana</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -556,7 +457,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/arbol.jpeg" alt="Vela de árbol" />
+          <img src="img/arbol.jpeg" alt="Vela de árbol de Navidad">
         </div>
         <h4>Vela de árbol de navidad</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -566,23 +467,27 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/bota.jpeg" alt="Vela de bota" />
+          <img src="img/bota.jpeg" alt="Vela de bota">
         </div>
         <h4>Vela de bota</h4>
         <p>Color y aroma: a tu elección.</p>
         <p>Desde <strong>280$</strong></p>
         <a href="formulario/bota.html" class="btn">Añadir al carrito</a>
       </div>
+
     </div>
   </section>
-  
-  <!-- SECCIÓN VELAS NATURALES -->
+
+
+  <!-- VELAS DECORATIVAS NATURALES -->
   <section id="naturales" class="productos">
     <h3>Velas Decorativas Naturales</h3>
+
     <div class="galeria">
+
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazon-pequeno-natural.jpeg" alt="Vela natural de corazón pequeño" />
+          <img src="img/corazon-pequeno-natural.jpeg" alt="Vela natural de corazón pequeño">
         </div>
         <h4>Vela de corazón pequeño natural</h4>
         <p>Color y aroma natural.</p>
@@ -592,7 +497,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazon-grande-natural.jpeg" alt="Vela natural de corazón grande" />
+          <img src="img/corazon-grande-natural.jpeg" alt="Vela natural de corazón grande">
         </div>
         <h4>Vela de corazón grande natural</h4>
         <p>Color y aroma natural.</p>
@@ -602,7 +507,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-cubo-pequeno-natural.jpeg" alt="Vela natural de flor cubo pequeño" />
+          <img src="img/flor-cubo-pequeno-natural.jpeg" alt="Vela natural de flor cubo pequeño">
         </div>
         <h4>Vela de flor cubo pequeño natural</h4>
         <p>Color y aroma natural.</p>
@@ -612,17 +517,17 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-cubo-grande-natural.jpeg" alt="Vela natural de flor cubo grande" />
+          <img src="img/flor-cubo-grande-natural.jpeg" alt="Vela natural de flor cubo grande">
         </div>
         <h4>Vela de flor cubo mediano natural</h4>
         <p>Color y aroma natural.</p>
         <p><strong>250$</strong></p>
         <a href="formulario/flor-cubo-mediano-natural.html" class="btn">Añadir al carrito</a>
       </div>
-      
-       <div class="producto">
+
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/panal-abeja-pequeno.jpeg" alt="Vela natural de panal pequeño" />
+          <img src="img/panal-abeja-pequeno.jpeg" alt="Vela natural de panal pequeño">
         </div>
         <h4>Vela de panal pequeño natural</h4>
         <p>Color y aroma natural.</p>
@@ -632,7 +537,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/panal-abeja-grande.jpeg" alt="Vela natural de panal grande" />
+          <img src="img/panal-abeja-grande.jpeg" alt="Vela natural de panal grande">
         </div>
         <h4>Vela de panal grande natural</h4>
         <p>Color y aroma natural.</p>
@@ -640,9 +545,9 @@
         <a href="formulario/panal-grande.html" class="btn">Añadir al carrito</a>
       </div>
 
-       <div class="producto">
+      <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/cubo-mini-natural.jpeg" alt="Vela natural de cubo mini" />
+          <img src="img/cubo-mini-natural.jpeg" alt="Vela natural de cubo mini">
         </div>
         <h4>Vela de cubo mini natural</h4>
         <p>Color y aroma natural.</p>
@@ -652,7 +557,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/margarita-natural.jpeg" alt="Vela natural de margarita" />
+          <img src="img/margarita-natural.jpeg" alt="Vela natural de margarita">
         </div>
         <h4>Vela de flor margarita natural</h4>
         <p>Color y aroma natural.</p>
@@ -662,7 +567,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/corazones-natural.jpeg" alt="Vela natural de corazones" />
+          <img src="img/corazones-natural.jpeg" alt="Vela natural de corazones">
         </div>
         <h4>Vela de corazones natural</h4>
         <p>Color y aroma natural.</p>
@@ -672,7 +577,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/rosa-natural.jpeg" alt="Vela natural de rosa" />
+          <img src="img/rosa-natural.jpeg" alt="Vela natural de rosa">
         </div>
         <h4>Vela de rosa natural</h4>
         <p>Color y aroma natural.</p>
@@ -682,7 +587,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-peonia-natural.jpeg" alt="Vela natural de flor peonia abierta" />
+          <img src="img/flor-peonia-natural.jpeg" alt="Vela natural de flor peonía abierta">
         </div>
         <h4>Vela de flor peonia natural abierta</h4>
         <p>Color y aroma natural.</p>
@@ -692,7 +597,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/flor-peonia-compacta-natural.jpeg" alt="Vela natural de flor peonia compacta" />
+          <img src="img/flor-peonia-compacta-natural.jpeg" alt="Vela natural de flor peonía compacta">
         </div>
         <h4>Vela de flor peonia compacta</h4>
         <p>Color y aroma: a tu elección.</p>
@@ -702,7 +607,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/cubo-pequeno-natural.jpeg" alt="Vela natural de cubo pequeño" />
+          <img src="img/cubo-pequeno-natural.jpeg" alt="Vela natural de cubo pequeño">
         </div>
         <h4>Vela de cubo pequeño natural</h4>
         <p>Color y aroma natural.</p>
@@ -712,7 +617,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/octoedro-natural.jpeg" alt="Vela natural de octoedro" />
+          <img src="img/octoedro-natural.jpeg" alt="Vela natural de octoedro">
         </div>
         <h4>Vela de octoedro natural</h4>
         <p>Color y aroma natural.</p>
@@ -722,7 +627,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/espiral-natural.jpeg" alt="Vela natural de espiral" />
+          <img src="img/espiral-natural.jpeg" alt="Vela natural de espiral">
         </div>
         <h4>Vela de espiral natural</h4>
         <p>Color y aroma natural.</p>
@@ -732,7 +637,7 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/cubo-grande-natural.jpeg" alt="Vela natural de cubo grande" />
+          <img src="img/cubo-grande-natural.jpeg" alt="Vela natural de cubo grande">
         </div>
         <h4>Vela de cubo grande natural</h4>
         <p>Color y aroma natural.</p>
@@ -742,9 +647,9 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/tarro-dorado-liso.jpeg" alt="Vela natural de tarro dorado liso" />
+          <img src="img/tarro-dorado-liso.jpeg" alt="Vela natural de tarro dorado liso">
         </div>
-        <h4>Vela natural de tarro dorado liso </h4>
+        <h4>Vela natural de tarro dorado liso</h4>
         <p>Color y aroma natural.</p>
         <p><strong>450$</strong></p>
         <a href="formulario/tarro-dorado-liso.html" class="btn">Añadir al carrito</a>
@@ -752,9 +657,9 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/tarro-dorado-floral.jpeg" alt="Vela natural de tarro dorado floral" />
+          <img src="img/tarro-dorado-floral.jpeg" alt="Vela natural de tarro dorado floral">
         </div>
-        <h4>Vela natural de tarro dorado floral </h4>
+        <h4>Vela natural de tarro dorado floral</h4>
         <p>Color y aroma natural.</p>
         <p><strong>480$</strong></p>
         <a href="formulario/tarro-dorado-floral.html" class="btn">Añadir al carrito</a>
@@ -762,9 +667,9 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/tarro-dorado-con-flor.jpeg" alt="Vela natural de tarro dorado con flor" />
+          <img src="img/tarro-dorado-con-flor.jpeg" alt="Vela natural de tarro dorado con flor">
         </div>
-        <h4>Vela natural de tarro dorado con flor </h4>
+        <h4>Vela natural de tarro dorado con flor</h4>
         <p>Color y aroma natural.</p>
         <p><strong>500$</strong></p>
         <a href="formulario/tarro-dorado-con-flor.html" class="btn">Añadir al carrito</a>
@@ -772,9 +677,9 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/tarro-negro-liso.jpeg" alt="Vela natural de tarro negro liso" />
+          <img src="img/tarro-negro-liso.jpeg" alt="Vela natural de tarro negro liso">
         </div>
-        <h4>Vela natural de tarro negro liso </h4>
+        <h4>Vela natural de tarro negro liso</h4>
         <p>Color y aroma natural.</p>
         <p><strong>600$</strong></p>
         <a href="formulario/tarro-negro-liso.html" class="btn">Añadir al carrito</a>
@@ -782,9 +687,9 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/tarro-negro-floral.jpeg" alt="Vela natural de tarro negro floral" />
+          <img src="img/tarro-negro-floral.jpeg" alt="Vela natural de tarro negro floral">
         </div>
-        <h4>Vela natural de tarro negro floral </h4>
+        <h4>Vela natural de tarro negro floral</h4>
         <p>Color y aroma natural.</p>
         <p><strong>630$</strong></p>
         <a href="formulario/tarro-negro-floral.html" class="btn">Añadir al carrito</a>
@@ -792,39 +697,72 @@
 
       <div class="producto">
         <div class="cuadro-imagen">
-          <img src="img/tarro-negro-con-flor.jpeg" alt="Vela natural de tarro negro con flor" />
+          <img src="img/tarro-negro-con-flor.jpeg" alt="Vela natural de tarro negro con flor">
         </div>
-        <h4>Vela natural de tarro negro con flor </h4>
+        <h4>Vela natural de tarro negro con flor</h4>
         <p>Color y aroma natural.</p>
         <p><strong>650$</strong></p>
         <a href="formulario/tarro-negro-con-flor.html" class="btn">Añadir al carrito</a>
       </div>
-      
+
     </div>
   </section>
 
 
+  <!-- CÓMO FUNCIONA -->
+  <section id="como-funciona" class="como-funciona">
+    <h3>✨ Cómo funciona el catálogo</h3>
 
-  <!-- SECCIÓN CONTACTO  -->
+    <ul>
+      <li>Puedes comprar directamente cualquiera de nuestras velas decorativas naturales.</li>
+      <li>También puedes personalizar las velas decorativas-aromáticas: elige el aroma (o sin aroma), color, tipo de empaque y cantidad.</li>
+      <li>Solo toca el botón de tu vela favorita y te llevamos directo a WhatsApp. ¡Así de fácil!</li>
+    </ul>
+
+    <p>
+      🕯️ Todas nuestras velas se elaboran por encargo, especialmente para ti.<br>
+      📦 Atención personalizada a través de WhatsApp.<br>
+      🕥 Tiempo de elaboración: hasta 5 días.
+    </p>
+
+    <p class="gracias">
+      Gracias por apoyar este emprendimiento hecho con el corazón. ❤️<br>
+      Bienvenida al mundo de MaryJo Aromas.
+    </p>
+  </section>
+
+
+  <!-- CONTACTO -->
   <section id="contacto" class="contacto">
     <h3>📞 Contáctanos</h3>
-    <p>¿Tienes dudas o un pedido especial?<br>
-    Escríbenos a través de WhatsApp.</p>
-    <a href="https://wa.me/5353810462?text=Hola%2C%20quiero%20más%20información%20sobre%20las%20velas" class="btn" target="_blank">Enviar mensaje</a>
+    <p>
+      ¿Tienes dudas o un pedido especial?<br>
+      Escríbenos a través de WhatsApp.
+    </p>
+    <a
+      href="https://wa.me/5353810462?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20velas"
+      class="btn"
+      target="_blank"
+      rel="noopener noreferrer">
+      Enviar mensaje
+    </a>
   </section>
 
-  <!-- SECCIÓN CARRITO (a desarrollar más adelante)-->
+
+  <!-- CARRITO -->
   <section id="carrito" class="seccion-carrito">
-    <h3 style="text-align: center;">🛒 Tu carrito</h3>
-    <div id="carrito-contenido" style="padding: 0 10px; margin-top: 8px; text-align: center;"></div>
+    <h3 class="carrito-titulo">🛒 Tu carrito</h3>
+    <div id="carrito-contenido" class="carrito-contenido"></div>
   </section>
+
 
   <!-- PIE DE PÁGINA -->
   <footer class="footer">
     <p>&copy; 2025 MaryJo Aromas. Todos los derechos reservados.</p>
   </footer>
-  
-  
+
+
+  <!-- JAVASCRIPT: MENÚ Y CARRITO -->
   <script>
   // FUNCIONALIDAD DEL MENÚ
   const menuToggle = document.getElementById('menu-toggle');
