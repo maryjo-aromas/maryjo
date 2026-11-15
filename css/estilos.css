@@ -408,11 +408,21 @@ footer {
 
 /* Galería: una sola columna en todas las pantallas */
 .galeria {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 10px;
-  box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
 }
 
+.producto {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.cuadro-imagen {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+}
 
