@@ -141,13 +141,23 @@
         }
 
         .cart-remove {
-            border: none;
-            background: transparent;
-            color: #9a655c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 1px solid #e5d9cc;
+            border-radius: 7px;
+            background: #faf8f5;
+            color: #806b59;
             font-size: 13px;
             cursor: pointer;
-            text-decoration: underline;
-            text-underline-offset: 3px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        
+        .cart-remove:hover {
+            background: #eee5dc;
+            color: #49382f;
         }
 
         .cart-summary {
@@ -201,6 +211,46 @@
             color: #78675a;
             cursor: pointer;
             font-size: 13px;
+        }
+
+        /* ========================================
+           BOTONES DEL RESUMEN DEL CARRITO
+        ======================================== */
+        
+        .cart-summary .btn-whatsapp {
+            display: block;
+            width: 100%;
+            padding: 15px 18px;
+            border: 1px solid #49382f;
+            border-radius: 8px;
+            background: #49382f;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .cart-summary .btn-whatsapp:hover {
+            background: #675143;
+        }
+        
+        .cart-summary .btn-clear {
+            display: block;
+            width: 100%;
+            margin-top: 11px;
+            padding: 12px 18px;
+            border: 1px solid #d9cbbd;
+            border-radius: 8px;
+            background: #faf8f5;
+            color: #806b59;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .cart-summary .btn-clear:hover {
+            background: #eee5dc;
         }
 
         .cart-empty {
@@ -406,13 +456,18 @@
                   <h3>${escaparHTML(nombre)}</h3>
                   ${detalles.join("")}
                   <p><strong>Precio:</strong> <span class="cart-item-total">${formatoPrecio(total)}</span></p>
+                  <div class="cart-item-actions">
                   <div class="cart-quantity">
                     <button type="button" class="quantity-minus" data-index="${index}" aria-label="Restar una unidad">−</button>
                     <span>${cantidad}</span>
                     <button type="button" class="quantity-plus" data-index="${index}" aria-label="Añadir una unidad">+</button>
                   </div>
+                
+                  <button type="button" class="cart-remove" data-index="${index}" aria-label="Eliminar producto">
+                    <span>Eliminar</span>
+                  </button>
                 </div>
-                <button type="button" class="cart-remove" data-index="${index}" aria-label="Eliminar producto">Eliminar</button>
+                </div>
               </article>
             `;
           }).join("");
