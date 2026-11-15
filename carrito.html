@@ -358,6 +358,15 @@
         function renderizarCarrito() {
             const carrito = obtenerCarrito();
 
+            cartContent.innerHTML = `
+                <h2>Prueba de almacenamiento</h2>
+                <p>Productos encontrados: ${carrito.length}</p>
+                <pre style="white-space:pre-wrap; overflow-wrap:anywhere;">
+                    ${escaparHTML(JSON.stringify(carrito, null, 2))}
+                </pre>
+            `;
+            return;
+            
             if (carrito.length === 0) {
                 cartContent.innerHTML = `
                     <div class="cart-empty">
